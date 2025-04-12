@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { 
@@ -166,9 +165,9 @@ const FeaturedWork = () => {
       className="block h-full transition-all duration-300 hover:scale-[1.02]"
     >
       <Card className="bg-secondary/30 border-border/20 h-full">
-        <CardContent className="p-6 flex flex-col h-full">
-          <div className="flex items-center justify-center w-12 h-12 bg-accent/20 rounded-full mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
+        <CardContent className="p-4 flex flex-col h-full">
+          <div className="flex items-center justify-center w-10 h-10 bg-accent/20 rounded-full mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-500">
               <circle cx="12" cy="12" r="10"/>
               <path d="M16.5 12a4.5 4.5 0 0 0-6.75-3.9"/>
               <path d="M16.5 9A6.5 6.5 0 0 0 8 12.4"/>
@@ -176,19 +175,19 @@ const FeaturedWork = () => {
             </svg>
           </div>
           
-          <h3 className="font-bold text-lg mb-1 text-primary">{work.title}</h3>
-          <p className="text-primary/80 font-medium mb-2">{work.artist}</p>
-          <p className="text-primary/60 text-sm mt-auto">{work.role}</p>
+          <h3 className="font-bold text-base mb-0.5 text-primary">{work.title}</h3>
+          <p className="text-primary/80 font-medium text-sm mb-1">{work.artist}</p>
+          <p className="text-primary/60 text-xs mt-auto">{work.role}</p>
         </CardContent>
       </Card>
     </a>
   );
 
   return (
-    <section id="featured-work" className="section-padding bg-background">
+    <section id="featured-work" className="section-padding bg-background pt-0">
       <div className="container-custom">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Featured Work
           </h2>
           <p className="text-primary/70 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
@@ -201,19 +200,20 @@ const FeaturedWork = () => {
             opts={{
               align: "start",
               loop: true,
+              slidesToScroll: 6
             }}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
               {featuredWorks.map((work, index) => (
-                <CarouselItem key={index} className="pl-4 basis-1/3 md:basis-1/3 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-4 basis-1/3 md:basis-1/4 lg:basis-1/6">
                   <div className="h-full">
                     <FeaturedWorkCard work={work} />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-center mt-4">
               <CarouselPrevious className="relative static mr-2 transform-none" />
               <CarouselNext className="relative static transform-none" />
             </div>
