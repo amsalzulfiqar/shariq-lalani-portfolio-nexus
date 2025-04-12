@@ -2,142 +2,324 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ServiceDetail from '@/components/ServiceDetail';
-import { Brain, Sparkles, Code, BarChart2, Zap, LineChart, MessageCircle, PenTool } from 'lucide-react';
+import { Music, Sliders, Music2 } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 const ServicesPage = () => {
-  const serviceDetails = [
+  const services = [
     {
-      id: "ai-strategy",
-      title: "AI Strategy & Integration",
-      description: "I help organizations develop and implement comprehensive AI strategies that drive measurable business value. From identifying high-impact AI opportunities to designing and deploying customized solutions, my approach focuses on practical applications that deliver tangible results. My work spans generative AI, machine learning, and advanced data analytics, with experience across multiple industries.",
-      benefits: [
-        "Comprehensive assessment of AI opportunities for your business",
-        "Strategic planning for AI integration with existing systems and workflows",
-        "Identification of high-ROI AI use cases tailored to your objectives",
-        "Implementation roadmaps that balance innovation with practical execution",
-        "Custom AI solution development and deployment support"
-      ],
-      icon: <Brain className="w-8 h-8" />,
+      id: "production",
+      title: "Music Production",
+      description: "From indie artists to industry professionals, I offer music production that meets the needs of everyone. Whether you're a solo artist, a band refining your sound, or a filmmaker searching for the perfect score, I provide tailored services that suit your unique project. With years of experience working across genres such as Pop, Jazz, Hip Hop, World Music, Electronic, Orchestral, and more, I guide you from initial concept to final mix, ensuring each track gets the attention and professionalism it deserves.",
+      icon: <Music className="w-8 h-8" />
     },
     {
-      id: "product-strategy",
-      title: "Product Strategy",
-      description: "I develop product strategies that transform business objectives into successful digital experiences. Working at the intersection of user needs, business goals, and technology capabilities, I help organizations define clear product visions and executable roadmaps. My approach combines market research, user insights, and competitive analysis to create differentiated product offerings with sustainable value propositions.",
-      benefits: [
-        "Product vision and roadmap development aligned with business goals",
-        "User research and validation to ensure product-market fit",
-        "Go-to-market strategies that maximize adoption and engagement",
-        "Feature prioritization frameworks for efficient resource allocation",
-        "Metrics definition for measuring product success and ROI"
-      ],
-      icon: <BarChart2 className="w-8 h-8" />,
+      id: "mixing",
+      title: "Mixing",
+      description: "Transform your raw tracks into a polished, professional sound. I specialize in mixing for all genres, ensuring that your music stands out on any platform. With a keen ear for detail and a deep understanding of sonic balance, I'll help your music reach its full potential. Each mixing project receives personalized attention to bring out the best in your recordings while maintaining your artistic vision.",
+      icon: <Sliders className="w-8 h-8" />
     },
     {
-      id: "creative-technology",
-      title: "Creative Technology",
-      description: "I specialize in creating innovative digital experiences that leverage emerging technologies to deliver unique and engaging interactions. Blending technical expertise with creative vision, I develop solutions that push boundaries while remaining focused on user needs and business objectives. My work spans interactive installations, immersive web experiences, and technology-driven storytelling.",
-      benefits: [
-        "Unique digital experiences that differentiate your brand",
-        "Integration of emerging technologies into compelling user journeys",
-        "Creative concepting that balances innovation with usability",
-        "Technical feasibility assessment and implementation planning",
-        "Cross-platform experiences that create cohesive brand moments"
-      ],
-      icon: <Sparkles className="w-8 h-8" />,
+      id: "composition",
+      title: "Composition & Scoring",
+      description: "Looking for custom music? Whether for an album, film, or ad, I compose original pieces that capture the essence of your project and bring it to life with emotional depth. My background in various musical styles allows me to create unique compositions that resonate with your audience. From concept to completion, I'll work closely with you to ensure the music perfectly complements your creative vision.",
+      icon: <Music2 className="w-8 h-8" />
+    }
+  ];
+
+  const featuredWorks = [
+    {
+      title: "Addison Jordan - Keep That Same Old Feeling",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/6ZrT4g0XttXoyOA8XzHOGU"
     },
     {
-      id: "technical-development",
-      title: "Technical Development",
-      description: "I build robust, scalable digital solutions using modern technology stacks. From interactive prototypes to production-ready applications, my development approach emphasizes code quality, performance, and maintainability. With expertise across frontend, backend, and cloud technologies, I deliver technical solutions that bring product visions to life while establishing strong technical foundations.",
-      benefits: [
-        "Full-stack development using cutting-edge technologies",
-        "Scalable architecture design for long-term product growth",
-        "Performance optimization for exceptional user experiences",
-        "Development of APIs and integration systems",
-        "Technical documentation and knowledge transfer"
-      ],
-      icon: <Code className="w-8 h-8" />,
+      title: "Prisha Mehta - Leaving you (For now)",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/4GxH4w1kwuR7VtbBWpALn1"
     },
     {
-      id: "growth-analytics",
-      title: "Growth & Analytics",
-      description: "I implement data-driven strategies to optimize user acquisition, engagement, and retention. By establishing robust analytics frameworks and growth methodologies, I help organizations make informed decisions about product development and marketing initiatives. My approach connects user behavior insights to business metrics, creating feedback loops that drive continuous improvement.",
-      benefits: [
-        "Analytics implementation to capture meaningful user insights",
-        "Growth frameworks for systematic acquisition and retention",
-        "A/B testing strategies to optimize conversion funnels",
-        "User segmentation and personalization approaches",
-        "Performance dashboards that connect user actions to business outcomes"
-      ],
-      icon: <LineChart className="w-8 h-8" />,
+      title: "Mike Jones - Slums",
+      role: "Recording",
+      link: "https://open.spotify.com/track/0sG5nT03mSwzW4kg5xXcWL"
     },
     {
-      id: "innovation-consulting",
-      title: "Innovation Consulting",
-      description: "I help organizations build innovation capabilities and navigate emerging technologies. Through structured innovation programs and technology assessments, I enable teams to identify new opportunities and develop the processes needed to bring innovative ideas to market. My consulting approach combines strategic thinking with practical implementation plans that align innovation efforts with business objectives.",
-      benefits: [
-        "Innovation workshops and ideation facilitation",
-        "Assessment of emerging technology opportunities",
-        "Development of innovation processes and governance",
-        "Cross-functional collaboration frameworks",
-        "Innovation portfolio management and prioritization"
-      ],
-      icon: <Zap className="w-8 h-8" />,
+      title: "Quentin Moore Ft. Snoop Dogg - BFU (Remix)",
+      role: "Recording",
+      link: "https://open.spotify.com/track/3HgwUyJXSP1i5j4ZVxjvC7"
     },
     {
-      id: "content-strategy",
-      title: "Content Strategy",
-      description: "I develop content strategies that engage audiences and support business objectives across digital channels. By aligning content creation with user journeys and business goals, I help organizations build meaningful relationships with their audiences. My approach encompasses content planning, creation guidelines, distribution strategies, and performance measurement to ensure content drives tangible value.",
-      benefits: [
-        "Content strategy aligned with business and audience needs",
-        "Editorial calendars and content planning frameworks",
-        "Content creation guidelines and governance",
-        "Distribution and promotion strategies across channels",
-        "Content performance measurement and optimization"
-      ],
-      icon: <PenTool className="w-8 h-8" />,
+      title: "Bobby Sparks II - Letter to Mumbai",
+      role: "Production, Recording",
+      link: "https://open.spotify.com/track/7wxjnfO4CBkgQodEwqP7Gu"
     },
     {
-      id: "workshop-facilitation",
-      title: "Workshop Facilitation",
-      description: "I design and facilitate specialized workshops focused on innovation, product strategy, and creative problem-solving. Using proven methodologies and collaborative exercises, I help teams align on challenges, explore solutions, and develop actionable plans. My workshop approach emphasizes structured creativity, cross-functional collaboration, and outcome-oriented activities.",
-      benefits: [
-        "Customized workshop design based on specific objectives",
-        "Expert facilitation to maximize team participation",
-        "Collaborative problem-solving and ideation exercises",
-        "Synthesis of workshop outputs into actionable plans",
-        "Post-workshop support for implementation planning"
-      ],
-      icon: <MessageCircle className="w-8 h-8" />,
+      title: "Bobby Sparks II - Musical Diarrhea",
+      role: "Tracking Engineer",
+      link: "https://open.spotify.com/track/1FTn7MpMDidWYLyKdj5680"
     },
+    {
+      title: "Bobby Sparks II - Sodom and Gomorrah",
+      role: "Tracking Engineer",
+      link: "https://open.spotify.com/track/6kSwjQHgWVzsSPsNGEEIx7"
+    },
+    {
+      title: "Bobby Sparks II - Mayday",
+      role: "Tracking Engineer",
+      link: "https://open.spotify.com/track/16l5PQbX9X4H8QLdsCcqHr"
+    },
+    {
+      title: "Addison Jordan - Reverence",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/2N8ATWkeG3Qks1KaZzas2C"
+    },
+    {
+      title: "Porte Diferente - El Pochito",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/52UekrYckRIekXj7rlO2hl"
+    },
+    {
+      title: "Frank Hamlin, The Brothers McDavid - My Favorite Love Song",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/400fAkHKjAnrUulH8rx8zm"
+    },
+    {
+      title: "Porte Diferente - Quedate Aqui",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/3fcpIfwb6VBjj9bZKXnoxK"
+    },
+    {
+      title: "Sophie Drago - Perfect Show",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/5EAtwsiuev9rDNBjaDNug7"
+    },
+    {
+      title: "Sarah Hanks - Eternity in my mind",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/2f0fDWcm7Wevh0ukzFI67V"
+    },
+    {
+      title: "Zak Azoury - Christmas Love",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/4uhAogfaSYeCApgDxs76Zt"
+    },
+    {
+      title: "Zak Azoury - Might as well be coal",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/781O7fXNl3sgDL80gHSX1H"
+    },
+    {
+      title: "Shama Judah - Shikwa",
+      role: "Mixing, Mastering",
+      link: "https://open.spotify.com/track/3TOeHJ8Y08UqsiEaIFVs0V"
+    },
+    {
+      title: "Altercations - Wait",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/6rdMb9dW9zonR3GfvbeZ7x"
+    },
+    {
+      title: "Addison Jodan - Queen Val",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/3A1IUAtKIsteyHTSPIcrbi"
+    },
+    {
+      title: "Nibal Malshi - Isma' Albi",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/5CkPDhVkqmjNqRTtfmltFx"
+    },
+    {
+      title: "Oasis Worship - My Revival",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/243BMQW71Vt0MgCGRtQx8K"
+    },
+    {
+      title: "Akshara - Ethereal",
+      role: "Production",
+      link: "https://open.spotify.com/track/2m5QniDzGkjcHcTCHj4Qc5"
+    }
+  ];
+
+  const featuredVideos = [
+    {
+      title: "Leaving You (for now) - Music Video",
+      description: "Produced, Engineered and Mixed",
+      embedId: "QGp-qfhQtAc"
+    },
+    {
+      title: "Nibal Malshi - Isma' Albi (Majida El Roumi)",
+      description: "Produced, Engineered and Mixed",
+      embedId: "U48ew-pjpWA"
+    },
+    {
+      title: "Sarah Hanks - \"Eternity in my Mind\"",
+      description: "Produced, Engineered and Mixed",
+      embedId: "RH1Fhqm_6V0"
+    },
+    {
+      title: "Sabina Chamoy - Full Moon (Official Music Video)",
+      description: "Produced, Engineered and Mixed",
+      embedId: "T1mE5HwH_gQ"
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="pt-24 bg-gray-50">
-        <div className="container-custom py-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Services & Expertise</h1>
-            <p className="text-xl text-gray-600">
-              Comprehensive solutions tailored to help businesses innovate, grow, and transform in the digital age.
-            </p>
+      <div className="pt-24">
+        <section className="py-16 bg-gradient-to-b from-background to-secondary/10">
+          <div className="container-custom">
+            <div className="max-w-3xl mx-auto mb-16">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary text-center">Bring Your Music to Life</h1>
+              <p className="text-xl text-primary/80 text-center">
+                Music isn't just sound—it's an experience. I produce, mix, and compose tracks that capture emotion and depth. 
+                Let's create something unforgettable.
+              </p>
+              
+              <div className="flex justify-center mt-10">
+                <Button asChild size="lg">
+                  <a href="#contact">Let's Work Together</a>
+                </Button>
+              </div>
+            </div>
+            
+            <div className="bg-secondary/30 backdrop-blur-sm rounded-xl p-8 border border-border/20">
+              <h2 className="text-2xl font-semibold mb-6 text-primary">About My Work</h2>
+              <p className="text-primary/80 leading-relaxed">
+                Every song has a story, and my job is to bring that story to life. Whether it's producing a full track, 
+                fine-tuning a mix, or composing original music, I focus on delivering a sound that resonates. With experience 
+                working alongside industry-leading artists, I craft music with depth, clarity, and emotional impact. 
+                Whether you're crafting your debut single or scoring a cinematic project, I ensure a polished, 
+                professional sound that stands out.
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      {serviceDetails.map((service, index) => (
-        <ServiceDetail 
-          key={index}
-          id={service.id}
-          title={service.title}
-          description={service.description}
-          benefits={service.benefits}
-          icon={service.icon}
-        />
-      ))}
-      
+        <section className="py-16 bg-background" id="services-offered">
+          <div className="container-custom">
+            <h2 className="text-3xl font-bold mb-12 text-primary text-center">Services Offered</h2>
+            
+            {services.map((service, index) => (
+              <div 
+                key={index} 
+                id={service.id}
+                className="mb-16 bg-secondary/10 rounded-xl p-8 border border-border/10"
+              >
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-secondary/50 text-accent mr-4">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold text-primary">{service.title}</h3>
+                </div>
+                <p className="text-primary/80 leading-relaxed">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-16 bg-secondary/10" id="featured-works">
+          <div className="container-custom">
+            <h2 className="text-3xl font-bold mb-12 text-primary text-center">Featured Works</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+              {featuredWorks.map((work, index) => (
+                <a 
+                  key={index} 
+                  href={work.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-secondary/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:border-accent/30 transition-colors"
+                >
+                  <h3 className="text-lg font-medium mb-2 text-primary hover:text-accent transition-colors">{work.title}</h3>
+                  <p className="text-primary/60 text-sm">{work.role}</p>
+                </a>
+              ))}
+            </div>
+            
+            <h2 className="text-3xl font-bold mb-12 text-primary text-center">Featured Videos</h2>
+            
+            <div className="space-y-8">
+              {featuredVideos.map((video, index) => (
+                <div 
+                  key={index} 
+                  className="bg-secondary/30 backdrop-blur-sm rounded-xl p-6 border border-border/20"
+                >
+                  <div className="aspect-video mb-4">
+                    <iframe 
+                      width="100%" 
+                      height="100%" 
+                      src={`https://www.youtube.com/embed/${video.embedId}`} 
+                      title={video.title} 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                      className="rounded-lg"
+                    ></iframe>
+                  </div>
+                  <h3 className="text-lg font-medium mb-1 text-primary">{video.title}</h3>
+                  <p className="text-primary/60">{video.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-background" id="biography">
+          <div className="container-custom">
+            <h2 className="text-3xl font-bold mb-10 text-primary text-center">Bio</h2>
+            
+            <div className="bg-secondary/10 rounded-xl p-8 border border-border/10">
+              <div className="space-y-4 text-primary/80 leading-relaxed">
+                <p>
+                  Shariq Lalani is a versatile music composer, producer, audio engineer, and multi-instrumentalist based in Dallas, Texas. 
+                  His musical journey began early and has led him to collaborate with top-tier artists and professionals worldwide.
+                </p>
+                <p>
+                  Shariq holds a Bachelor of Arts in Music Industry Studies with a concentration in Jazz Studies and Recording Technology from the University of Texas at Arlington. 
+                  His education, combined with years of hands-on experience, has shaped him into a well-rounded artist with a deep understanding of both the technical and creative aspects of music.
+                </p>
+                <p>
+                  Shariq's journey into music took a transformative turn when he became a part of the Greater Dallas Youth Orchestras' Jazz Institute, 
+                  which immersed him in the world of Jazz and shaped his creative voice. Merging his Eastern heritage with Western influences, 
+                  Shariq creates a sound that blends diverse musical traditions into cohesive and innovative compositions.
+                </p>
+                <p>
+                  Shariq further honed his technical skills by studying audio engineering under veteran engineers through the Recording Connection program, 
+                  an LA-based externship program. His dedication earned him a place at Audio Dallas, one of the region's top studios, 
+                  where he worked his way up to become a staff engineer under the mentorship of multi-platinum producer Paul Osborn. 
+                  This experience allowed him to combine his technical mastery with his deep musical intuition, producing highly polished and sonically compelling work.
+                </p>
+                <p>
+                  Shariq's body of work spans across multiple genres, including Pop, Jazz, Hip-Hop, Electronic, Orchestral, and World Music. 
+                  His credits include collaborations with Bobby Sparks II (Prince, Kirk Franklin, Snarky Puppy), Javed Bashir, Salim-Sulaiman, Olivia Holt, 
+                  Nibal Malshi, Xavier Omär, The War and Treaty, Ulices Chaidez, and Fareed Ayaz & Abu Muhammad Qawwals, among others.
+                </p>
+                <p>
+                  Beyond his independent work, Shariq is also associated with Merchant Records and A for Alpeh Records, where he has released original compositions, 
+                  further establishing his presence in the global music scene.
+                </p>
+                <p>
+                  Whether he is producing, mixing, or composing for film and live performances, Shariq is committed to crafting music that leaves a lasting impact. 
+                  He continues to push musical boundaries, delivering authentic, polished, and impactful sound.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="section-padding bg-secondary/10">
+          <div className="container-custom text-center">
+            <h2 className="text-3xl font-bold mb-6 text-primary">Get in Touch</h2>
+            <p className="text-primary/70 mb-8 max-w-2xl mx-auto">
+              Please get in touch with booking enquiries or questions. I'm always open to discussing new projects and collaborations.
+            </p>
+            <Button asChild size="lg">
+              <a href="mailto:info@shariqlalani.com">Contact Me</a>
+            </Button>
+          </div>
+        </section>
+      </div>
       <Footer />
     </div>
   );

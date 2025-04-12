@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Instagram, Youtube, Spotify } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,13 +13,43 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <h2 className="text-2xl font-heading font-bold text-primary mb-2">Shariq Lalani</h2>
             <p className="text-primary/60 max-w-sm">
-              Bridging technology & creativity to build the future.
+              ARTIST | PRODUCER | ENGINEER
             </p>
+          </div>
+          
+          <div className="flex space-x-4 mb-6 md:mb-0">
+            <a 
+              href="https://www.instagram.com/shariqlalanimusic"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a 
+              href="https://www.youtube.com/@SHARIQLALANIMUSIC"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
+              aria-label="YouTube"
+            >
+              <Youtube className="w-5 h-5" />
+            </a>
+            <a 
+              href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
+              aria-label="Spotify"
+            >
+              <Spotify className="w-5 h-5" />
+            </a>
           </div>
           
           <a 
             href="#" 
-            className="w-12 h-12 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent/20 hover:text-accent transition-colors"
+            className="w-12 h-12 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
             aria-label="Back to top"
           >
             <ArrowUp className="w-5 h-5" />
@@ -31,8 +62,8 @@ const Footer = () => {
           </div>
           
           <div className="flex space-x-6">
-            <a href="#" className="text-sm text-primary/60 hover:text-accent transition-colors">Privacy Policy</a>
-            <a href="#" className="text-sm text-primary/60 hover:text-accent transition-colors">Terms of Service</a>
+            <Link to="/" className="text-sm text-primary/60 hover:text-accent transition-colors">Home</Link>
+            <Link to="/services" className="text-sm text-primary/60 hover:text-accent transition-colors">Services</Link>
           </div>
         </div>
       </div>

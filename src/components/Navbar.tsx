@@ -1,12 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Music, FileText, Headphones, Mail } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +17,13 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHomePage = location.pathname === '/';
+
   const navLinks = [
-    { href: '/#about', label: 'About' },
-    { href: '/services', label: 'Services' },
-    { href: '/#work', label: 'Work' },
-    { href: '/#contact', label: 'Contact' },
+    { href: isHomePage ? '#about' : '/#about', label: 'About', icon: <FileText className="w-4 h-4 mr-1" /> },
+    { href: isHomePage ? '#artist' : '/#artist', label: 'Music', icon: <Headphones className="w-4 h-4 mr-1" /> },
+    { href: isHomePage ? '#services' : '/services', label: 'Services', icon: <Music className="w-4 h-4 mr-1" /> },
+    { href: isHomePage ? '#contact' : '/#contact', label: 'Contact', icon: <Mail className="w-4 h-4 mr-1" /> },
   ];
 
   return (
@@ -40,13 +43,14 @@ const Navbar = () => {
             <Link
               key={link.href}
               to={link.href}
-              className="text-sm font-medium text-primary/80 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+              className="flex items-center text-sm font-medium text-primary/80 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
+              {link.icon}
               {link.label}
             </Link>
           ))}
           <Button asChild variant="outline" className="border-accent text-accent hover:bg-accent/20 hover:text-accent">
-            <Link to="/#contact">Let's Talk</Link>
+            <Link to={isHomePage ? '#contact' : '/#contact'}>Let's Talk</Link>
           </Button>
         </nav>
 
@@ -68,14 +72,15 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-lg font-medium text-primary/80 hover:text-accent"
+                className="flex items-center text-lg font-medium text-primary/80 hover:text-accent"
                 onClick={() => setIsOpen(false)}
               >
+                {link.icon}
                 {link.label}
               </Link>
             ))}
             <Button asChild variant="outline" className="w-full border-accent text-accent hover:bg-accent/20 hover:text-accent">
-              <Link to="/#contact" onClick={() => setIsOpen(false)}>Let's Talk</Link>
+              <Link to={isHomePage ? '#contact' : '/#contact'} onClick={() => setIsOpen(false)}>Let's Talk</Link>
             </Button>
           </nav>
         </div>

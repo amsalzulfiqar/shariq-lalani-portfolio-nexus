@@ -1,89 +1,50 @@
 
 import React from 'react';
 import ServiceCard from './ServiceCard';
-import { Brain, Sparkles, Code, BarChart2, Zap, LineChart, MessageCircle, PenTool } from 'lucide-react';
+import { Music, Sliders, Music2, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const services = [
     {
-      title: "AI Strategy & Integration",
-      description: "Transforming businesses through strategic AI implementation, from concept to deployment of AI-powered solutions that drive real results.",
-      icon: <Brain className="w-6 h-6" />,
+      title: "Music Production",
+      description: "From indie artists to industry professionals, I offer music production that meets the needs of everyone. Whether you're a solo artist, a band refining your sound, or a filmmaker searching for the perfect score.",
+      icon: <Music className="w-6 h-6" />,
       delay: 0.3,
       cta: "Learn more",
-      ctaLink: "#ai-strategy",
+      ctaLink: "/services#production",
     },
     {
-      title: "Product Strategy",
-      description: "Crafting product roadmaps and GTM strategies that transform business goals into successful digital products with measurable impact.",
-      icon: <BarChart2 className="w-6 h-6" />,
+      title: "Mixing",
+      description: "Transform your raw tracks into a polished, professional sound. I specialize in mixing for all genres, ensuring that your music stands out on any platform.",
+      icon: <Sliders className="w-6 h-6" />,
       delay: 0.5,
       cta: "Learn more",
-      ctaLink: "#product-strategy",
+      ctaLink: "/services#mixing",
     },
     {
-      title: "Creative Technology",
-      description: "Developing innovative digital experiences that blend cutting-edge technology with compelling creative execution.",
-      icon: <Sparkles className="w-6 h-6" />,
+      title: "Composition & Scoring",
+      description: "Looking for custom music? Whether for an album, film, or ad, I compose original pieces that capture the essence of your project and bring it to life with emotional depth.",
+      icon: <Music2 className="w-6 h-6" />,
       delay: 0.7,
       cta: "Learn more",
-      ctaLink: "#creative-technology",
-    },
-    {
-      title: "Technical Development",
-      description: "Building robust, scalable solutions using modern tech stacks, from proof-of-concept prototypes to production-ready applications.",
-      icon: <Code className="w-6 h-6" />,
-      delay: 0.9,
-      cta: "Learn more",
-      ctaLink: "#technical-development",
-    },
-    {
-      title: "Growth & Analytics",
-      description: "Data-driven strategies to optimize user acquisition, engagement, and retention, backed by comprehensive analytics.",
-      icon: <LineChart className="w-6 h-6" />,
-      delay: 1.1,
-      cta: "Learn more",
-      ctaLink: "#growth-analytics",
-    },
-    {
-      title: "Innovation Consulting",
-      description: "Helping organizations build internal innovation capabilities and navigate emerging technologies and market trends.",
-      icon: <Zap className="w-6 h-6" />,
-      delay: 1.3,
-      cta: "Learn more",
-      ctaLink: "#innovation-consulting",
-    },
-    {
-      title: "Content Strategy",
-      description: "Creating compelling, strategic content that engages audiences and supports business objectives across digital channels.",
-      icon: <PenTool className="w-6 h-6" />,
-      delay: 1.5,
-      cta: "Learn more",
-      ctaLink: "#content-strategy",
-    },
-    {
-      title: "Workshop Facilitation",
-      description: "Designing and leading specialized workshops for teams focused on innovation, product strategy, and creative problem-solving.",
-      icon: <MessageCircle className="w-6 h-6" />,
-      delay: 1.7,
-      cta: "Learn more",
-      ctaLink: "#workshop-facilitation",
-    },
+      ctaLink: "/services#composition",
+    }
   ];
 
   return (
-    <section id="services" className="section-padding bg-gray-50">
+    <section id="services" className="section-padding bg-secondary/10">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-            Services & Expertise
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+            Services
           </h2>
-          <p className="text-gray-600 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-            I offer a comprehensive range of services to help businesses navigate the digital landscape and build innovative solutions that drive results.
+          <p className="text-primary/70 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+            Bring your music to life with world-class production & mixing. Music isn't just sound—it's an experience.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -95,6 +56,16 @@ const Services = () => {
               ctaLink={service.ctaLink}
             />
           ))}
+        </div>
+        
+        <div className="text-center">
+          <Link 
+            to="/services" 
+            className="inline-flex items-center font-medium text-accent hover:underline group text-lg"
+          >
+            View Featured Works
+            <ArrowRight className="ml-1 w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>

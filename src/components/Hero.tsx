@@ -1,7 +1,9 @@
 
 import React, { useEffect, useRef } from 'react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Headphones, Wrench } from 'lucide-react';
 import AnimatedText from './AnimatedText';
+import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -36,15 +38,37 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight md:leading-tight">
             <AnimatedText 
-              text="Bridging Technology & Creativity to Build the Future" 
-              className="text-primary text-glow"
+              text="Shariq Lalani" 
+              className="text-primary text-glow mb-2"
               delay={0.3}
             />
           </h1>
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-medium mb-8">
+            <AnimatedText 
+              text="ARTIST | PRODUCER | ENGINEER" 
+              className="text-accent"
+              delay={0.6}
+            />
+          </h2>
           
           <p className="text-lg md:text-xl text-primary/70 max-w-2xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
-            Product strategist, creative technologist, and AI specialist helping brands navigate the intersection of technology and design.
+            Creating music that moves and inspires, from jazz and R&B to pop and world music.
           </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 opacity-0 animate-fade-in" style={{ animationDelay: '1.3s', animationFillMode: 'forwards' }}>
+            <Button asChild variant="default" size="lg" className="group">
+              <a href="#artist">
+                <Headphones className="mr-2 h-4 w-4" />
+                Listen to My Music
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="group">
+              <a href="#services">
+                <Wrench className="mr-2 h-4 w-4" />
+                Work With Me
+              </a>
+            </Button>
+          </div>
         </div>
         
         <div className="flex justify-center mt-8 opacity-0 animate-fade-in" style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}>

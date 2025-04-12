@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
-import CaseStudies from '@/components/CaseStudies';
+import Artist from '@/components/Artist';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -33,8 +33,8 @@ const Index = () => {
         <Navbar />
         <Hero />
         <About />
+        <Artist />
         <Services />
-        <CaseStudies />
         <Contact />
         <Footer />
       </div>
