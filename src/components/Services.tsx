@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ServiceCard from './ServiceCard';
-import { Brain, Sparkles, Code, BarChart2 } from 'lucide-react';
+import { Brain, Sparkles, Code, BarChart2, Zap, LineChart, MessageCircle, PenTool } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -10,24 +10,64 @@ const Services = () => {
       description: "Transforming businesses through strategic AI implementation, from concept to deployment of AI-powered solutions that drive real results.",
       icon: <Brain className="w-6 h-6" />,
       delay: 0.3,
+      cta: "Learn more",
+      ctaLink: "#ai-strategy",
     },
     {
       title: "Product Strategy",
       description: "Crafting product roadmaps and GTM strategies that transform business goals into successful digital products with measurable impact.",
       icon: <BarChart2 className="w-6 h-6" />,
       delay: 0.5,
+      cta: "Learn more",
+      ctaLink: "#product-strategy",
     },
     {
       title: "Creative Technology",
       description: "Developing innovative digital experiences that blend cutting-edge technology with compelling creative execution.",
       icon: <Sparkles className="w-6 h-6" />,
       delay: 0.7,
+      cta: "Learn more",
+      ctaLink: "#creative-technology",
     },
     {
       title: "Technical Development",
       description: "Building robust, scalable solutions using modern tech stacks, from proof-of-concept prototypes to production-ready applications.",
       icon: <Code className="w-6 h-6" />,
       delay: 0.9,
+      cta: "Learn more",
+      ctaLink: "#technical-development",
+    },
+    {
+      title: "Growth & Analytics",
+      description: "Data-driven strategies to optimize user acquisition, engagement, and retention, backed by comprehensive analytics.",
+      icon: <LineChart className="w-6 h-6" />,
+      delay: 1.1,
+      cta: "Learn more",
+      ctaLink: "#growth-analytics",
+    },
+    {
+      title: "Innovation Consulting",
+      description: "Helping organizations build internal innovation capabilities and navigate emerging technologies and market trends.",
+      icon: <Zap className="w-6 h-6" />,
+      delay: 1.3,
+      cta: "Learn more",
+      ctaLink: "#innovation-consulting",
+    },
+    {
+      title: "Content Strategy",
+      description: "Creating compelling, strategic content that engages audiences and supports business objectives across digital channels.",
+      icon: <PenTool className="w-6 h-6" />,
+      delay: 1.5,
+      cta: "Learn more",
+      ctaLink: "#content-strategy",
+    },
+    {
+      title: "Workshop Facilitation",
+      description: "Designing and leading specialized workshops for teams focused on innovation, product strategy, and creative problem-solving.",
+      icon: <MessageCircle className="w-6 h-6" />,
+      delay: 1.7,
+      cta: "Learn more",
+      ctaLink: "#workshop-facilitation",
     },
   ];
 
@@ -43,7 +83,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -51,6 +91,8 @@ const Services = () => {
               description={service.description}
               icon={service.icon}
               delay={service.delay}
+              cta={service.cta}
+              ctaLink={service.ctaLink}
             />
           ))}
         </div>

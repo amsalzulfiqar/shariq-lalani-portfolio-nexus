@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +17,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
-    { href: '#work', label: 'Work' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/#about', label: 'About' },
+    { href: '/services', label: 'Services' },
+    { href: '/#work', label: 'Work' },
+    { href: '/#contact', label: 'Contact' },
   ];
 
   return (
@@ -29,23 +30,23 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between py-4">
-        <a href="#" className="text-xl font-heading font-bold">
+        <Link to="/" className="text-xl font-heading font-bold">
           Shariq Lalani
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className="text-sm font-medium hover:text-primary/80 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Button asChild>
-            <a href="#contact">Let's Talk</a>
+            <Link to="/#contact">Let's Talk</Link>
           </Button>
         </nav>
 
@@ -64,17 +65,17 @@ const Navbar = () => {
         <div className="md:hidden bg-white">
           <nav className="container-custom py-8 flex flex-col space-y-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 className="text-lg font-medium"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <Button asChild className="w-full mt-4">
-              <a href="#contact" onClick={() => setIsOpen(false)}>Let's Talk</a>
+              <Link to="/#contact" onClick={() => setIsOpen(false)}>Let's Talk</Link>
             </Button>
           </nav>
         </div>
