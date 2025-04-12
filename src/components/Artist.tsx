@@ -60,14 +60,14 @@ const Artist = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-primary">Music Videos</h3>
           </div>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {musicVideos.map((video, index) => (
               <div 
                 key={index} 
-                className="bg-secondary/30 p-4 rounded-xl backdrop-blur-sm border border-border/20 opacity-0 animate-fade-in"
+                className="bg-secondary/30 p-3 rounded-xl backdrop-blur-sm border border-border/20 opacity-0 animate-fade-in"
                 style={{ animationDelay: `${0.3 + index * 0.2}s`, animationFillMode: 'forwards' }}
               >
-                <div className="aspect-video mb-4">
+                <div className="aspect-video mb-2">
                   <iframe 
                     width="100%" 
                     height="100%" 
@@ -79,8 +79,8 @@ const Artist = () => {
                     className="rounded-lg"
                   ></iframe>
                 </div>
-                <h4 className="text-lg font-semibold text-primary mb-1">{video.title}</h4>
-                <p className="text-primary/70">{video.description}</p>
+                <h4 className="text-base font-semibold text-primary mb-0.5">{video.title}</h4>
+                <p className="text-primary/70 text-sm truncate">{video.description}</p>
               </div>
             ))}
           </div>
