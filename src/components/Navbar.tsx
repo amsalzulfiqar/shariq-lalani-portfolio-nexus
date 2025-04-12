@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Music, FileText, Headphones, Mail } from 'lucide-react';
+import { Menu, X, FileText, Headphones, Music, Stars, Mail } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from 'react-router-dom';
 
@@ -21,8 +21,9 @@ const Navbar = () => {
 
   const navLinks = [
     { href: isHomePage ? '#about' : '/#about', label: 'About', icon: <FileText className="w-4 h-4 mr-1" /> },
-    { href: isHomePage ? '#artist' : '/#artist', label: 'Music', icon: <Headphones className="w-4 h-4 mr-1" /> },
     { href: isHomePage ? '#services' : '/services', label: 'Services', icon: <Music className="w-4 h-4 mr-1" /> },
+    { href: isHomePage ? '#artist' : '/#artist', label: 'Music', icon: <Headphones className="w-4 h-4 mr-1" /> },
+    { href: isHomePage ? '#testimonials' : '/#testimonials', label: 'Testimonials', icon: <Stars className="w-4 h-4 mr-1" /> },
     { href: isHomePage ? '#contact' : '/#contact', label: 'Contact', icon: <Mail className="w-4 h-4 mr-1" /> },
   ];
 

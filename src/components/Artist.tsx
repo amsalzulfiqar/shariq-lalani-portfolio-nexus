@@ -1,28 +1,28 @@
 
 import React from 'react';
-import { Music, Youtube } from 'lucide-react';
+import { Youtube } from 'lucide-react';
 
 const Artist = () => {
   const musicVideos = [
     {
       title: "Rang De",
       description: "Rang De - Full Video | Shariq Lalani | Anshuman Sharma | Merchant Records",
-      embedId: "8NAtcTuRgpU"
+      embedId: "wPF-sZy2ArE"
     },
     {
       title: "Unmover Mover",
       description: "Shariq Lalani - \"Unmoved Mover\" (Live at Audio Dallas Recording Studio)",
-      embedId: "7fDB_czk1B8"
+      embedId: "n04PTkA9dy0"
     },
     {
       title: "Daahoud",
       description: "Shariq Lalani X Javed Bashir - Daahoud | Visualizer",
-      embedId: "aTtltvV6dYY"
+      embedId: "Wqj7MlpeYvo"
     },
     {
       title: "Rang De Reprise",
       description: "Rang De (Reprise) | Shariq Lalani | Merchant Records",
-      embedId: "ELpsN5EmEXo"
+      embedId: "stIvrC8QNxY"
     }
   ];
 
@@ -33,25 +33,6 @@ const Artist = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Music
           </h2>
-        </div>
-
-        <div className="mb-16">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <Music className="w-6 h-6 text-accent" />
-            <h3 className="text-xl md:text-2xl font-semibold text-primary">Listen on Spotify</h3>
-          </div>
-
-          <div className="bg-secondary/30 p-4 rounded-xl backdrop-blur-sm border border-border/20">
-            <iframe 
-              src="https://open.spotify.com/embed/artist/6XochsfQsPMfehEQhWDDaz" 
-              width="100%" 
-              height="352" 
-              frameBorder="0" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy"
-              className="rounded-lg"
-            ></iframe>
-          </div>
         </div>
 
         <div>
