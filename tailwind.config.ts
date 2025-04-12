@@ -149,6 +149,11 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				heading: ['Space Grotesk', 'sans-serif']
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'dark-gradient': 'linear-gradient(to bottom, #111111, #1c1c1c)',
+				'muted-gradient': 'linear-gradient(to right, rgba(255,255,255,0.05), rgba(255,255,255,0.1))'
 			}
 		}
 	},
