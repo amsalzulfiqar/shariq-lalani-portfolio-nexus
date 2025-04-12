@@ -55,7 +55,7 @@ const About = () => {
             <div className="rounded-xl overflow-hidden shadow-lg">
               <img
                 ref={imageRef}
-                src="/lovable-uploads/b6d64a1a-6135-43ca-a2e2-e0382b1b3871.png"
+                src="/lovable-uploads/cf679340-41be-421e-a167-6db583bdf43b.png"
                 alt="Shariq Lalani"
                 className="w-full h-auto opacity-0 transition-transform duration-700 hover:scale-105"
               />
