@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowUp, Instagram, Youtube, Spotify } from 'lucide-react';
+import { ArrowUp, Instagram, Youtube, Music } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -43,7 +43,7 @@ const Footer = () => {
               className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
               aria-label="Spotify"
             >
-              <Spotify className="w-5 h-5" />
+              <Music className="w-5 h-5" />
             </a>
           </div>
           

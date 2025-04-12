@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Spotify, Youtube } from 'lucide-react';
+import { Music, Youtube } from 'lucide-react';
 
 const Artist = () => {
   const musicVideos = [
@@ -37,7 +37,7 @@ const Artist = () => {
 
         <div className="mb-16">
           <div className="flex items-center justify-center gap-4 mb-8">
-            <Spotify className="w-6 h-6 text-accent" />
+            <Music className="w-6 h-6 text-accent" />
             <h3 className="text-xl md:text-2xl font-semibold text-primary">Listen on Spotify</h3>
           </div>
 
