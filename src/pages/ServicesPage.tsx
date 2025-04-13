@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -190,8 +191,20 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-background" id="services-offered">
-          <div className="container-custom">
+        <section className="py-16 bg-background relative" id="services">
+          {/* Background Image with Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-10" 
+            style={{ 
+              backgroundImage: 'url("/public/lovable-uploads/8c8728bf-ab7a-4c4c-b4f8-dcb8665ede8c.png")',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+            }}
+          >
+            <div className="absolute inset-0 bg-background/80"></div>
+          </div>
+          
+          <div className="container-custom relative z-10">
             <h2 className="text-3xl font-bold mb-12 text-primary text-center">Services</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
@@ -199,7 +212,7 @@ const ServicesPage = () => {
                 <div 
                   key={index} 
                   id={service.id}
-                  className="bg-secondary/10 rounded-xl p-8 border border-border/10 h-full"
+                  className="bg-secondary/30 backdrop-blur-sm rounded-xl p-8 border border-border/10 h-full"
                 >
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-secondary/50 text-accent mr-4">
