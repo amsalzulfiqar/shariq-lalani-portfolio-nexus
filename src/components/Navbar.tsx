@@ -22,7 +22,8 @@ const Navbar = () => {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/#about', label: 'Bio' },
+    { href: '/bio', label: 'Bio' },
+    { href: '/artist', label: 'Artist' },
     { href: '/services', label: 'Services' },
   ];
 
@@ -33,7 +34,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between py-4">
-        {/* Move logo all the way to the left */}
+        {/* Logo all the way to the left */}
         <Logo className="text-primary" />
 
         {/* Desktop Navigation */}

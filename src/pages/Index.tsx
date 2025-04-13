@@ -3,10 +3,9 @@ import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Services from '@/components/Services';
-import Artist from '@/components/Artist';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import SpotifyPlayer from '@/components/SpotifyPlayer';
 
 const Index = () => {
   useEffect(() => {
@@ -38,8 +37,7 @@ const Index = () => {
         <Navbar />
         <Hero />
         <About />
-        <Services />
-        <Artist />
+        <SpotifyPlayer />
         <Contact />
         <Footer />
       </div>

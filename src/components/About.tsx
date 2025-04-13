@@ -28,7 +28,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="section-padding bg-background">
+    <section id="about" className="py-10 md:py-16 bg-background"> {/* Reduced padding here */}
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="order-2 md:order-1">
