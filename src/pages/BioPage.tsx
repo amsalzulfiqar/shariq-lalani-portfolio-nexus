@@ -15,17 +15,22 @@ const BioPage = () => {
         <div className="pt-24 pb-16">
           <div className="container-custom">
             {/* Hero Image */}
-            <div className="w-full mb-12">
-              <div className="relative overflow-hidden rounded-lg">
-                <img 
-                  src="/lovable-uploads/49e22a49-e6e8-4e04-b565-62257cc3bd67.png" 
-                  alt="Shariq playing piano" 
-                  className="w-full h-[40vh] md:h-[60vh] object-cover object-center"
-                />
+            <div className="w-full mb-12 relative">
+              <div className="h-[60vh] md:h-[70vh] relative overflow-hidden rounded-lg">
+                <div 
+                  className="absolute inset-0 bg-cover bg-center" 
+                  style={{ 
+                    backgroundImage: "url('/lovable-uploads/74f3a444-b1ca-499c-a7e5-354d40531a47.png')",
+                    backgroundPosition: "center",
+                    backgroundSize: "cover"
+                  }}
+                ></div>
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 bg-gradient-to-t from-black/80 to-transparent">
+                  <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">About Shariq</h1>
+                </div>
               </div>
             </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Shariq</h1>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
               {/* Profile section */}
@@ -75,9 +80,9 @@ const BioPage = () => {
                     Shariq holds a Bachelor of Arts in Music Industry Studies with a concentration in Jazz Studies and Recording Technology from the University of Texas at Arlington. His education, combined with years of hands-on experience, has shaped him into a well-rounded artist with a deep understanding of both the technical and creative aspects of music.
                   </p>
                   
-                  <p className="mb-6">
-                    Shariq's journey into music took a transformative turn when he became a part of the Greater Dallas Youth Orchestras' Jazz Institute, which immersed him in the world of Jazz and shaped his creative voice. Merging his Eastern heritage with Western influences, Shariq creates a sound that blends diverse musical traditions into cohesive and innovative compositions.
-                  </p>
+                   <p className="mb-6">
+                     Shariq's journey into music took a transformative turn when he became a part of the Greater Dallas Youth Orchestras' Jazz Institute, which immersed him in the world of Jazz and shaped his creative voice. Merging his Eastern heritage with Western influences, Shariq creates a sound that blends diverse musical traditions into cohesive and innovative compositions.
+                   </p>
                   
                   <p className="mb-6">
                     Shariq further honed his technical skills by studying audio engineering under veteran engineers through the Recording Connection program, an LA-based externship program. His dedication earned him a place at Audio Dallas, one of the region's top studios, where he worked his way up to become a staff engineer under the mentorship of multi-platinum producer Paul Osborn. This experience allowed him to combine his technical mastery with his deep musical intuition, producing highly polished and sonically compelling work.
