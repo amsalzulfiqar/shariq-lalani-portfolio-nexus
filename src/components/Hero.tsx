@@ -1,19 +1,27 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { Square } from 'lucide-react';
 
 const Hero = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <section className="relative w-screen h-screen overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image with loading state */}
       <div className="absolute inset-0 z-0">
+        {!imageLoaded && (
+          <div className="w-full h-full bg-black flex items-center justify-center">
+            <div className="animate-pulse h-16 w-16 rounded-full bg-gray-700"></div>
+          </div>
+        )}
         <img 
           src="/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png" 
           alt="Musician playing piano in recording studio"
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-cover ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
           loading="eager"
+          onLoad={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
@@ -63,4 +71,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

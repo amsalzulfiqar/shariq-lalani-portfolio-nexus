@@ -1,8 +1,9 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const About = () => {
   const imageRef = useRef<HTMLImageElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,7 +29,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-10 md:py-16 bg-background"> {/* Reduced padding here */}
+    <section id="about" className="py-10 md:py-16 bg-background">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="order-2 md:order-1">
@@ -52,12 +53,19 @@ const About = () => {
           </div>
           
           <div className="order-1 md:order-2 relative">
-            <div className="rounded-xl overflow-hidden shadow-lg">
+            <div className="rounded-xl overflow-hidden shadow-lg bg-gray-800 relative" style={{ minHeight: "300px" }}>
+              {!imageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-pulse h-16 w-16 rounded-full bg-gray-700"></div>
+                </div>
+              )}
               <img
                 ref={imageRef}
                 src="/lovable-uploads/cf679340-41be-421e-a167-6db583bdf43b.png"
                 alt="Shariq Lalani"
-                className="w-full h-auto opacity-0 transition-transform duration-700 hover:scale-105"
+                className={`w-full h-auto opacity-0 transition-all duration-700 ${imageLoaded ? 'opacity-100 hover:scale-105' : ''}`}
+                loading="lazy"
+                onLoad={() => setImageLoaded(true)}
               />
             </div>
           </div>
