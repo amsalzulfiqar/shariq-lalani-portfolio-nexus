@@ -1,8 +1,9 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
-import { Music, Mic, Headphones, Award } from 'lucide-react';
+import { Music, Mic, Headphones, Award, Piano, Guitar } from 'lucide-react';
 
 const BioPage = () => {
   return (
@@ -12,8 +13,8 @@ const BioPage = () => {
         {/* Using a regular img element instead of a background image for better control */}
         <div className="absolute inset-0 overflow-hidden">
           <img 
-            src="/lovable-uploads/f81daf2a-d575-4ce4-a183-78f9d4f94a0a.png" 
-            alt="Shariq profile" 
+            src="/lovable-uploads/fd2cd847-dde0-4532-a1d7-b4c1514881e0.png" 
+            alt="Shariq in studio" 
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/40"></div>
@@ -56,7 +57,7 @@ const BioPage = () => {
                       <span>Music Composer</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Award className="text-accent h-5 w-5" />
+                      <Piano className="text-accent h-5 w-5" />
                       <span>Producer</span>
                     </div>
                     <div className="flex items-center gap-3">
@@ -68,7 +69,7 @@ const BioPage = () => {
                       <span>Singer-Songwriter</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Mic className="text-accent h-5 w-5" />
+                      <Guitar className="text-accent h-5 w-5" />
                       <span>Multi-instrumentalist</span>
                     </div>
                   </div>
@@ -79,6 +80,8 @@ const BioPage = () => {
             {/* Bio text */}
             <div className="lg:col-span-2">
               <div className="prose prose-invert max-w-none">
+                <h2 className="text-3xl font-bold mb-6">About Shariq</h2>
+                
                 <p className="text-lg leading-relaxed mb-6">
                   Shariq Lalani is a versatile music composer, producer, audio engineer, and multi-instrumentalist based in Dallas, Texas. His musical journey began early and has led him to collaborate with top-tier artists and professionals worldwide.
                 </p>
