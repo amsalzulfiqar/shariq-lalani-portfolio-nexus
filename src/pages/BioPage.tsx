@@ -64,7 +64,7 @@ const BioPage = () => {
                       <span>Audio Engineer</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Headphones className="text-accent h-5 w-5" />
+                      <Mic className="text-accent h-5 w-5" />
                       <span>Singer-Songwriter</span>
                     </div>
                     <div className="flex items-center gap-3">
