@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -33,11 +32,15 @@ const Navbar = () => {
         isScrolled ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="container-custom flex items-center py-6">
-        {/* Logo with fixed positioning removed from navbar flow */}
-        <Logo fixed={true} size="medium" position={{ top: '4', left: '4' }} zIndex={50} />
+      <Logo 
+        fixed={true} 
+        size="medium" 
+        position={{ top: '2', left: '2' }} 
+        zIndex={60} 
+        className="absolute" 
+      />
 
-        {/* Desktop Navigation - Push to the right side */}
+      <div className="container-custom flex items-center py-6">
         <nav className="hidden md:flex items-center ml-auto space-x-10">
           {navLinks.map((link) => (
             <Link
@@ -53,7 +56,6 @@ const Navbar = () => {
           </Button>
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden ml-auto text-white"
           onClick={() => setIsOpen(!isOpen)}
@@ -63,7 +65,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md">
           <nav className="container-custom py-8 flex flex-col space-y-6">
