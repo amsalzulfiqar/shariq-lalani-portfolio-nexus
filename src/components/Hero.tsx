@@ -34,7 +34,13 @@ const Hero = () => {
           style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
         >
           <Button asChild size="lg" className="bg-[#F97316] hover:bg-orange-600 text-black font-medium px-8">
-            <a href="#spotify">Listen to My Music</a>
+            <a href="#spotify" onClick={(e) => {
+              e.preventDefault();
+              const spotifySection = document.getElementById('spotify');
+              if (spotifySection) {
+                spotifySection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>Listen to My Music</a>
           </Button>
           <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 px-8">
             <Link to="/services">Work With Me</Link>
