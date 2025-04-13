@@ -194,9 +194,9 @@ const ServicesPage = () => {
         <section className="py-16 bg-background relative" id="services">
           {/* Background Image with Overlay */}
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-50" 
+            className="absolute inset-0 bg-cover bg-center opacity-70" 
             style={{ 
-              backgroundImage: 'url("/public/lovable-uploads/8c8728bf-ab7a-4c4c-b4f8-dcb8665ede8c.png")',
+              backgroundImage: 'url("/lovable-uploads/f6997497-9cbe-4496-bf08-34179e687f3a.png")',
               backgroundPosition: 'center',
               backgroundSize: 'cover',
             }}
