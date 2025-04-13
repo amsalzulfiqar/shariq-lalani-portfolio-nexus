@@ -33,20 +33,8 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-secondary/10 relative">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-70" 
-        style={{ 
-          backgroundImage: 'url("/lovable-uploads/f6997497-9cbe-4496-bf08-34179e687f3a.png")',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-        }}
-      >
-        <div className="absolute inset-0 bg-background/80"></div>
-      </div>
-      
-      <div className="container-custom relative z-10">
+    <section id="services" className="section-padding bg-secondary/10">
+      <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Services
