@@ -1,10 +1,18 @@
-
 import React, { useState } from 'react';
 import { Youtube, ArrowLeft, ArrowRight } from 'lucide-react';
 import SpotifyIcon from './icons/SpotifyIcon';
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 interface FeaturedWorkItem {
   type: 'spotify' | 'youtube';
@@ -95,7 +103,6 @@ const FeaturedWork = () => {
       imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
       spotifyId: "5CkPDhVkqmjNqRTtfmltFx"
     },
-    // The rest of the spotify tracks
     {
       type: "spotify",
       artist: "Addison Jordan",
@@ -204,7 +211,6 @@ const FeaturedWork = () => {
       imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
       spotifyId: "2m5QniDzGkjcHcTCHj4Qc5"
     },
-    // YouTube videos
     {
       type: "youtube",
       artist: "Prisha Mehta",
@@ -242,10 +248,8 @@ const FeaturedWork = () => {
   const spotifyWorks = featuredWorks.filter(work => work.type === 'spotify');
   const youtubeWorks = featuredWorks.filter(work => work.type === 'youtube');
   
-  // Calculate total pages for Spotify works
   const totalSpotifyPages = Math.ceil(spotifyWorks.length / itemsPerPage);
   
-  // Get current page items
   const getCurrentSpotifyItems = () => {
     const start = currentPage * itemsPerPage;
     const end = start + itemsPerPage;
@@ -338,30 +342,31 @@ const FeaturedWork = () => {
                 ))}
               </div>
               
-              {/* Pagination Controls */}
               {totalSpotifyPages > 1 && (
-                <div className="flex justify-center items-center mt-8 gap-4">
-                  <Button 
-                    variant="outline" 
-                    onClick={handlePrevPage} 
-                    disabled={currentPage === 0}
-                    className="flex items-center gap-1"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                    Previous
-                  </Button>
-                  <div className="text-sm">
-                    Page {currentPage + 1} of {totalSpotifyPages}
-                  </div>
-                  <Button 
-                    variant="outline" 
-                    onClick={handleNextPage} 
-                    disabled={currentPage === totalSpotifyPages - 1}
-                    className="flex items-center gap-1"
-                  >
-                    Next
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
+                <div className="flex justify-center mt-8">
+                  <Pagination>
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationPrevious 
+                          onClick={handlePrevPage} 
+                          className={!currentPage ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                        />
+                      </PaginationItem>
+                      
+                      <PaginationItem>
+                        <div className="text-sm px-4 py-2">
+                          Page {currentPage + 1} of {totalSpotifyPages}
+                        </div>
+                      </PaginationItem>
+                      
+                      <PaginationItem>
+                        <PaginationNext 
+                          onClick={handleNextPage} 
+                          className={currentPage === totalSpotifyPages - 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                        />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
                 </div>
               )}
             </TabsContent>
