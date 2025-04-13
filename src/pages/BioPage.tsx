@@ -2,7 +2,6 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Artist from '@/components/Artist';
 import { Separator } from '@/components/ui/separator';
 import { Music, Mic, Headphones, Award } from 'lucide-react';
 
@@ -15,7 +14,18 @@ const BioPage = () => {
         
         <div className="pt-24 pb-16">
           <div className="container-custom">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Bio</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Shariq</h1>
+            
+            {/* Hero Image */}
+            <div className="w-full mb-12">
+              <div className="relative overflow-hidden rounded-lg">
+                <img 
+                  src="/lovable-uploads/49e22a49-e6e8-4e04-b565-62257cc3bd67.png" 
+                  alt="Shariq playing piano" 
+                  className="w-full h-[40vh] md:h-[60vh] object-cover object-center"
+                />
+              </div>
+            </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
               {/* Profile section */}
@@ -23,8 +33,8 @@ const BioPage = () => {
                 <div className="space-y-6">
                   <div className="relative group">
                     <img 
-                      src="/lovable-uploads/54807031-6cc8-4348-9d6f-c6f50c9f8d17.png" 
-                      alt="Shariq Lalani in studio" 
+                      src="/lovable-uploads/f81daf2a-d575-4ce4-a183-78f9d4f94a0a.png" 
+                      alt="Shariq Lalani portrait" 
                       className="w-full rounded-lg object-cover shadow-lg transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                     <div className="absolute inset-0 bg-black/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -104,14 +114,6 @@ const BioPage = () => {
                   </p>
                 </div>
               </div>
-            </div>
-            
-            <Separator className="my-12 opacity-30" />
-            
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold mb-10">Music Videos</h2>
-              {/* Artist component (containing music videos) is now on the Bio page as requested */}
-              <Artist />
             </div>
           </div>
         </div>
