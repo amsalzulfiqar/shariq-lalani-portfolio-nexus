@@ -34,10 +34,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom flex items-center py-6">
-        {/* Logo positioned at the far left with no margin */}
-        <div className="flex-none">
-          <Logo fixed={false} className="text-primary" /> {/* Now using the Logo without fixed positioning */}
-        </div>
+        {/* Logo with fixed positioning removed from navbar flow */}
+        <Logo fixed={true} size="medium" position={{ top: '4', left: '4' }} zIndex={50} />
 
         {/* Desktop Navigation - Push to the right side */}
         <nav className="hidden md:flex items-center ml-auto space-x-10">
