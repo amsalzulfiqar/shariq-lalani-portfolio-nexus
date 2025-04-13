@@ -3,7 +3,6 @@ import React from 'react';
 import { Youtube } from 'lucide-react';
 import SpotifyIcon from './icons/SpotifyIcon';
 import { Card, CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface FeaturedWorkItem {
@@ -14,6 +13,7 @@ interface FeaturedWorkItem {
   url: string;
   embedId?: string;
   imageUrl?: string;
+  spotifyId?: string;
 }
 
 const FeaturedWork = () => {
@@ -24,7 +24,8 @@ const FeaturedWork = () => {
       title: "Keep That Same Old Feeling",
       role: "Recording, Mixing",
       url: "https://open.spotify.com/track/6ZrT4g0XttXoyOA8XzHOGU",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e02d8351852e90bd7174b66bbd2"
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02d8351852e90bd7174b66bbd2",
+      spotifyId: "6ZrT4g0XttXoyOA8XzHOGU"
     },
     {
       type: "spotify",
@@ -32,7 +33,8 @@ const FeaturedWork = () => {
       title: "Leaving you (For now)",
       role: "Production, Recording, Mixing",
       url: "https://open.spotify.com/track/4GxH4w1kwuR7VtbBWpALn1",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a75a1812fd13985527108f12"
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a75a1812fd13985527108f12",
+      spotifyId: "4GxH4w1kwuR7VtbBWpALn1"
     },
     {
       type: "spotify",
@@ -40,7 +42,8 @@ const FeaturedWork = () => {
       title: "Slums",
       role: "Recording",
       url: "https://open.spotify.com/track/0sG5nT03mSwzW4kg5xXcWL",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e0266937507c23c123c73ca032a"
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e0266937507c23c123c73ca032a",
+      spotifyId: "0sG5nT03mSwzW4kg5xXcWL"
     },
     {
       type: "spotify",
@@ -48,7 +51,8 @@ const FeaturedWork = () => {
       title: "BFU (Remix)",
       role: "Recording",
       url: "https://open.spotify.com/track/3HgwUyJXSP1i5j4ZVxjvC7",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554"
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "3HgwUyJXSP1i5j4ZVxjvC7"
     },
     {
       type: "spotify",
@@ -56,7 +60,8 @@ const FeaturedWork = () => {
       title: "Letter to Mumbai",
       role: "Production, Recording",
       url: "https://open.spotify.com/track/7wxjnfO4CBkgQodEwqP7Gu",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e023121eeed397d8c7d7cf334b5"
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e023121eeed397d8c7d7cf334b5",
+      spotifyId: "7wxjnfO4CBkgQodEwqP7Gu"
     },
     {
       type: "spotify",
@@ -64,7 +69,8 @@ const FeaturedWork = () => {
       title: "Musical Diarrhea",
       role: "Tracking Engineer",
       url: "https://open.spotify.com/track/1FTn7MpMDidWYLyKdj5680",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e023121eeed397d8c7d7cf334b5"
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e023121eeed397d8c7d7cf334b5",
+      spotifyId: "1FTn7MpMDidWYLyKdj5680"
     },
     // More Spotify tracks
     {
@@ -105,34 +111,27 @@ const FeaturedWork = () => {
   const youtubeWorks = featuredWorks.filter(work => work.type === 'youtube');
 
   const SpotifyWorkCard = ({ work }: { work: FeaturedWorkItem }) => (
-    <a 
-      href={work.url} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="block h-full transition-all duration-300 hover:scale-[1.02]"
-    >
-      <Card className="bg-secondary/30 border-border/20 h-full">
-        <CardContent className="p-4 flex flex-col h-full">
-          {work.imageUrl && (
-            <div className="mb-3 rounded overflow-hidden">
-              <img 
-                src={work.imageUrl} 
-                alt={`${work.title} by ${work.artist}`} 
-                className="w-full aspect-square object-cover"
-              />
-            </div>
-          )}
-          <div className="flex items-center gap-2 mb-3">
-            <SpotifyIcon className="h-4 w-4 text-green-500" />
-            <span className="text-xs text-primary/60">Spotify</span>
-          </div>
-          
-          <h3 className="font-bold text-base mb-0.5 text-primary">{work.title}</h3>
-          <p className="text-primary/80 font-medium text-sm mb-1">{work.artist}</p>
-          <p className="text-primary/60 text-xs mt-auto">{work.role}</p>
-        </CardContent>
-      </Card>
-    </a>
+    <div className="bg-secondary/30 rounded-xl backdrop-blur-sm border border-border/20 h-full overflow-hidden">
+      <div className="aspect-square w-full mb-0">
+        <iframe
+          src={`https://open.spotify.com/embed/track/${work.spotifyId}?utm_source=generator&theme=0`}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          className="rounded-t-xl"
+        ></iframe>
+      </div>
+      <div className="p-4">
+        <div className="flex items-center gap-2 mb-2">
+          <SpotifyIcon className="h-4 w-4 text-green-500" />
+          <span className="text-xs text-primary/60">Spotify</span>
+        </div>
+        <p className="text-primary/80 font-medium text-sm mb-1">{work.artist}</p>
+        <p className="text-primary/60 text-xs">{work.role}</p>
+      </div>
+    </div>
   );
 
   const YoutubeWorkCard = ({ work }: { work: FeaturedWorkItem }) => (
@@ -178,7 +177,7 @@ const FeaturedWork = () => {
               <TabsTrigger value="youtube">Video</TabsTrigger>
             </TabsList>
             <TabsContent value="spotify" className="mt-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {spotifyWorks.map((work, index) => (
                   <SpotifyWorkCard key={index} work={work} />
                 ))}
