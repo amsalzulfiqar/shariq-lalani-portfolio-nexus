@@ -67,7 +67,7 @@ const Testimonials = () => {
             Testimonials
           </h2>
           <p className="text-primary/70 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-            What artists say about working with me
+            Hear from the artists I've collaborated with
           </p>
         </div>
         

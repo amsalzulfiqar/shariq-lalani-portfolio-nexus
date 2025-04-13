@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -19,11 +20,11 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <h1 
-          className="text-4xl md:text-6xl font-bold text-white mb-8 opacity-0 animate-fade-in"
+          className="text-4xl md:text-6xl font-bold text-white/85 mb-8 opacity-0 animate-fade-in"
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
-          Artist <Square size={8} className="inline mx-2 text-white fill-white" />
-          Producer <Square size={8} className="inline mx-2 text-white fill-white" />
+          Artist <Square size={8} className="inline mx-2 text-white/85 fill-white/85" />
+          Producer <Square size={8} className="inline mx-2 text-white/85 fill-white/85" />
           Engineer
         </h1>
 
@@ -35,7 +36,7 @@ const Hero = () => {
             <a href="#spotify">Listen to My Music</a>
           </Button>
           <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 px-8">
-            <Link to="/services">Work With Me</Link>
+            <a href="#contact">Contact Me</a>
           </Button>
         </div>
       </div>
