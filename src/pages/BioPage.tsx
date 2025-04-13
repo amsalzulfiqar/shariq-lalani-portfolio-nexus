@@ -8,7 +8,7 @@ const BioPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Reduced-height hero with background image */}
-      <div className="h-[40vh] relative">
+      <div className="h-[50vh] relative">
         {/* Using a regular img element instead of a background image for better control */}
         <div className="absolute inset-0 overflow-hidden">
           <img 
