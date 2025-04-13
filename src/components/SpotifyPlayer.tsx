@@ -2,9 +2,13 @@
 import React from 'react';
 import SpotifyIcon from './icons/SpotifyIcon';
 
-const SpotifyPlayer = () => {
+interface SpotifyPlayerProps {
+  id?: string;
+}
+
+const SpotifyPlayer: React.FC<SpotifyPlayerProps> = ({ id }) => {
   return (
-    <section id="spotify" className="py-16 md:py-20 bg-black">
+    <section id={id || "spotify"} className="py-16 md:py-20 bg-black">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary flex items-center justify-center opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>

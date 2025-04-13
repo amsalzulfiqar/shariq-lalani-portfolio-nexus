@@ -13,6 +13,7 @@ const Hero = () => {
           src="/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png" 
           alt="Musician playing piano in recording studio"
           className="w-full h-full object-cover"
+          loading="eager" // Add eager loading for hero image
         />
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
@@ -38,7 +39,7 @@ const Hero = () => {
             <a href="#spotify">Listen to My Music</a>
           </Button>
           <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 px-8">
-            <a href="#contact">Contact Me</a>
+            <Link to="/services">Work with Me</Link>
           </Button>
         </div>
       </div>
