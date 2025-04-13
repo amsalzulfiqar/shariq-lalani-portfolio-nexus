@@ -22,7 +22,8 @@ const ArtistPage = () => {
         >
           <div className="absolute inset-0 bg-black/30"></div>
           <div className="container-custom relative z-10">
-            <div className="prose prose-invert max-w-none mb-12">
+            <div className="max-w-3xl mx-auto mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary text-center">Feel. Groove. Repeat.</h1>
               <p className="text-lg md:text-xl text-center mx-auto max-w-3xl">
                 Explore Shariq's musical journey through his original compositions, collaborations, and performances. This showcase highlights his versatility as an artist across various genres and contexts.
               </p>
