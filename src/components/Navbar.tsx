@@ -33,12 +33,14 @@ const Navbar = () => {
         isScrolled ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="container-custom flex items-center justify-between py-6">
-        {/* Logo positioned at the far left */}
-        <Logo className="text-primary mr-auto" />
+      <div className="container-custom flex items-center py-6">
+        {/* Logo positioned at the far left with no margin */}
+        <div className="flex-none">
+          <Logo className="text-primary" />
+        </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-10">
+        {/* Desktop Navigation - Push to the right side */}
+        <nav className="hidden md:flex items-center ml-auto space-x-10">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -55,7 +57,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white"
+          className="md:hidden ml-auto text-white"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >

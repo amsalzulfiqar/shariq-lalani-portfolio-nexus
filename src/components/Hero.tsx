@@ -6,13 +6,13 @@ import { Square } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative w-screen h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 w-full h-full">
         <img 
           src="/lovable-uploads/af0cf2f3-9f6b-44b1-ade8-f3ac2b7510b2.png" 
           alt="Shariq playing piano"
-          className="w-full h-full object-cover absolute top-0 left-0"
+          className="w-full h-full object-cover"
           style={{ objectPosition: "center" }}
         />
         <div className="absolute inset-0 bg-black/60"></div>
