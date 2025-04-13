@@ -11,21 +11,29 @@ const ArtistPage = () => {
       <div className="relative z-10">
         <Navbar />
         
-        <div className="pt-24 pb-16">
-          <div className="container-custom">
-            <h1 className="text-4xl md:text-5xl font-bold mb-10">Artist</h1>
-            
+        {/* Hero section with background image */}
+        <div 
+          className="pt-24 pb-16 bg-cover bg-center relative"
+          style={{ 
+            backgroundImage: "url('/lovable-uploads/43c57eab-5908-4d4a-8af3-092facebb635.png')", 
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="container-custom relative z-10">
             <div className="prose prose-invert max-w-none mb-12">
-              <p className="text-lg">
+              <p className="text-lg md:text-xl text-center mx-auto max-w-3xl">
                 Explore Shariq's musical journey through his original compositions, collaborations, and performances. This showcase highlights his versatility as an artist across various genres and contexts.
               </p>
             </div>
-            
-            {/* Music Videos section (moved from Bio page) */}
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold mb-10">Music Videos</h2>
-              <Artist />
-            </div>
+          </div>
+        </div>
+        
+        {/* Content section */}
+        <div className="py-12">
+          <div className="container-custom">
+            <Artist />
           </div>
         </div>
         
