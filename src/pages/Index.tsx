@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -35,8 +34,6 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className="fixed inset-0 z-0 bg-noise"></div>
       <div className="relative z-10">
-        {/* Add Logo with fixed position here */}
-        <Logo fixed={true} size="medium" position={{ top: '4', left: '4' }} zIndex={50} />
         <Navbar />
         <Hero />
         <About />
