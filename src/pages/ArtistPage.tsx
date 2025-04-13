@@ -37,9 +37,12 @@ const ArtistPage = () => {
         {/* Content section */}
         <div className="py-12">
           <div className="container-custom">
-            <p className="text-lg md:text-xl text-center mx-auto max-w-3xl mb-12">
-              Explore Shariq's musical journey through his original compositions, collaborations, and performances. This showcase highlights his versatility as an artist across various genres and contexts.
-            </p>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Feel. Groove. Repeat.</h2>
+              <p className="text-lg md:text-xl text-center mx-auto max-w-3xl">
+                Explore Shariq's musical journey through his original compositions, collaborations, and performances. This showcase highlights his versatility as an artist across various genres and contexts.
+              </p>
+            </div>
             <Artist />
           </div>
         </div>
@@ -51,3 +54,4 @@ const ArtistPage = () => {
 };
 
 export default ArtistPage;
+
