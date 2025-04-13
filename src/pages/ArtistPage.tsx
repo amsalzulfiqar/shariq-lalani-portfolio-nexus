@@ -9,24 +9,27 @@ const ArtistPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className="fixed inset-0 z-0 bg-noise"></div>
       <div className="relative z-10">
-        <Navbar />
-        
-        {/* Hero section with background image */}
-        <div 
-          className="pt-24 pb-16 bg-cover bg-center relative"
-          style={{ 
-            backgroundImage: "url('/lovable-uploads/43c57eab-5908-4d4a-8af3-092facebb635.png')", 
-            backgroundSize: "cover",
-            backgroundPosition: "center"
-          }}
-        >
-          <div className="absolute inset-0 bg-black/30"></div>
-          <div className="container-custom relative z-10">
-            <div className="max-w-3xl mx-auto mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary text-center">Feel. Groove. Repeat.</h1>
-              <p className="text-lg md:text-xl text-center mx-auto max-w-3xl">
-                Explore Shariq's musical journey through his original compositions, collaborations, and performances. This showcase highlights his versatility as an artist across various genres and contexts.
-              </p>
+        {/* Hero section with reduced height like in Bio page */}
+        <div className="h-[50vh] relative">
+          {/* Background image */}
+          <div className="absolute inset-0 overflow-hidden">
+            <img 
+              src="/lovable-uploads/4ded3494-a7a7-48dc-b3e6-efbbaf0d51e1.png" 
+              alt="Shariq playing piano" 
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/50"></div>
+          </div>
+          
+          {/* Navigation */}
+          <div className="relative z-10">
+            <Navbar />
+            
+            {/* Hero content */}
+            <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/90 to-transparent">
+              <div className="container-custom">
+                <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">Feel. Groove. Repeat.</h1>
+              </div>
             </div>
           </div>
         </div>
@@ -34,6 +37,9 @@ const ArtistPage = () => {
         {/* Content section */}
         <div className="py-12">
           <div className="container-custom">
+            <p className="text-lg md:text-xl text-center mx-auto max-w-3xl mb-12">
+              Explore Shariq's musical journey through his original compositions, collaborations, and performances. This showcase highlights his versatility as an artist across various genres and contexts.
+            </p>
             <Artist />
           </div>
         </div>

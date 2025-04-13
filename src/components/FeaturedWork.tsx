@@ -309,14 +309,14 @@ const FeaturedWork = () => {
   );
 
   return (
-    <section id="featured-work" className="section-padding bg-background pt-0">
+    <section id="featured-work" className="section-padding bg-background pt-16">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Featured Works
           </h2>
           <p className="text-primary/70 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-            Notable projects I've worked on
+            A selection of works Produced, Engineered and/or Mixed by Shariq Lalani
           </p>
         </div>
         

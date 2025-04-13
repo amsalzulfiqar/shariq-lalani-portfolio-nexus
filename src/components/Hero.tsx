@@ -21,11 +21,11 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center mt-20 flex flex-col items-center justify-center h-full px-4">
         <h1 
-          className="text-4xl md:text-6xl font-bold text-white mb-8 opacity-0 animate-fade-in"
+          className="text-4xl md:text-6xl font-bold text-white mb-8 opacity-0 animate-fade-in flex items-center justify-center"
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
-          Artist <Square size={8} className="inline mx-2 text-white fill-white" />
-          Producer <Square size={8} className="inline mx-2 text-white fill-white" />
+          Artist <Square size={8} className="inline mx-2 text-white fill-white self-center" /> 
+          Producer <Square size={8} className="inline mx-2 text-white fill-white self-center" /> 
           Engineer
         </h1>
 
