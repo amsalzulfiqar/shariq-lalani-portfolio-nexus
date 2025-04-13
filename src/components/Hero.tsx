@@ -20,11 +20,11 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <h1 
-          className="text-4xl md:text-6xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in"
+          className="text-4xl md:text-6xl font-bold text-white mb-8 opacity-0 animate-fade-in bg-black/40 px-4 py-2 rounded"
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
-          Artist <Square size={8} className="inline mx-2 text-white/60 fill-white/60" />
-          Producer <Square size={8} className="inline mx-2 text-white/60 fill-white/60" />
+          Artist <Square size={8} className="inline mx-2 text-white fill-white" />
+          Producer <Square size={8} className="inline mx-2 text-white fill-white" />
           Engineer
         </h1>
 
