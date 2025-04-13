@@ -10,8 +10,8 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/e8db0ab2-71ef-4cdb-ba8d-11bad882c92c.png" 
-          alt="Pianist playing piano keys"
+          src="/lovable-uploads/34a88330-342a-4ad8-b0d7-86719e5d983a.png" 
+          alt="Musician playing piano in a studio"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50"></div>
