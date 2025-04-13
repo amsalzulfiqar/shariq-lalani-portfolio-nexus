@@ -6,6 +6,7 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import SpotifyPlayer from '@/components/SpotifyPlayer';
+import Logo from '@/components/Logo';
 
 const Index = () => {
   useEffect(() => {
@@ -34,6 +35,8 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className="fixed inset-0 z-0 bg-noise"></div>
       <div className="relative z-10">
+        {/* Add Logo with fixed position here */}
+        <Logo fixed={true} size="medium" position={{ top: '4', left: '4' }} zIndex={50} />
         <Navbar />
         <Hero />
         <About />

@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className="container-custom flex items-center py-6">
         {/* Logo positioned at the far left with no margin */}
         <div className="flex-none">
-          <Logo className="text-primary" />
+          <Logo fixed={false} className="text-primary" /> {/* Now using the Logo without fixed positioning */}
         </div>
 
         {/* Desktop Navigation - Push to the right side */}
