@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
 
 const Hero = () => {
   return (
@@ -18,14 +19,6 @@ const Hero = () => {
       
       <div className="container-custom relative z-10 text-center mt-20">
         <div className="flex flex-col items-center justify-center">
-          {/* Logo in hero section */}
-          <img 
-            src="/lovable-uploads/c0dc08e5-34f7-44c1-835e-2acbf8405179.png" 
-            alt="Shariq Lalani Logo"
-            className="w-64 md:w-80 mb-4 animate-fade-in"
-            style={{ animationDelay: '0.3s' }}
-          />
-          
           {/* Hero Tagline */}
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 mt-4 opacity-0 animate-fade-in" 
             style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
