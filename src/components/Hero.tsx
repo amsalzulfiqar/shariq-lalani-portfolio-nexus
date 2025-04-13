@@ -28,7 +28,7 @@ const Hero = () => {
           {/* Call to action buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6 opacity-0 animate-fade-in" 
             style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
-            <Button asChild size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium px-8">
+            <Button asChild size="lg" className="bg-[#F97316] hover:bg-orange-600 text-black font-medium px-8">
               <a href="#artist">
                 Listen to My Music
               </a>

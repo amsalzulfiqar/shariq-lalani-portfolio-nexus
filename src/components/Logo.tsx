@@ -10,7 +10,7 @@ const Logo = ({ className }: LogoProps) => {
   return (
     <Link to="/" className={`block ${className}`}>
       <img 
-        src="/lovable-uploads/877d2538-ed36-47ac-8ef9-c7f37bbab92f.png" 
+        src="/lovable-uploads/dc174800-b0fc-4a75-9d17-4cbe25413fd2.png" 
         alt="Shariq Lalani Logo"
         className="h-16 w-auto object-contain"
       />

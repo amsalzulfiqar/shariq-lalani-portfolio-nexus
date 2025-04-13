@@ -31,16 +31,11 @@ const Artist = () => {
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-            Music
+            Music Videos
           </h2>
         </div>
 
         <div>
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <Youtube className="w-6 h-6 text-accent" />
-            <h3 className="text-xl md:text-2xl font-semibold text-primary">Music Videos</h3>
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {musicVideos.map((video, index) => (
               <div 
