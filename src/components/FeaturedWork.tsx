@@ -1,9 +1,10 @@
 
-import React from 'react';
-import { Youtube } from 'lucide-react';
+import React, { useState } from 'react';
+import { Youtube, ArrowLeft, ArrowRight } from 'lucide-react';
 import SpotifyIcon from './icons/SpotifyIcon';
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 interface FeaturedWorkItem {
   type: 'spotify' | 'youtube';
@@ -17,15 +18,37 @@ interface FeaturedWorkItem {
 }
 
 const FeaturedWork = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 8;
+  
   const featuredWorks: FeaturedWorkItem[] = [
+    // First 8 songs in specified order
     {
       type: "spotify",
       artist: "Addison Jordan",
-      title: "Keep That Same Old Feeling",
+      title: "Reverence",
       role: "Recording, Mixing",
-      url: "https://open.spotify.com/track/6ZrT4g0XttXoyOA8XzHOGU",
+      url: "https://open.spotify.com/track/2N8ATWkeG3Qks1KaZzas2C",
       imageUrl: "https://i.scdn.co/image/ab67616d00001e02d8351852e90bd7174b66bbd2",
-      spotifyId: "6ZrT4g0XttXoyOA8XzHOGU"
+      spotifyId: "2N8ATWkeG3Qks1KaZzas2C"
+    },
+    {
+      type: "spotify",
+      artist: "Sophie Drago",
+      title: "Perfect Show",
+      role: "Production, Recording, Mixing",
+      url: "https://open.spotify.com/track/5EAtwsiuev9rDNBjaDNug7",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "5EAtwsiuev9rDNBjaDNug7"
+    },
+    {
+      type: "spotify",
+      artist: "Quentin Moore Ft. Snoop Dogg",
+      title: "BFU (Remix)",
+      role: "Recording",
+      url: "https://open.spotify.com/track/3HgwUyJXSP1i5j4ZVxjvC7",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "3HgwUyJXSP1i5j4ZVxjvC7"
     },
     {
       type: "spotify",
@@ -47,21 +70,40 @@ const FeaturedWork = () => {
     },
     {
       type: "spotify",
-      artist: "Quentin Moore Ft. Snoop Dogg",
-      title: "BFU (Remix)",
-      role: "Recording",
-      url: "https://open.spotify.com/track/3HgwUyJXSP1i5j4ZVxjvC7",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
-      spotifyId: "3HgwUyJXSP1i5j4ZVxjvC7"
-    },
-    {
-      type: "spotify",
       artist: "Bobby Sparks II",
       title: "Letter to Mumbai",
       role: "Production, Recording",
       url: "https://open.spotify.com/track/7wxjnfO4CBkgQodEwqP7Gu",
       imageUrl: "https://i.scdn.co/image/ab67616d00001e023121eeed397d8c7d7cf334b5",
       spotifyId: "7wxjnfO4CBkgQodEwqP7Gu"
+    },
+    {
+      type: "spotify",
+      artist: "Shama Judah",
+      title: "Shikwa",
+      role: "Mixing, Mastering",
+      url: "https://open.spotify.com/track/3TOeHJ8Y08UqsiEaIFVs0V",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "3TOeHJ8Y08UqsiEaIFVs0V"
+    },
+    {
+      type: "spotify",
+      artist: "Nibal Malshi",
+      title: "Isma' Albi",
+      role: "Production, Recording, Mixing",
+      url: "https://open.spotify.com/track/5CkPDhVkqmjNqRTtfmltFx",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "5CkPDhVkqmjNqRTtfmltFx"
+    },
+    // The rest of the spotify tracks
+    {
+      type: "spotify",
+      artist: "Addison Jordan",
+      title: "Keep That Same Old Feeling",
+      role: "Recording, Mixing",
+      url: "https://open.spotify.com/track/6ZrT4g0XttXoyOA8XzHOGU",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02d8351852e90bd7174b66bbd2",
+      spotifyId: "6ZrT4g0XttXoyOA8XzHOGU"
     },
     {
       type: "spotify",
@@ -72,7 +114,97 @@ const FeaturedWork = () => {
       imageUrl: "https://i.scdn.co/image/ab67616d00001e023121eeed397d8c7d7cf334b5",
       spotifyId: "1FTn7MpMDidWYLyKdj5680"
     },
-    // More Spotify tracks
+    {
+      type: "spotify",
+      artist: "Porte Diferente",
+      title: "El Pochito",
+      role: "Recording, Mixing",
+      url: "https://open.spotify.com/track/52UekrYckRIekXj7rlO2hl",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "52UekrYckRIekXj7rlO2hl"
+    },
+    {
+      type: "spotify",
+      artist: "Frank Hamlin, The Brothers McDavid",
+      title: "My Favorite Love Song",
+      role: "Recording, Mixing",
+      url: "https://open.spotify.com/track/400fAkHKjAnrUulH8rx8zm",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "400fAkHKjAnrUulH8rx8zm"
+    },
+    {
+      type: "spotify",
+      artist: "Porte Diferente",
+      title: "Quedate Aqui",
+      role: "Recording, Mixing",
+      url: "https://open.spotify.com/track/3fcpIfwb6VBjj9bZKXnoxK",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "3fcpIfwb6VBjj9bZKXnoxK"
+    },
+    {
+      type: "spotify",
+      artist: "Sarah Hanks",
+      title: "Eternity in my mind",
+      role: "Production, Recording, Mixing",
+      url: "https://open.spotify.com/track/2f0fDWcm7Wevh0ukzFI67V",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "2f0fDWcm7Wevh0ukzFI67V"
+    },
+    {
+      type: "spotify",
+      artist: "Zak Azoury",
+      title: "Christmas Love",
+      role: "Production, Recording, Mixing",
+      url: "https://open.spotify.com/track/4uhAogfaSYeCApgDxs76Zt",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "4uhAogfaSYeCApgDxs76Zt"
+    },
+    {
+      type: "spotify",
+      artist: "Zak Azoury",
+      title: "Might as well be coal",
+      role: "Production, Recording, Mixing",
+      url: "https://open.spotify.com/track/781O7fXNl3sgDL80gHSX1H",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "781O7fXNl3sgDL80gHSX1H"
+    },
+    {
+      type: "spotify",
+      artist: "Altercations",
+      title: "Wait",
+      role: "Recording, Mixing",
+      url: "https://open.spotify.com/track/6rdMb9dW9zonR3GfvbeZ7x",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "6rdMb9dW9zonR3GfvbeZ7x"
+    },
+    {
+      type: "spotify",
+      artist: "Addison Jodan",
+      title: "Queen Val",
+      role: "Recording, Mixing",
+      url: "https://open.spotify.com/track/3A1IUAtKIsteyHTSPIcrbi",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "3A1IUAtKIsteyHTSPIcrbi"
+    },
+    {
+      type: "spotify",
+      artist: "Oasis Worship",
+      title: "My Revival",
+      role: "Recording, Mixing",
+      url: "https://open.spotify.com/track/243BMQW71Vt0MgCGRtQx8K",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "243BMQW71Vt0MgCGRtQx8K"
+    },
+    {
+      type: "spotify",
+      artist: "Akshara",
+      title: "Ethereal",
+      role: "Production",
+      url: "https://open.spotify.com/track/2m5QniDzGkjcHcTCHj4Qc5",
+      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+      spotifyId: "2m5QniDzGkjcHcTCHj4Qc5"
+    },
+    // YouTube videos
     {
       type: "youtube",
       artist: "Prisha Mehta",
@@ -109,6 +241,28 @@ const FeaturedWork = () => {
 
   const spotifyWorks = featuredWorks.filter(work => work.type === 'spotify');
   const youtubeWorks = featuredWorks.filter(work => work.type === 'youtube');
+  
+  // Calculate total pages for Spotify works
+  const totalSpotifyPages = Math.ceil(spotifyWorks.length / itemsPerPage);
+  
+  // Get current page items
+  const getCurrentSpotifyItems = () => {
+    const start = currentPage * itemsPerPage;
+    const end = start + itemsPerPage;
+    return spotifyWorks.slice(start, end);
+  };
+  
+  const handleNextPage = () => {
+    if (currentPage < totalSpotifyPages - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  
+  const handlePrevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   const SpotifyWorkCard = ({ work }: { work: FeaturedWorkItem }) => (
     <div className="bg-secondary/30 rounded-xl backdrop-blur-sm border border-border/20 h-full overflow-hidden">
@@ -128,6 +282,7 @@ const FeaturedWork = () => {
           <SpotifyIcon className="h-4 w-4 text-green-500" />
           <span className="text-xs text-primary/60">Spotify</span>
         </div>
+        <h4 className="text-base font-semibold text-primary mb-1">{work.title}</h4>
         <p className="text-primary/80 font-medium text-sm mb-1">{work.artist}</p>
         <p className="text-primary/60 text-xs">{work.role}</p>
       </div>
@@ -178,10 +333,37 @@ const FeaturedWork = () => {
             </TabsList>
             <TabsContent value="spotify" className="mt-0">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {spotifyWorks.map((work, index) => (
+                {getCurrentSpotifyItems().map((work, index) => (
                   <SpotifyWorkCard key={index} work={work} />
                 ))}
               </div>
+              
+              {/* Pagination Controls */}
+              {totalSpotifyPages > 1 && (
+                <div className="flex justify-center items-center mt-8 gap-4">
+                  <Button 
+                    variant="outline" 
+                    onClick={handlePrevPage} 
+                    disabled={currentPage === 0}
+                    className="flex items-center gap-1"
+                  >
+                    <ArrowLeft className="h-4 w-4" />
+                    Previous
+                  </Button>
+                  <div className="text-sm">
+                    Page {currentPage + 1} of {totalSpotifyPages}
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    onClick={handleNextPage} 
+                    disabled={currentPage === totalSpotifyPages - 1}
+                    className="flex items-center gap-1"
+                  >
+                    Next
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </div>
+              )}
             </TabsContent>
             <TabsContent value="youtube" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
