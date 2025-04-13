@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { Youtube, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Youtube } from 'lucide-react';
 import SpotifyIcon from './icons/SpotifyIcon';
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface FeaturedWorkItem {
   type: 'spotify' | 'youtube';
@@ -322,7 +320,7 @@ const FeaturedWork = () => {
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-            Featured Work
+            Featured Works
           </h2>
           <p className="text-primary/70 opacity-0 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
             Notable projects I've worked on
@@ -344,29 +342,28 @@ const FeaturedWork = () => {
               
               {totalSpotifyPages > 1 && (
                 <div className="flex justify-center mt-8">
-                  <Pagination>
-                    <PaginationContent>
-                      <PaginationItem>
-                        <PaginationPrevious 
-                          onClick={handlePrevPage} 
-                          className={!currentPage ? "pointer-events-none opacity-50" : "cursor-pointer"}
-                        />
-                      </PaginationItem>
-                      
-                      <PaginationItem>
-                        <div className="text-sm px-4 py-2">
-                          Page {currentPage + 1} of {totalSpotifyPages}
-                        </div>
-                      </PaginationItem>
-                      
-                      <PaginationItem>
-                        <PaginationNext 
-                          onClick={handleNextPage} 
-                          className={currentPage === totalSpotifyPages - 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
-                        />
-                      </PaginationItem>
-                    </PaginationContent>
-                  </Pagination>
+                  <div className="flex space-x-4">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      onClick={handlePrevPage} 
+                      disabled={currentPage === 0}
+                      className="rounded-full"
+                    >
+                      <CarouselPrevious className="relative static transform-none h-4 w-4" />
+                      <span className="sr-only">Previous</span>
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      onClick={handleNextPage} 
+                      disabled={currentPage === totalSpotifyPages - 1}
+                      className="rounded-full"
+                    >
+                      <CarouselNext className="relative static transform-none h-4 w-4" />
+                      <span className="sr-only">Next</span>
+                    </Button>
+                  </div>
                 </div>
               )}
             </TabsContent>
