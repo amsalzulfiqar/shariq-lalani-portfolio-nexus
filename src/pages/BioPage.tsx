@@ -13,7 +13,7 @@ const BioPage = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center" 
           style={{ 
-            backgroundImage: "url('/lovable-uploads/74f3a444-b1ca-499c-a7e5-354d40531a47.png')",
+            backgroundImage: "url('/lovable-uploads/f81daf2a-d575-4ce4-a183-78f9d4f94a0a.png')",
             backgroundPosition: "center",
             backgroundSize: "cover"
           }}
