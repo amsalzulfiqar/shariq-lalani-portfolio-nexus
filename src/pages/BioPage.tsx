@@ -14,8 +14,6 @@ const BioPage = () => {
         
         <div className="pt-24 pb-16">
           <div className="container-custom">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Shariq</h1>
-            
             {/* Hero Image */}
             <div className="w-full mb-12">
               <div className="relative overflow-hidden rounded-lg">
@@ -26,6 +24,8 @@ const BioPage = () => {
                 />
               </div>
             </div>
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Shariq</h1>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
               {/* Profile section */}
@@ -74,23 +74,6 @@ const BioPage = () => {
                   <p className="mb-6">
                     Shariq holds a Bachelor of Arts in Music Industry Studies with a concentration in Jazz Studies and Recording Technology from the University of Texas at Arlington. His education, combined with years of hands-on experience, has shaped him into a well-rounded artist with a deep understanding of both the technical and creative aspects of music.
                   </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-                    <div className="relative overflow-hidden rounded-lg">
-                      <img 
-                        src="/lovable-uploads/9cafab66-b37b-4606-9cff-d8dca78901c8.png" 
-                        alt="Shariq Lalani performing" 
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                    </div>
-                    <div className="relative overflow-hidden rounded-lg">
-                      <img 
-                        src="/lovable-uploads/071588b9-d280-4c4f-8037-6343ce097e38.png" 
-                        alt="Shariq Lalani with band" 
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                    </div>
-                  </div>
                   
                   <p className="mb-6">
                     Shariq's journey into music took a transformative turn when he became a part of the Greater Dallas Youth Orchestras' Jazz Institute, which immersed him in the world of Jazz and shaped his creative voice. Merging his Eastern heritage with Western influences, Shariq creates a sound that blends diverse musical traditions into cohesive and innovative compositions.
