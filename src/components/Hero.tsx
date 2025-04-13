@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { CircleDot } from 'lucide-react';
+import { Square } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -21,13 +21,13 @@ const Hero = () => {
       
       <div className="container-custom relative z-10 text-center mt-20">
         <div className="flex flex-col items-center justify-center">
-          {/* Hero Tagline with white filled dots */}
+          {/* Hero Tagline with square markers instead of dots */}
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 mt-4 opacity-0 animate-fade-in" 
             style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-            Artist <CircleDot size={16} className="inline mx-2 text-white" /> Producer <CircleDot size={16} className="inline mx-2 text-white" /> Engineer
+            Artist <Square size={8} className="inline mx-2 text-white fill-white" /> Producer <Square size={8} className="inline mx-2 text-white fill-white" /> Engineer
           </h1>
           
-          {/* Call to action buttons */}
+          {/* Call to action buttons - Updated the second button to "Work With Me" linking to Services */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6 opacity-0 animate-fade-in" 
             style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
             <Button asChild size="lg" className="bg-[#F97316] hover:bg-orange-600 text-black font-medium px-8">
@@ -36,9 +36,9 @@ const Hero = () => {
               </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 px-8">
-              <a href="#contact">
-                Contact
-              </a>
+              <Link to="/services">
+                Work With Me
+              </Link>
             </Button>
           </div>
         </div>
