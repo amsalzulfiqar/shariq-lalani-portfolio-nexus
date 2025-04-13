@@ -1,15 +1,14 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Separator } from '@/components/ui/separator';
-import { Music, Mic, Headphones, Award, Piano, Guitar } from 'lucide-react';
+import { Music, Mic, Headphones, Piano, Guitar } from 'lucide-react';
 
 const BioPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Full-height hero with background image */}
-      <div className="h-[60vh] md:h-[70vh] relative">
+      {/* Reduced-height hero with background image */}
+      <div className="h-[40vh] relative">
         {/* Using a regular img element instead of a background image for better control */}
         <div className="absolute inset-0 overflow-hidden">
           <img 
@@ -33,9 +32,9 @@ const BioPage = () => {
         </div>
       </div>
       
-      {/* Content area */}
+      {/* Content area - moved up with less padding */}
       <div className="bg-background">
-        <div className="container-custom py-16">
+        <div className="container-custom py-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             {/* Profile section */}
             <div className="lg:col-span-1">
@@ -77,7 +76,7 @@ const BioPage = () => {
               </div>
             </div>
             
-            {/* Bio text */}
+            {/* Bio text - moved the About Shariq heading to be part of the main content */}
             <div className="lg:col-span-2">
               <div className="prose prose-invert max-w-none">
                 <h2 className="text-3xl font-bold mb-6">About Shariq</h2>
