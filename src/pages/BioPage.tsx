@@ -1,26 +1,33 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
 import { Music, Mic, Headphones, Award } from 'lucide-react';
 
 const BioPage = () => {
+  useEffect(() => {
+    // Ensure the background image is loaded properly
+    const preloadImage = new Image();
+    preloadImage.src = '/lovable-uploads/a7571ba6-acd2-4fba-83df-aed6b71870d2.png';
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Full-height hero with background image */}
       <div className="h-[60vh] md:h-[70vh] relative">
         <div 
-          className="absolute inset-0 bg-cover bg-center" 
+          className="absolute inset-0 bg-cover bg-center z-0" 
           style={{ 
             backgroundImage: "url('/lovable-uploads/a7571ba6-acd2-4fba-83df-aed6b71870d2.png')",
-            backgroundPosition: "center",
+            backgroundPosition: "center 20%",
             backgroundSize: "cover"
           }}
         ></div>
-        <div className="absolute inset-0 bg-black/50"></div>
+        {/* Reduced the overlay opacity to be able to see the image */}
+        <div className="absolute inset-0 bg-black/30 z-1"></div>
         
-        {/* Navigation is placed inside the hero section */}
+        {/* Navigation is placed inside the hero section with higher z-index */}
         <div className="relative z-10">
           <Navbar />
           

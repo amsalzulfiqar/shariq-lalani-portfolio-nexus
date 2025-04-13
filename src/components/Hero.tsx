@@ -16,7 +16,7 @@ const Hero = () => {
           className="w-full h-full object-cover"
           style={{ objectPosition: "center" }} // Ensuring image is centered
         />
-        <div className="absolute inset-0 bg-black/60"></div> {/* Adjusted overlay for better visibility */}
+        <div className="absolute inset-0 bg-black/60 z-1"></div> {/* Adjusted overlay for better visibility */}
       </div>
       
       <div className="container-custom relative z-10 text-center mt-20">
