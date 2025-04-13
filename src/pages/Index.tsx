@@ -38,7 +38,7 @@ const Index = () => {
         <Hero />
         <About />
         <SpotifyPlayer id="spotify" />
-        <Contact id="contact" />
+        <Contact />
         <Footer />
       </div>
     </div>
