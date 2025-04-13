@@ -23,8 +23,8 @@ const Hero = () => {
           className="text-4xl md:text-6xl font-bold text-white/85 mb-8 opacity-0 animate-fade-in"
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
-          Artist <Square size={8} className="inline mx-2 text-white/85 fill-white/85" />
-          Producer <Square size={8} className="inline mx-2 text-white/85 fill-white/85" />
+          Artist <Square size={8} className="inline mx-2 text-white/60 fill-white/60" />
+          Producer <Square size={8} className="inline mx-2 text-white/60 fill-white/60" />
           Engineer
         </h1>
 
