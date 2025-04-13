@@ -7,14 +7,14 @@ import Logo from './Logo';
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Image - Updated to cover the entire section */}
+      <div className="absolute inset-0 z-0 w-full h-full">
         <img 
           src="/lovable-uploads/af0cf2f3-9f6b-44b1-ade8-f3ac2b7510b2.png" 
           alt="Shariq playing piano"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/30"></div> {/* Dark overlay for better text visibility */}
+        <div className="absolute inset-0 bg-black/50"></div> {/* Increased overlay opacity for better text visibility */}
       </div>
       
       <div className="container-custom relative z-10 text-center mt-20">

@@ -174,8 +174,8 @@ const FeaturedWork = () => {
         <div className="opacity-0 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
           <Tabs defaultValue="spotify" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
-              <TabsTrigger value="spotify">Spotify</TabsTrigger>
-              <TabsTrigger value="youtube">YouTube</TabsTrigger>
+              <TabsTrigger value="spotify">Audio</TabsTrigger>
+              <TabsTrigger value="youtube">Video</TabsTrigger>
             </TabsList>
             <TabsContent value="spotify" className="mt-0">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
