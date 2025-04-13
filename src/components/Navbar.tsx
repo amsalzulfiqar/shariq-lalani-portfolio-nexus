@@ -21,10 +21,9 @@ const Navbar = () => {
   const isHomePage = location.pathname === '/';
 
   const navLinks = [
-    { href: isHomePage ? '#about' : '/#about', label: 'About me' },
-    { href: isHomePage ? '#services' : '/services', label: 'Services' },
-    { href: isHomePage ? '#testimonials' : '/#testimonials', label: 'Testimonials' },
-    { href: isHomePage ? '#contact' : '/#contact', label: 'Contact' },
+    { href: '/', label: 'Home' },
+    { href: '/#about', label: 'Bio' },
+    { href: '/services', label: 'Services' },
   ];
 
   return (
@@ -34,6 +33,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between py-4">
+        {/* Move logo all the way to the left */}
         <Logo className="text-primary" />
 
         {/* Desktop Navigation */}
@@ -48,7 +48,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
-            <Link to={isHomePage ? '#contact' : '/#contact'}>Work With Me</Link>
+            <Link to={isHomePage ? '#contact' : '/#contact'}>Contact</Link>
           </Button>
         </nav>
 
@@ -77,7 +77,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Button asChild variant="outline" className="w-full">
-              <Link to={isHomePage ? '#contact' : '/#contact'} onClick={() => setIsOpen(false)}>Work With Me</Link>
+              <Link to={isHomePage ? '#contact' : '/#contact'} onClick={() => setIsOpen(false)}>Contact</Link>
             </Button>
           </nav>
         </div>

@@ -1,9 +1,10 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Music, Sliders, Music2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import FeaturedWork from '@/components/FeaturedWork';
+import Testimonials from '@/components/Testimonials';
 
 const ServicesPage = () => {
   const services = [
@@ -218,52 +219,13 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-secondary/10" id="featured-works">
-          <div className="container-custom">
-            <h2 className="text-3xl font-bold mb-12 text-primary text-center">Featured Works</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {featuredWorks.map((work, index) => (
-                <a 
-                  key={index} 
-                  href={work.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="bg-secondary/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:border-accent/30 transition-colors"
-                >
-                  <h3 className="text-lg font-medium mb-2 text-primary hover:text-accent transition-colors">{work.title}</h3>
-                  <p className="text-primary/60 text-sm">{work.role}</p>
-                </a>
-              ))}
-            </div>
-            
-            <h2 className="text-3xl font-bold mb-12 text-primary text-center">Featured Videos</h2>
-            
-            <div className="space-y-8">
-              {featuredVideos.map((video, index) => (
-                <div 
-                  key={index} 
-                  className="bg-secondary/30 backdrop-blur-sm rounded-xl p-6 border border-border/20"
-                >
-                  <div className="aspect-video mb-4">
-                    <iframe 
-                      width="100%" 
-                      height="100%" 
-                      src={`https://www.youtube.com/embed/${video.embedId}`} 
-                      title={video.title} 
-                      frameBorder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen
-                      className="rounded-lg"
-                    ></iframe>
-                  </div>
-                  <h3 className="text-lg font-medium mb-1 text-primary">{video.title}</h3>
-                  <p className="text-primary/60">{video.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <div className="bg-background">
+          <FeaturedWork />
+        </div>
+
+        <div className="bg-secondary/10">
+          <Testimonials />
+        </div>
 
         <section className="py-16 bg-background" id="biography">
           <div className="container-custom">

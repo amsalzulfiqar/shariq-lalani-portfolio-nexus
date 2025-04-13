@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import { Diamond } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -22,7 +23,7 @@ const Hero = () => {
           {/* Hero Tagline */}
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 mt-4 opacity-0 animate-fade-in" 
             style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-            Artist | Producer | Engineer
+            Artist <Diamond size={16} className="inline mx-2 text-accent" /> Producer <Diamond size={16} className="inline mx-2 text-accent" /> Engineer
           </h1>
           
           {/* Call to action buttons */}
