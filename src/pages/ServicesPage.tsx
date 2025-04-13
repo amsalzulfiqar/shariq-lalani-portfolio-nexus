@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -218,13 +217,8 @@ const ServicesPage = () => {
         <section className="py-16 bg-background relative" id="services">
           {/* Background Image with Overlay - fixing the visibility issue */}
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-20" 
-            style={{ 
-              backgroundImage: 'url("/lovable-uploads/8c8728bf-ab7a-4c4c-b4f8-dcb8665ede8c.png")',
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              zIndex: 0
-            }}
+            className="absolute inset-0 bg-cover bg-center opacity-20 z-0" 
+            style={{ backgroundImage: 'url("/lovable-uploads/8c8728bf-ab7a-4c4c-b4f8-dcb8665ede8c.png")' }}
           ></div>
           
           <div className="container-custom relative z-10">

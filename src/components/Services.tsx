@@ -66,7 +66,7 @@ const Services = () => {
             to="/services" 
             className="inline-flex items-center font-medium text-accent hover:underline group text-lg"
           >
-            View Featured Works
+            View All Services
             <ArrowRight className="ml-1 w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
