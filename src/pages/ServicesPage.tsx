@@ -167,12 +167,36 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className="pt-24">
-        <section className="py-16 bg-gradient-to-b from-background to-secondary/10">
+      {/* Hero section with reduced height like in Bio page */}
+      <div className="h-[50vh] relative">
+        {/* Background image */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img 
+            src="/lovable-uploads/688646cc-2ad2-4d62-a487-e64b409ec429.png" 
+            alt="Shariq in studio" 
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        
+        {/* Navigation */}
+        <div className="relative z-10">
+          <Navbar />
+          
+          {/* Hero content */}
+          <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/90 to-transparent">
+            <div className="container-custom">
+              <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">Services</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="pt-10">
+        <section className="py-12 bg-gradient-to-b from-background to-secondary/10">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary text-center">Bring Your Music to Life</h1>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary text-center">Bring Your Music to Life</h2>
               <p className="text-xl text-primary/80 text-center">
                 Music isn't just sound—it's an experience. I produce, mix, and compose tracks that capture emotion and depth. 
                 Let's create something unforgettable.
@@ -192,17 +216,16 @@ const ServicesPage = () => {
         </section>
 
         <section className="py-16 bg-background relative" id="services">
-          {/* Background Image with Overlay */}
+          {/* Background Image with Overlay - fixing the visibility issue */}
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-50" 
+            className="absolute inset-0 bg-cover bg-center opacity-20" 
             style={{ 
-              backgroundImage: 'url("/public/lovable-uploads/8c8728bf-ab7a-4c4c-b4f8-dcb8665ede8c.png")',
+              backgroundImage: 'url("/lovable-uploads/8c8728bf-ab7a-4c4c-b4f8-dcb8665ede8c.png")',
               backgroundPosition: 'center',
               backgroundSize: 'cover',
+              zIndex: 0
             }}
-          >
-            <div className="absolute inset-0 bg-background/80"></div>
-          </div>
+          ></div>
           
           <div className="container-custom relative z-10">
             <h2 className="text-3xl font-bold mb-12 text-primary text-center">Services</h2>
