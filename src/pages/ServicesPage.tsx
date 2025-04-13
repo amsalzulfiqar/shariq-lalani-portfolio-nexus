@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -31,51 +32,113 @@ const ServicesPage = () => {
   const featuredWorks = [
     {
       title: "Addison Jordan - Keep That Same Old Feeling",
-      artist: "Addison Jordan",
-      track: "Keep That Same Old Feeling",
       role: "Recording, Mixing",
-      link: "https://open.spotify.com/track/6ZrT4g0XttXoyOA8XzHOGU",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e02d8351852e90bd7174b66bbd2"
+      link: "https://open.spotify.com/track/6ZrT4g0XttXoyOA8XzHOGU"
     },
     {
       title: "Prisha Mehta - Leaving you (For now)",
-      artist: "Prisha Mehta",
-      track: "Leaving you (For now)",
       role: "Production, Recording, Mixing",
-      link: "https://open.spotify.com/track/4GxH4w1kwuR7VtbBWpALn1",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a75a1812fd13985527108f12"
+      link: "https://open.spotify.com/track/4GxH4w1kwuR7VtbBWpALn1"
     },
     {
       title: "Mike Jones - Slums",
-      artist: "Mike Jones",
-      track: "Slums",
       role: "Recording",
-      link: "https://open.spotify.com/track/0sG5nT03mSwzW4kg5xXcWL",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e0266937507c23c123c73ca032a"
+      link: "https://open.spotify.com/track/0sG5nT03mSwzW4kg5xXcWL"
     },
     {
       title: "Quentin Moore Ft. Snoop Dogg - BFU (Remix)",
-      artist: "Quentin Moore Ft. Snoop Dogg",
-      track: "BFU (Remix)",
       role: "Recording",
-      link: "https://open.spotify.com/track/3HgwUyJXSP1i5j4ZVxjvC7",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554"
+      link: "https://open.spotify.com/track/3HgwUyJXSP1i5j4ZVxjvC7"
     },
     {
       title: "Bobby Sparks II - Letter to Mumbai",
-      artist: "Bobby Sparks II",
-      track: "Letter to Mumbai",
       role: "Production, Recording",
-      link: "https://open.spotify.com/track/7wxjnfO4CBkgQodEwqP7Gu",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e023121eeed397d8c7d7cf334b5"
+      link: "https://open.spotify.com/track/7wxjnfO4CBkgQodEwqP7Gu"
     },
     {
       title: "Bobby Sparks II - Musical Diarrhea",
-      artist: "Bobby Sparks II",
-      track: "Musical Diarrhea",
       role: "Tracking Engineer",
-      link: "https://open.spotify.com/track/1FTn7MpMDidWYLyKdj5680",
-      imageUrl: "https://i.scdn.co/image/ab67616d00001e023121eeed397d8c7d7cf334b5"
+      link: "https://open.spotify.com/track/1FTn7MpMDidWYLyKdj5680"
+    },
+    {
+      title: "Bobby Sparks II - Sodom and Gomorrah",
+      role: "Tracking Engineer",
+      link: "https://open.spotify.com/track/6kSwjQHgWVzsSPsNGEEIx7"
+    },
+    {
+      title: "Bobby Sparks II - Mayday",
+      role: "Tracking Engineer",
+      link: "https://open.spotify.com/track/16l5PQbX9X4H8QLdsCcqHr"
+    },
+    {
+      title: "Addison Jordan - Reverence",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/2N8ATWkeG3Qks1KaZzas2C"
+    },
+    {
+      title: "Porte Diferente - El Pochito",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/52UekrYckRIekXj7rlO2hl"
+    },
+    {
+      title: "Frank Hamlin, The Brothers McDavid - My Favorite Love Song",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/400fAkHKjAnrUulH8rx8zm"
+    },
+    {
+      title: "Porte Diferente - Quedate Aqui",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/3fcpIfwb6VBjj9bZKXnoxK"
+    },
+    {
+      title: "Sophie Drago - Perfect Show",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/5EAtwsiuev9rDNBjaDNug7"
+    },
+    {
+      title: "Sarah Hanks - Eternity in my mind",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/2f0fDWcm7Wevh0ukzFI67V"
+    },
+    {
+      title: "Zak Azoury - Christmas Love",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/4uhAogfaSYeCApgDxs76Zt"
+    },
+    {
+      title: "Zak Azoury - Might as well be coal",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/781O7fXNl3sgDL80gHSX1H"
+    },
+    {
+      title: "Shama Judah - Shikwa",
+      role: "Mixing, Mastering",
+      link: "https://open.spotify.com/track/3TOeHJ8Y08UqsiEaIFVs0V"
+    },
+    {
+      title: "Altercations - Wait",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/6rdMb9dW9zonR3GfvbeZ7x"
+    },
+    {
+      title: "Addison Jodan - Queen Val",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/3A1IUAtKIsteyHTSPIcrbi"
+    },
+    {
+      title: "Nibal Malshi - Isma' Albi",
+      role: "Production, Recording, Mixing",
+      link: "https://open.spotify.com/track/5CkPDhVkqmjNqRTtfmltFx"
+    },
+    {
+      title: "Oasis Worship - My Revival",
+      role: "Recording, Mixing",
+      link: "https://open.spotify.com/track/243BMQW71Vt0MgCGRtQx8K"
+    },
+    {
+      title: "Akshara - Ethereal",
+      role: "Production",
+      link: "https://open.spotify.com/track/2m5QniDzGkjcHcTCHj4Qc5"
     }
   ];
 
@@ -164,54 +227,9 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-secondary/5" id="featured-work">
-          <div className="container-custom">
-            <h2 className="text-3xl font-bold mb-12 text-primary text-center">Featured Work</h2>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16">
-              {featuredWorks.slice(0, 6).map((work, index) => (
-                <a 
-                  key={index}
-                  href={work.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group overflow-hidden rounded-xl bg-red-950/90 border border-red-900/30 transition-transform hover:scale-[1.02] duration-300"
-                >
-                  <div className="relative aspect-square">
-                    <img 
-                      src={work.imageUrl} 
-                      alt={work.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-3 right-3 p-2 bg-white rounded-full opacity-75">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM16.75 16.4C16.55 16.7 16.25 16.85 15.85 16.85C15.6 16.85 15.35 16.75 15.05 16.55C14.2 16 13.3 15.55 12.4 15.2C11.65 14.9 10.85 14.7 10.05 14.6C9.1 14.5 8.2 14.5 7.25 14.6C6.9 14.65 6.7 14.5 6.55 14.2C6.4 13.9 6.35 13.6 6.45 13.3C6.55 12.95 6.8 12.75 7.15 12.7C7.8 12.6 8.5 12.55 9.2 12.55C10.45 12.6 11.65 12.8 12.8 13.25C13.65 13.55 14.45 13.95 15.2 14.45C15.55 14.7 15.75 15 15.75 15.4C15.8 15.75 15.85 16.1 15.75 16.4H16.75ZM18.05 13.15C17.8 13.5 17.45 13.65 17 13.65C16.75 13.65 16.45 13.55 16.15 13.35C15.15 12.7 14.05 12.2 12.9 11.8C12 11.5 11.05 11.25 10.1 11.15C9.34565 11.0729 8.58639 11.031 7.825 11.025C7.325 11.025 7.075 10.775 7.025 10.275C6.975 9.775 7.225 9.425 7.675 9.325C8.175 9.225 8.675 9.175 9.175 9.125C10.275 9.075 11.375 9.175 12.475 9.375C13.6 9.575 14.7 9.925 15.75 10.375C16.55 10.725 17.3 11.175 18 11.675C18.3 11.875 18.45 12.175 18.5 12.525C18.45 12.725 18.3 13.025 18 13.175L18.05 13.15ZM19.3 9.65C19 10.15 18.5 10.35 17.95 10.3C17.65 10.3 17.35 10.2 17.05 10C15.95 9.3 14.75 8.7 13.5 8.3C12.3 7.9 11.1 7.6 9.85 7.5C8.9 7.4 7.95 7.4 7 7.45C6.4 7.5 6.05 7.15 6 6.55C5.95 5.95 6.3 5.55 6.9 5.5C7.4 5.45 7.85 5.4 8.3 5.4C9.65 5.4 11 5.5 12.35 5.8C13.7 6.1 15 6.5 16.25 7.05C17.1 7.4 17.85 7.9 18.6 8.4C18.9 8.6 19.1 8.9 19.2 9.3C19.25 9.4 19.25 9.5 19.3 9.65Z" fill="#1DB954"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-bold text-white text-lg truncate">{work.track}</h3>
-                    <p className="text-gray-300 mb-1">{work.artist}</p>
-                    <p className="text-gray-400 text-sm">{work.role}</p>
-                    <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Button variant="outline" className="w-full text-white hover:bg-white hover:text-red-900 border border-white/20">
-                        Play on Spotify
-                      </Button>
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-            
-            <div className="text-center mb-16">
-              <Button variant="outline" size="lg">
-                <a href="#" className="inline-flex items-center">
-                  View All Projects
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
+        <div className="bg-background">
+          <FeaturedWork />
+        </div>
 
         <div className="bg-secondary/10">
           <Testimonials />
