@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ const Hero = () => {
         <img 
           src="/lovable-uploads/af0cf2f3-9f6b-44b1-ade8-f3ac2b7510b2.png" 
           alt="Shariq playing piano"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover absolute top-0 left-0"
           style={{ objectPosition: "center" }}
         />
         <div className="absolute inset-0 bg-black/60"></div>

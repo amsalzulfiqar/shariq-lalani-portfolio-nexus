@@ -34,8 +34,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between py-6">
-        {/* Logo all the way to the left */}
-        <Logo className="text-primary" />
+        {/* Logo positioned at the far left */}
+        <Logo className="text-primary mr-auto" />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-10">
