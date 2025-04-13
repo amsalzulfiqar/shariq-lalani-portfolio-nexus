@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowUp, Instagram, Youtube, Music } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -73,14 +74,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* Add a fixed position scroll to top button */}
-      <button 
-        onClick={scrollToTop}
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-accent/80 text-background rounded-full flex items-center justify-center shadow-lg hover:bg-accent transition-all"
-        aria-label="Scroll to Top"
-      >
-        <ArrowUp className="w-6 h-6" />
-      </button>
     </footer>
   );
 };

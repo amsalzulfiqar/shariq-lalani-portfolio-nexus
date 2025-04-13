@@ -9,13 +9,13 @@ const ArtistPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className="fixed inset-0 z-0 bg-noise"></div>
       <div className="relative z-10">
-        {/* Hero section with reduced height */}
+        {/* Hero section with reduced height like in Bio page */}
         <div className="h-[50vh] relative">
           {/* Background image */}
           <div className="absolute inset-0 overflow-hidden">
             <img 
-              src="/lovable-uploads/efe1c634-276d-42b7-8c8b-42eb649ad761.png" 
-              alt="Artist background" 
+              src="/lovable-uploads/4ded3494-a7a7-48dc-b3e6-efbbaf0d51e1.png" 
+              alt="Shariq playing piano" 
               className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-black/50"></div>
