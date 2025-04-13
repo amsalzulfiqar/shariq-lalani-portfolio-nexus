@@ -13,7 +13,7 @@ const Hero = () => {
           src="/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png" 
           alt="Musician playing piano in recording studio"
           className="w-full h-full object-cover"
-          loading="eager" // Add eager loading for hero image
+          loading="eager"
         />
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
@@ -35,10 +35,25 @@ const Hero = () => {
           className="flex flex-col sm:flex-row justify-center gap-4 mt-6 opacity-0 animate-fade-in"
           style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
         >
-          <Button asChild size="lg" className="bg-[#F97316] hover:bg-orange-600 text-black font-medium px-8">
-            <a href="#spotify">Listen to My Music</a>
+          <Button 
+            asChild 
+            size="lg" 
+            className="bg-[#F97316] hover:bg-orange-600 text-black font-medium px-8"
+          >
+            <a 
+              href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Listen to My Music
+            </a>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 px-8">
+          <Button 
+            asChild 
+            variant="outline" 
+            size="lg" 
+            className="border-white text-white hover:bg-white/10 px-8"
+          >
             <Link to="/services">Work with Me</Link>
           </Button>
         </div>
@@ -48,3 +63,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
