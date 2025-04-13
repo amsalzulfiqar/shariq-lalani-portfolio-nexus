@@ -33,7 +33,7 @@ const Navbar = () => {
         isScrolled ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="container-custom flex items-center justify-between py-4">
+      <div className="container-custom flex items-center justify-between py-6">
         {/* Logo all the way to the left */}
         <Logo className="text-primary" />
 
