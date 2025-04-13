@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Mail, Send, Instagram, Youtube, Spotify } from 'lucide-react';
+import { Mail, Send, Instagram, Youtube } from 'lucide-react';
+import SpotifyIcon from './icons/SpotifyIcon';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -55,7 +56,7 @@ const Contact = () => {
                   className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-green-500 hover:text-background transition-colors"
                   aria-label="Spotify"
                 >
-                  <Spotify className="w-5 h-5" />
+                  <SpotifyIcon className="w-5 h-5" />
                 </a>
               </div>
             </div>

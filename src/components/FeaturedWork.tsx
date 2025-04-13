@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Spotify, Youtube } from 'lucide-react';
+import { Youtube } from 'lucide-react';
+import SpotifyIcon from './icons/SpotifyIcon';
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -122,7 +123,7 @@ const FeaturedWork = () => {
             </div>
           )}
           <div className="flex items-center gap-2 mb-3">
-            <Spotify className="h-4 w-4 text-green-500" />
+            <SpotifyIcon className="h-4 w-4 text-green-500" />
             <span className="text-xs text-primary/60">Spotify</span>
           </div>
           
