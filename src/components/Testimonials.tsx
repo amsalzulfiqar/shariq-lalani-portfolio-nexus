@@ -1,13 +1,12 @@
 
 import React from 'react';
-import { Quote } from 'lucide-react';
+import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 
 interface TestimonialProps {
   content: string;
@@ -50,6 +49,16 @@ const Testimonials = () => {
     }
   ];
 
+  const [api, setApi] = React.useState<any>(null);
+
+  const handlePrevious = React.useCallback(() => {
+    api?.scrollPrev();
+  }, [api]);
+
+  const handleNext = React.useCallback(() => {
+    api?.scrollNext();
+  }, [api]);
+
   return (
     <section id="testimonials" className="section-padding bg-secondary/10">
       <div className="container-custom">
@@ -69,6 +78,7 @@ const Testimonials = () => {
               loop: true
             }}
             className="w-full"
+            setApi={setApi}
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {testimonials.map((testimonial, index) => (
@@ -82,8 +92,26 @@ const Testimonials = () => {
               ))}
             </CarouselContent>
             <div className="flex justify-center mt-6">
-              <CarouselPrevious className="relative static mr-2 transform-none" />
-              <CarouselNext className="relative static transform-none" />
+              <div className="flex space-x-4">
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  onClick={handlePrevious} 
+                  className="rounded-full"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  <span className="sr-only">Previous</span>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  onClick={handleNext} 
+                  className="rounded-full"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                  <span className="sr-only">Next</span>
+                </Button>
+              </div>
             </div>
           </Carousel>
         </div>
