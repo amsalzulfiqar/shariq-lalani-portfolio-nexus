@@ -36,6 +36,8 @@ const YoutubeTabContent = ({ youtubeWorks }: YoutubeTabContentProps) => {
     return <div className="text-center py-12 text-primary/70">No YouTube videos available at the moment.</div>;
   }
 
+  console.log('Current YouTube works:', getCurrentItems());
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

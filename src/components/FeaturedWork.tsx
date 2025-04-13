@@ -6,8 +6,13 @@ import SpotifyTabContent from './featured-work/SpotifyTabContent';
 import YoutubeTabContent from './featured-work/YoutubeTabContent';
 
 const FeaturedWork = () => {
+  console.log('FeaturedWork rendering');
+  
   const spotifyWorks = featuredWorks.filter(work => work.type === 'spotify');
   const youtubeWorks = featuredWorks.filter(work => work.type === 'youtube');
+  
+  console.log('Spotify works count:', spotifyWorks.length);
+  console.log('YouTube works count:', youtubeWorks.length);
 
   return (
     <section id="featured-work" className="section-padding bg-background pt-16">
