@@ -20,7 +20,7 @@ const ArtistPage = () => {
             backgroundPosition: "center"
           }}
         >
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
           <div className="container-custom relative z-10">
             <div className="prose prose-invert max-w-none mb-12">
               <p className="text-lg md:text-xl text-center mx-auto max-w-3xl">
