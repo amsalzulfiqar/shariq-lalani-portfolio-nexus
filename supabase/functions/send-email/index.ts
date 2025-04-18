@@ -30,6 +30,18 @@ serve(async (req) => {
       )
     }
 
+    // Check if SMTP configuration is available
+    if (!SMTP_HOST || !SMTP_USERNAME || !SMTP_PASSWORD) {
+      console.error('SMTP configuration missing');
+      return new Response(
+        JSON.stringify({ error: 'Email service not configured' }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
+      )
+    }
+
     // Connect to SMTP server
     const client = new SmtpClient();
     await client.connectTLS({

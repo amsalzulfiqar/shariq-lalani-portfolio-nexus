@@ -1,12 +1,11 @@
 
 import React, { useState } from 'react';
-import { Mail, Send, Instagram, Youtube } from 'lucide-react';
-import SpotifyIcon from './icons/SpotifyIcon';
+import { Mail, Send } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from '@/lib/supabase';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -39,6 +38,17 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
+      // Check if Supabase is configured properly
+      if (!isSupabaseConfigured()) {
+        console.error("Supabase is not configured properly");
+        toast({
+          title: "Configuration Error",
+          description: "Email service is not properly configured. Please contact the site administrator.",
+          variant: "destructive",
+        });
+        return;
+      }
+      
       // Send email via Supabase Edge Function
       const { error } = await supabase.functions.invoke('send-email', {
         body: {
