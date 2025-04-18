@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -40,8 +41,8 @@ const Navbar = () => {
         className="absolute" 
       />
 
-      <div className="container-custom flex items-center py-6">
-        <nav className="hidden md:flex items-center ml-auto space-x-10">
+      <div className="container-custom flex items-center justify-end py-6">
+        <nav className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -57,7 +58,7 @@ const Navbar = () => {
         </nav>
 
         <button
-          className="md:hidden ml-auto text-white"
+          className="md:hidden text-white"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
