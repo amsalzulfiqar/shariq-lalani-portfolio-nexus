@@ -39,24 +39,36 @@ const Contact = () => {
               encType="text/plain"
               className="space-y-4"
             >
-              <div>
-                <label htmlFor="name" className="block text-primary/70 mb-2">Name</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
-                  placeholder="Your Name"
-                />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-primary/70 mb-2">Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-primary/70 mb-2">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
+                    placeholder="Your Email"
+                  />
+                </div>
               </div>
               <div>
-                <label htmlFor="email" className="block text-primary/70 mb-2">Email</label>
+                <label htmlFor="subject" className="block text-primary/70 mb-2">Subject</label>
                 <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
+                  type="text" 
+                  id="subject" 
+                  name="subject" 
                   className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
-                  placeholder="Your Email"
+                  placeholder="Message Subject"
                 />
               </div>
               <div>
@@ -71,7 +83,7 @@ const Contact = () => {
               </div>
               <button 
                 type="submit" 
-                className="w-full bg-accent text-white py-2 rounded-md hover:bg-accent/90 transition-colors"
+                className="w-full bg-[#F97316] text-black font-medium py-2 rounded-md hover:bg-orange-600 transition-colors"
               >
                 Send Message
               </button>
@@ -84,3 +96,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
