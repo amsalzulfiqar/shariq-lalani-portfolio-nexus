@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
@@ -27,7 +28,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in flex items-center space-x-4"
+        <h1 className="text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in flex items-center space-x-4"
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
           <span>Artist</span>
