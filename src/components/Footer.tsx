@@ -11,6 +11,13 @@ const Footer = () => {
       top: 0,
       behavior: 'smooth'
     });
+    
+    // Force scroll to top if smooth scroll doesn't work
+    setTimeout(() => {
+      if (window.pageYOffset > 0) {
+        window.scrollTo(0, 0);
+      }
+    }, 1000);
   };
   
   return (

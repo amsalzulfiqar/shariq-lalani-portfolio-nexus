@@ -82,36 +82,27 @@ const Contact = () => {
                   <Mail className="w-5 h-5 mr-3 text-accent" />
                   <a href="mailto:info@shariqlalani.com" className="text-primary/80 hover:text-accent hover:underline">info@shariqlalani.com</a>
                 </div>
-              </div>
-              
-              <div className="flex flex-col space-y-4 mb-8 lg:mb-0">
-                <a 
-                  href="https://www.instagram.com/shariqlalanimusic"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 w-fit px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white hover:opacity-90 transition-opacity"
-                >
-                  <Instagram className="w-5 h-5" />
-                  <span>@shariqlalanimusic</span>
-                </a>
-                <a 
-                  href="https://www.youtube.com/@SHARIQLALANIMUSIC"
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center space-x-2 w-fit px-4 py-2 rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors"
-                >
-                  <Youtube className="w-5 h-5" />
-                  <span>@SHARIQLALANIMUSIC</span>
-                </a>
-                <a 
-                  href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz"
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center space-x-2 w-fit px-4 py-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors"
-                >
-                  <SpotifyIcon className="w-5 h-5" />
-                  <span>Shariq Lalani</span>
-                </a>
+                
+                <div className="flex items-center mb-4">
+                  <Instagram className="w-5 h-5 mr-3 text-accent" />
+                  <a href="https://www.instagram.com/shariqlalanimusic" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
+                    @shariqlalanimusic
+                  </a>
+                </div>
+                
+                <div className="flex items-center mb-4">
+                  <Youtube className="w-5 h-5 mr-3 text-accent" />
+                  <a href="https://www.youtube.com/@SHARIQLALANIMUSIC" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
+                    @SHARIQLALANIMUSIC
+                  </a>
+                </div>
+                
+                <div className="flex items-center mb-4">
+                  <SpotifyIcon className="w-5 h-5 mr-3 text-accent" />
+                  <a href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
+                    Shariq Lalani
+                  </a>
+                </div>
               </div>
             </div>
             
