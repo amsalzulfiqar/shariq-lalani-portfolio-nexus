@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail, Send, Instagram, Youtube } from 'lucide-react';
 import SpotifyIcon from './icons/SpotifyIcon';
@@ -90,28 +89,28 @@ const Contact = () => {
                   href="https://www.instagram.com/shariqlalanimusic"
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
-                  aria-label="Instagram"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white hover:opacity-90 transition-opacity"
                 >
                   <Instagram className="w-5 h-5" />
+                  <span>@shariqlalanimusic</span>
                 </a>
                 <a 
                   href="https://www.youtube.com/@SHARIQLALANIMUSIC"
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
-                  aria-label="YouTube"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors"
                 >
                   <Youtube className="w-5 h-5" />
+                  <span>@SHARIQLALANIMUSIC</span>
                 </a>
                 <a 
                   href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz"
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-green-500 hover:text-background transition-colors"
-                  aria-label="Spotify"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors"
                 >
                   <SpotifyIcon className="w-5 h-5" />
+                  <span>Shariq Lalani</span>
                 </a>
               </div>
             </div>

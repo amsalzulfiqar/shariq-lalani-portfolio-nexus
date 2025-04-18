@@ -1,8 +1,79 @@
-
 import { FeaturedWorkItem } from '@/types/featuredWork';
 
 export const featuredWorks: FeaturedWorkItem[] = [
-  // First 8 songs in specified order
+  // New entries
+  {
+    type: "spotify",
+    artist: "Quentin Moore",
+    title: "I Believe in You (String Sextet Version)",
+    role: "Mixing",
+    url: "https://open.spotify.com/track/1XYQu1bG2b8qA7ttN1v1Aj",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+    spotifyId: "1XYQu1bG2b8qA7ttN1v1Aj"
+  },
+  {
+    type: "spotify",
+    artist: "XLR - Movement Band",
+    title: "Movement Band",
+    role: "Mixing",
+    url: "https://open.spotify.com/track/3DWZzdAUXdJq0qV9Wuwr16",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+    spotifyId: "3DWZzdAUXdJq0qV9Wuwr16"
+  },
+  {
+    type: "spotify",
+    artist: "DarronT",
+    title: "Iced Out",
+    role: "Recording, Mixing",
+    url: "https://open.spotify.com/track/78kgg5DNSCQzkkOPhOg4YK",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+    spotifyId: "78kgg5DNSCQzkkOPhOg4YK"
+  },
+  {
+    type: "spotify",
+    artist: "Sabina Chamoy",
+    title: "Full Moon",
+    role: "Co-Production, Recording, Mixing",
+    url: "https://open.spotify.com/track/0V9qPX7t1nTVPMUQ7wjapf",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+    spotifyId: "0V9qPX7t1nTVPMUQ7wjapf"
+  },
+  {
+    type: "spotify",
+    artist: "PlugnSessions",
+    title: "Burnaboy Mix",
+    role: "Recording, Mixing",
+    url: "https://open.spotify.com/track/7kyJwTQY6pmyqy0Rd4Mdin",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+    spotifyId: "7kyJwTQY6pmyqy0Rd4Mdin"
+  },
+  {
+    type: "spotify",
+    artist: "Jay O'Jay, Fata El Presidente",
+    title: "Collaboration",
+    role: "Recording, Mixing",
+    url: "https://open.spotify.com/track/0xbHdlnPvcq4deDC867KZ8",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+    spotifyId: "0xbHdlnPvcq4deDC867KZ8"
+  },
+  {
+    type: "spotify",
+    artist: "PlugnSessions",
+    title: "Praise & Worship (Live)",
+    role: "Recording",
+    url: "https://open.spotify.com/track/1bKfBCxJzjiRjRMy3RYtXh",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+    spotifyId: "1bKfBCxJzjiRjRMy3RYtXh"
+  },
+  {
+    type: "spotify",
+    artist: "Addison Jordan, Madison Russll",
+    title: "Collaboration",
+    role: "Recording, Mixing",
+    url: "https://open.spotify.com/track/14JogKQFdICwWmzpgo2jpd",
+    imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
+    spotifyId: "14JogKQFdICwWmzpgo2jpd"
+  },
   {
     type: "spotify",
     artist: "Addison Jordan",

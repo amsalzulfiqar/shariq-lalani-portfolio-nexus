@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { ArrowUp, Instagram, Youtube, Music } from 'lucide-react';
+import { ArrowUp, Instagram, Youtube } from 'lucide-react';
+import SpotifyIcon from '@/components/icons/SpotifyIcon';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -30,28 +31,28 @@ const Footer = () => {
               href="https://www.instagram.com/shariqlalanimusic"
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
+              className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 flex items-center justify-center hover:opacity-90 transition-opacity"
               aria-label="Instagram"
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-5 h-5 text-white" />
             </a>
             <a 
               href="https://www.youtube.com/@SHARIQLALANIMUSIC"
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
+              className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center hover:bg-red-700 transition-colors"
               aria-label="YouTube"
             >
-              <Youtube className="w-5 h-5" />
+              <Youtube className="w-5 h-5 text-white" />
             </a>
             <a 
               href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz"
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-accent hover:text-background transition-colors"
+              className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center hover:bg-green-700 transition-colors"
               aria-label="Spotify"
             >
-              <Music className="w-5 h-5" />
+              <SpotifyIcon className="w-5 h-5 text-white" />
             </a>
           </div>
           
