@@ -1,4 +1,3 @@
-
 import { FeaturedWorkItem } from '@/types/featuredWork';
 
 export const spotifyWorks: FeaturedWorkItem[] = [
@@ -157,6 +156,22 @@ export const spotifyWorks: FeaturedWorkItem[] = [
   },
   {
     type: "spotify" as const,
+    artist: "Bobby Sparks II",
+    title: "Sodom and Gomorrah",
+    role: "Tracking Engineer",
+    url: "https://open.spotify.com/track/6kSwjQHgWVzsSPsNGEEIx7",
+    spotifyId: "6kSwjQHgWVzsSPsNGEEIx7"
+  },
+  {
+    type: "spotify" as const,
+    artist: "Bobby Sparks II",
+    title: "Mayday",
+    role: "Tracking Engineer",
+    url: "https://open.spotify.com/track/16l5PQbX9X4H8QLdsCcqHr",
+    spotifyId: "16l5PQbX9X4H8QLdsCcqHr"
+  },
+  {
+    type: "spotify" as const,
     artist: "Porte Diferente",
     title: "El Pochito",
     role: "Recording, Mixing",
@@ -226,5 +241,13 @@ export const spotifyWorks: FeaturedWorkItem[] = [
     url: "https://open.spotify.com/track/2m5QniDzGkjcHcTCHj4Qc5",
     imageUrl: "https://i.scdn.co/image/ab67616d00001e02a1fcfbc1170622fcb6c2e554",
     spotifyId: "2m5QniDzGkjcHcTCHj4Qc5"
+  },
+  {
+    type: "spotify" as const,
+    artist: "XLR - Movement Band",
+    title: "Movement Band",
+    role: "Mixing",
+    url: "https://open.spotify.com/track/3DWZzdAUXdJq0qV9Wuwr16",
+    spotifyId: "3DWZzdAUXdJq0qV9Wuwr16"
   }
 ];

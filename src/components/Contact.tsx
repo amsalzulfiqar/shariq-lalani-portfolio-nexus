@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Mail, Send } from 'lucide-react';
+import { Mail, Send, Youtube, Instagram } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -100,25 +99,22 @@ const Contact = () => {
               </p>
               
               <div className="mb-8">
-                <div className="mb-4">
+                <div className="mb-4 flex items-center gap-2">
+                  <Mail className="w-5 h-5 text-primary/80" />
                   <a href="mailto:info@shariqlalani.com" className="text-primary/80 hover:text-accent hover:underline">info@shariqlalani.com</a>
                 </div>
                 
-                <div className="mb-4">
+                <div className="mb-4 flex items-center gap-2">
+                  <Instagram className="w-5 h-5 text-primary/80" />
                   <a href="https://www.instagram.com/shariqlalanimusic" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
                     @shariqlalanimusic
                   </a>
                 </div>
                 
-                <div className="mb-4">
+                <div className="mb-4 flex items-center gap-2">
+                  <Youtube className="w-5 h-5 text-primary/80" />
                   <a href="https://www.youtube.com/@SHARIQLALANIMUSIC" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
                     @SHARIQLALANIMUSIC
-                  </a>
-                </div>
-                
-                <div className="mb-4">
-                  <a href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
-                    Shariq Lalani
                   </a>
                 </div>
               </div>
