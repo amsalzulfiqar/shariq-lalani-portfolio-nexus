@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Youtube, Instagram } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -29,30 +29,53 @@ const Contact = () => {
                     info@shariqlalani.com
                   </a>
                 </div>
-                
-                <div className="mb-4 flex items-center gap-2">
-                  <Instagram className="w-5 h-5 text-primary/80" />
-                  <a 
-                    href="https://www.instagram.com/shariqlalanimusic" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-primary/80 hover:text-accent hover:underline"
+              </div>
+
+              <div className="mt-6">
+                <h3 className="text-xl font-semibold text-primary/80 mb-4">Send me a Message</h3>
+                <form 
+                  action="mailto:info@shariqlalani.com" 
+                  method="post" 
+                  encType="text/plain"
+                  className="space-y-4"
+                >
+                  <div>
+                    <label htmlFor="name" className="block text-primary/70 mb-2">Name</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      name="name" 
+                      className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
+                      placeholder="Your Name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-primary/70 mb-2">Email</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      name="email" 
+                      className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
+                      placeholder="Your Email"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-primary/70 mb-2">Message</label>
+                    <textarea 
+                      id="message" 
+                      name="message" 
+                      rows={4} 
+                      className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
+                      placeholder="Your Message"
+                    ></textarea>
+                  </div>
+                  <button 
+                    type="submit" 
+                    className="w-full bg-accent text-white py-2 rounded-md hover:bg-accent/90 transition-colors"
                   >
-                    @shariqlalanimusic
-                  </a>
-                </div>
-                
-                <div className="mb-4 flex items-center gap-2">
-                  <Youtube className="w-5 h-5 text-primary/80" />
-                  <a 
-                    href="https://www.youtube.com/@SHARIQLALANIMUSIC" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-primary/80 hover:text-accent hover:underline"
-                  >
-                    @SHARIQLALANIMUSIC
-                  </a>
-                </div>
+                    Send Message
+                  </button>
+                </form>
               </div>
             </div>
           </div>
