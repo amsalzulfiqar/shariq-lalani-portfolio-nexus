@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,8 +9,8 @@ import ServicesPage from "./pages/ServicesPage";
 import NotFound from "./pages/NotFound";
 import BioPage from "./pages/BioPage";
 import ArtistPage from "./pages/ArtistPage";
+import FeaturedWorksPage from "./pages/FeaturedWorksPage";
 
-// ScrollToTop component to reset scroll position when route changes
 function ScrollToTop() {
   const { pathname } = useLocation();
   
@@ -34,6 +33,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/featured-works" element={<FeaturedWorksPage />} />
           <Route path="/bio" element={<BioPage />} />
           <Route path="/artist" element={<ArtistPage />} />
           <Route path="*" element={<NotFound />} />

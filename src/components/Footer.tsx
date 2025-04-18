@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowUp, Instagram, Youtube } from 'lucide-react';
 import SpotifyIcon from '@/components/icons/SpotifyIcon';
@@ -7,8 +6,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  const scrollToTop = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

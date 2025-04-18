@@ -84,12 +84,12 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="flex space-x-4 mb-8 lg:mb-0">
+              <div className="flex flex-col space-y-4 mb-8 lg:mb-0">
                 <a 
                   href="https://www.instagram.com/shariqlalanimusic"
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white hover:opacity-90 transition-opacity"
+                  className="flex items-center space-x-2 w-fit px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white hover:opacity-90 transition-opacity"
                 >
                   <Instagram className="w-5 h-5" />
                   <span>@shariqlalanimusic</span>
@@ -98,7 +98,7 @@ const Contact = () => {
                   href="https://www.youtube.com/@SHARIQLALANIMUSIC"
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center space-x-2 px-4 py-2 rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors"
+                  className="flex items-center space-x-2 w-fit px-4 py-2 rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors"
                 >
                   <Youtube className="w-5 h-5" />
                   <span>@SHARIQLALANIMUSIC</span>
@@ -107,7 +107,7 @@ const Contact = () => {
                   href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz"
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center space-x-2 px-4 py-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors"
+                  className="flex items-center space-x-2 w-fit px-4 py-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors"
                 >
                   <SpotifyIcon className="w-5 h-5" />
                   <span>Shariq Lalani</span>
