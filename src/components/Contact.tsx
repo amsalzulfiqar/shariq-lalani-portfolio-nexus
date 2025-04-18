@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Mail, Send, Instagram, Youtube } from 'lucide-react';
 import SpotifyIcon from './icons/SpotifyIcon';
@@ -5,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from '@/lib/supabase';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -37,17 +39,27 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Use mailto link as a fallback method
-      const mailtoLink = `mailto:info@shariqlalani.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+      // Send email via Supabase Edge Function
+      const { error } = await supabase.functions.invoke('send-email', {
+        body: {
+          to: 'info@shariqlalani.com',
+          subject: formData.subject,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        }
+      });
       
-      window.location.href = mailtoLink;
+      if (error) {
+        throw new Error(error.message);
+      }
       
       // Reset form after submission
       setFormData({ name: '', email: '', subject: '', message: '' });
       
       toast({
         title: "Success",
-        description: "Your email client should open with your message. Please send the email to complete your message.",
+        description: "Your message has been sent successfully. Thank you for reaching out!",
       });
     } catch (error) {
       console.error("Error sending message:", error);
@@ -78,27 +90,23 @@ const Contact = () => {
               </p>
               
               <div className="mb-8">
-                <div className="flex items-center mb-4">
-                  <Mail className="w-5 h-5 mr-3 text-accent" />
+                <div className="mb-4">
                   <a href="mailto:info@shariqlalani.com" className="text-primary/80 hover:text-accent hover:underline">info@shariqlalani.com</a>
                 </div>
                 
-                <div className="flex items-center mb-4">
-                  <Instagram className="w-5 h-5 mr-3 text-accent" />
+                <div className="mb-4">
                   <a href="https://www.instagram.com/shariqlalanimusic" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
                     @shariqlalanimusic
                   </a>
                 </div>
                 
-                <div className="flex items-center mb-4">
-                  <Youtube className="w-5 h-5 mr-3 text-accent" />
+                <div className="mb-4">
                   <a href="https://www.youtube.com/@SHARIQLALANIMUSIC" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
                     @SHARIQLALANIMUSIC
                   </a>
                 </div>
                 
-                <div className="flex items-center mb-4">
-                  <SpotifyIcon className="w-5 h-5 mr-3 text-accent" />
+                <div className="mb-4">
                   <a href="https://open.spotify.com/artist/6XochsfQsPMfehEQhWDDaz" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:text-accent hover:underline">
                     Shariq Lalani
                   </a>
