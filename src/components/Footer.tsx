@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  const scrollToTop = () => {
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

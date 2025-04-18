@@ -41,7 +41,7 @@ const Navbar = () => {
         className="absolute" 
       />
 
-      <div className="container-custom flex items-center justify-end py-6">
+      <div className="container-custom flex items-center justify-end py-6 pr-4">
         <nav className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => (
             <Link

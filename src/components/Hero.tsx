@@ -25,9 +25,9 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      {/* Title positioned in top left corner to align with logo */}
-      <div className="absolute top-24 left-6 z-10">
-        <h1 className="text-2xl md:text-3xl font-bold text-white/60 opacity-0 animate-fade-in flex items-center space-x-4"
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+        <h1 className="text-2xl md:text-3xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in flex items-center space-x-4"
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
           <span>Artist</span>
@@ -36,12 +36,9 @@ const Hero = () => {
           <Square size={8} className="text-white/60 fill-white/60" />
           <span>Engineer</span>
         </h1>
-      </div>
 
-      {/* Content - Keep it centered for the action buttons */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 mt-20">
         <div 
-          className="flex flex-col sm:flex-row justify-center gap-4 mt-6 opacity-0 animate-fade-in"
+          className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in"
           style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
         >
           <Button 
