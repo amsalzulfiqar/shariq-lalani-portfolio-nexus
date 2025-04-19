@@ -21,10 +21,13 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Let the DOM/layout settle before scrolling
+    console.log("🌀 ScrollToTop firing for", pathname);
+
+    // Brute-force scroll to top twice: now, and shortly after layout settles
+    window.scrollTo(0, 0);
     const timeout = setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }, 0);
+      window.scrollTo(0, 0);
+    }, 100); // Try increasing to 200 if needed
 
     return () => clearTimeout(timeout);
   }, [pathname]);
