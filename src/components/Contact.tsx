@@ -15,7 +15,7 @@ const Contact = () => {
         <div className="bg-secondary/30 backdrop-blur-sm rounded-xl shadow-md p-8 border border-border/20 opacity-0 animate-fade-in grid md:grid-cols-2 gap-8" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
           <div>
             <p className="text-primary/70 mb-8 max-w-md">
-              Please get in touch with booking enquiries or questions. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              Please get in touch with booking inquiries or questions. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
             
             <div className="mb-8">
@@ -34,12 +34,12 @@ const Contact = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary/80 mb-4">Send me a Message</h3>
             <form 
-              action="mailto:info@shariqlalani.com" 
-              method="post" 
-              encType="text/plain"
+              action="https://formspree.io/f/info@shariqlalani.com"
+              method="POST"
               className="space-y-4"
+              autoComplete="on"
             >
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-primary/70 mb-2">Name</label>
                   <input 
@@ -48,6 +48,7 @@ const Contact = () => {
                     name="name" 
                     className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
                     placeholder="Your Name"
+                    autoComplete="name"
                   />
                 </div>
                 <div>
@@ -58,6 +59,7 @@ const Contact = () => {
                     name="email" 
                     className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
                     placeholder="Your Email"
+                    autoComplete="email"
                   />
                 </div>
               </div>
@@ -69,6 +71,7 @@ const Contact = () => {
                   name="subject" 
                   className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
                   placeholder="Message Subject"
+                  autoComplete="off"
                 />
               </div>
               <div>
@@ -96,4 +99,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

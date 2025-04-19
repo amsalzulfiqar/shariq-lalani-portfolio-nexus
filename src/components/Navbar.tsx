@@ -26,6 +26,17 @@ const Navbar = () => {
     { href: '/artist', label: 'Artist' },
     { href: '/services', label: 'Services' },
   ];
+  
+  const handleContactClick = (e) => {
+    if (isHomePage) {
+      e.preventDefault();
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      setIsOpen(false);
+    }
+  };
 
   return (
     <header 
@@ -53,7 +64,12 @@ const Navbar = () => {
             </Link>
           ))}
           <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
-            <Link to={isHomePage ? '#contact' : '/#contact'}>Contact</Link>
+            <a 
+              href={isHomePage ? '#contact' : '/#contact'}
+              onClick={handleContactClick}
+            >
+              Contact
+            </a>
           </Button>
         </nav>
 
@@ -80,7 +96,12 @@ const Navbar = () => {
               </Link>
             ))}
             <Button asChild variant="outline" className="w-full">
-              <Link to={isHomePage ? '#contact' : '/#contact'} onClick={() => setIsOpen(false)}>Contact</Link>
+              <a 
+                href={isHomePage ? '#contact' : '/#contact'}
+                onClick={handleContactClick}
+              >
+                Contact
+              </a>
             </Button>
           </nav>
         </div>

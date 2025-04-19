@@ -1,11 +1,13 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { Square } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const isMobile = useIsMobile();
 
   return (
     <section className="relative w-screen h-screen overflow-hidden">
@@ -28,14 +30,24 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in flex items-center space-x-4"
+        <h1 className={`text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in ${isMobile ? 'flex flex-col space-y-2' : 'flex items-center space-x-4'}`}
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
-          <span>Artist</span>
-          <Square size={8} className="text-white/60 fill-white/60" />
-          <span>Producer</span>
-          <Square size={8} className="text-white/60 fill-white/60" />
-          <span>Engineer</span>
+          {isMobile ? (
+            <>
+              <span>Artist</span>
+              <span>Producer</span>
+              <span>Engineer</span>
+            </>
+          ) : (
+            <>
+              <span>Artist</span>
+              <Square size={8} className="text-white/60 fill-white/60" />
+              <span>Producer</span>
+              <Square size={8} className="text-white/60 fill-white/60" />
+              <span>Engineer</span>
+            </>
+          )}
         </h1>
 
         <div 
@@ -61,7 +73,7 @@ const Hero = () => {
             size="lg" 
             className="border-white text-white hover:bg-white/10 px-8"
           >
-            <Link to="/services">Work with Me</Link>
+            <a href="#contact">Contact</a>
           </Button>
         </div>
       </div>
