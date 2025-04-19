@@ -11,28 +11,6 @@ import NotFound from "./pages/NotFound";
 import BioPage from "./pages/BioPage";
 import ArtistPage from "./pages/ArtistPage";
 import FeaturedWorksPage from "./pages/FeaturedWorksPage";
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-
-function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = () => {
-      window.scrollTo(0, 0);
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
-
-  return <Component {...pageProps} />;
-}
-
-
-
 
 // Add version for cache busting
 const APP_VERSION = "1.0.2";
