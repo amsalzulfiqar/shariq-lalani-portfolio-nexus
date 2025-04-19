@@ -5,8 +5,13 @@ import { Music, Sliders, Music2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import FeaturedWork from '@/components/FeaturedWork';
 import Testimonials from '@/components/Testimonials';
+import { useLayoutEffect } from "react";
 
 const ServicesPage = () => {
+  useLayoutEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
   const services = [
     {
       id: "production",
