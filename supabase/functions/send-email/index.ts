@@ -34,7 +34,7 @@ serve(async (req) => {
     if (!SMTP_HOST || !SMTP_USERNAME || !SMTP_PASSWORD) {
       console.error('SMTP configuration missing');
       return new Response(
-        JSON.stringify({ error: 'Email service not configured' }),
+        JSON.stringify({ error: 'Email service not configured. Please contact the administrator.' }),
         {
           status: 500,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -42,51 +42,63 @@ serve(async (req) => {
       )
     }
 
-    // Connect to SMTP server
-    const client = new SmtpClient();
-    await client.connectTLS({
-      hostname: SMTP_HOST,
-      port: SMTP_PORT,
-      username: SMTP_USERNAME,
-      password: SMTP_PASSWORD,
-    });
+    try {
+      // Connect to SMTP server
+      const client = new SmtpClient();
+      await client.connectTLS({
+        hostname: SMTP_HOST,
+        port: SMTP_PORT,
+        username: SMTP_USERNAME,
+        password: SMTP_PASSWORD,
+      });
 
-    // Prepare email message
-    const emailBody = `
-      Name: ${name}
-      Email: ${email}
-      
-      Message: 
-      ${message}
-    `;
+      // Prepare email message
+      const emailBody = `
+        Name: ${name}
+        Email: ${email}
+        
+        Message: 
+        ${message}
+      `;
 
-    // Send email
-    await client.send({
-      from: EMAIL_FROM,
-      to: to,
-      subject: subject,
-      content: emailBody,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    });
+      // Send email
+      await client.send({
+        from: EMAIL_FROM,
+        to: to,
+        subject: subject,
+        content: emailBody,
+        html: `
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, '<br>')}</p>
+        `,
+      });
 
-    await client.close();
+      await client.close();
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      }
-    )
+      return new Response(
+        JSON.stringify({ success: true }),
+        {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
+      )
+    } catch (emailError) {
+      console.error('SMTP error:', emailError);
+      return new Response(
+        JSON.stringify({ error: 'Failed to send email. Please try again later.' }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
+      )
+    }
   } catch (error) {
+    console.error('Request error:', error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: 'An unexpected error occurred' }),
       {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },

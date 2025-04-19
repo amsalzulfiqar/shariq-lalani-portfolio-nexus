@@ -13,16 +13,13 @@ import ArtistPage from "./pages/ArtistPage";
 import FeaturedWorksPage from "./pages/FeaturedWorksPage";
 
 // Add version for cache busting
-const APP_VERSION = "1.0.1";
+const APP_VERSION = "1.0.2";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant'
-    });
+    window.scrollTo(0, 0);
   }, [pathname]);
   
   return null;
@@ -33,7 +30,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 0,
-      gcTime: 0, // Updated from cacheTime to gcTime
+      gcTime: 0,
     },
   },
 });
