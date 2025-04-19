@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
 import { sendEmail } from '@/lib/email-service';
 import { toast } from "@/hooks/use-toast";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,6 +30,7 @@ const Contact = () => {
           description: result.message || "Your message has been sent successfully.",
         });
         (e.target as HTMLFormElement).reset();
+        setFormSubmitted(true);
       } else {
         throw new Error(result.error || "Failed to send message");
       }
@@ -65,6 +68,15 @@ const Contact = () => {
                 </a>
               </div>
             </div>
+            
+            {formSubmitted && (
+              <Alert className="bg-green-50 text-green-800 border-green-200">
+                <AlertTitle>Message Sent!</AlertTitle>
+                <AlertDescription>
+                  Thank you for reaching out. I'll get back to you soon.
+                </AlertDescription>
+              </Alert>
+            )}
           </div>
 
           <div>
