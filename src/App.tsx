@@ -5,7 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import ServicesPage from "./pages/ServicesPage";
 import NotFound from "./pages/NotFound";
@@ -22,16 +21,16 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    console.log("🚀 ScrollToTop triggered for", pathname);
+  console.log("🚀 ScrollToTop triggered for", pathname);
 
-    const scrollEl = document.getElementById("scroll-container");
-    
-    if (scrollEl) {
-      scrollEl.scrollTo({ top: 0, behavior: "instant" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }
-  }, [pathname]);
+  const scrollEl = document.getElementById("scroll-container");
+
+  if (scrollEl) {
+    scrollEl.scrollTo({ top: 0, behavior: "instant" });
+  } else {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+}, [pathname]);
 
   return null;
 
