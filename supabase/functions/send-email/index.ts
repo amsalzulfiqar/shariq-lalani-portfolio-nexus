@@ -35,11 +35,11 @@ serve(async (req) => {
       console.error('SMTP configuration missing');
       return new Response(
         JSON.stringify({ 
-          success: true,
-          message: "Email service is in demo mode. In production, an email would be sent."
+          success: false,
+          message: "Email service configuration is incomplete."
         }),
         {
-          status: 200,
+          status: 500,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         }
       )
@@ -82,7 +82,10 @@ serve(async (req) => {
       await client.close();
 
       return new Response(
-        JSON.stringify({ success: true }),
+        JSON.stringify({ 
+          success: true,
+          message: "Email sent successfully!" 
+        }),
         {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -90,14 +93,14 @@ serve(async (req) => {
       )
     } catch (emailError) {
       console.error('SMTP error:', emailError);
-      // Return success even with SMTP error for demo purposes
       return new Response(
         JSON.stringify({ 
-          success: true,
-          message: "Email received. (Note: SMTP server connection failed but this is considered successful for demo purposes)"
+          success: false,
+          message: "Failed to send email. Please check your SMTP configuration.",
+          error: emailError.toString()
         }),
         {
-          status: 200,
+          status: 500,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         }
       )
@@ -113,3 +116,4 @@ serve(async (req) => {
     )
   }
 })
+
