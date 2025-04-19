@@ -18,25 +18,7 @@ const APP_VERSION = "1.0.2";
 
 
 
-//function ScrollToTop() {
- // const { pathname } = useLocation();
-
-  //useEffect(() => {
-    //console.log("🌀 ScrollToTop firing for", pathname);
-
-    // Brute-force scroll to top twice: now, and shortly after layout settles
-    //window.scrollTo(0, 0);
-    //const timeout = setTimeout(() => {
-      //window.scrollTo(0, 0);
-    //}, 100); // Try increasing to 200 if needed
-
-    //return () => clearTimeout(timeout);
-  //}, [pathname]);
-
-  //return null;
-//}
-
-export default function ScrollToTop() {
+function ScrollToTop() {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
@@ -46,6 +28,7 @@ export default function ScrollToTop() {
 
   return null;
 }
+
 
 // Configure query client with cache settings
 const queryClient = new QueryClient({
