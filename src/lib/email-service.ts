@@ -10,18 +10,6 @@ interface EmailData {
 
 export const sendEmail = async (data: EmailData) => {
   try {
-    // Disable demo mode when properly configured
-    const isDemoMode = false;
-
-    if (isDemoMode) {
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
-      return {
-        success: true,
-        message: "Your message has been received (demo mode)."
-      };
-    }
-    
     const response = await fetch("https://iomjsslnpznzipgqnhkx.supabase.co/functions/v1/send-email?_=" + Date.now(), {
       method: "POST",
       headers: {
@@ -40,6 +28,11 @@ export const sendEmail = async (data: EmailData) => {
       throw new Error(result.message || "Failed to send email");
     }
 
+    toast({
+      title: "Success",
+      description: result.message || "Your message has been sent successfully!",
+    });
+
     return result;
   } catch (error) {
     console.error("Error sending email:", error);
@@ -55,4 +48,3 @@ export const sendEmail = async (data: EmailData) => {
     };
   }
 }
-
