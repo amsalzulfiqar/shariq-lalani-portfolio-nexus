@@ -20,13 +20,11 @@ const APP_VERSION = "1.0.2";
 function ScrollToTop() {
   const { pathname } = useLocation();
   
-  useEffect(() => {
+ useEffect(() => {
   console.log("ScrollToTop triggered for", pathname);
-  const timeout = setTimeout(() => {
+  requestAnimationFrame(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, 50); // or even 100
-
-  return () => clearTimeout(timeout);
+  });
 }, [pathname]);
   
   
