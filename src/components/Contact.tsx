@@ -20,18 +20,20 @@ const Contact = () => {
     };
 
     try {
-      await sendEmail(data);
-      toast({
-        title: "Success!",
-        description: "Your message has been sent successfully.",
-      });
-      (e.target as HTMLFormElement).reset();
+      const result = await sendEmail(data);
+      
+      if (result.success) {
+        toast({
+          title: "Success!",
+          description: result.message || "Your message has been sent successfully.",
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error(result.error || "Failed to send message");
+      }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
+      console.error("Contact form submission error:", error);
+      // Error toast is already shown in sendEmail function
     } finally {
       setIsSubmitting(false);
     }

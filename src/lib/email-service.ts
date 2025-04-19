@@ -10,11 +10,13 @@ interface EmailData {
 
 export const sendEmail = async (data: EmailData) => {
   try {
-    const response = await fetch("https://iomjsslnpznzipgqnhkx.supabase.co/functions/v1/send-email", {
+    // Add cache busting query parameter and mode: 'cors'
+    const response = await fetch("https://iomjsslnpznzipgqnhkx.supabase.co/functions/v1/send-email?_=" + Date.now(), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      mode: 'cors',
       body: JSON.stringify({
         to: "info@shariqlalani.com",
         ...data
@@ -32,7 +34,7 @@ export const sendEmail = async (data: EmailData) => {
     console.error("Error sending email:", error);
     toast({
       title: "Error",
-      description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
+      description: "Failed to send message. Please try again or contact directly at info@shariqlalani.com.",
       variant: "destructive",
     });
     throw error;

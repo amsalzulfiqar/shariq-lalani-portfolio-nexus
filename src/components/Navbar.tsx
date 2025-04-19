@@ -74,7 +74,7 @@ const Navbar = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm font-medium text-white/90 hover:text-white">Services</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="text-sm font-medium text-white/90 hover:text-white bg-transparent border border-white">Services</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid w-[200px] gap-2 p-4 bg-background">
                     <NavigationMenuLink asChild>
