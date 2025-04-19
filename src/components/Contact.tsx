@@ -1,8 +1,42 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
+import { sendEmail } from '@/lib/email-service';
+import { toast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      subject: formData.get('subject') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      await sendEmail(data);
+      toast({
+        title: "Success!",
+        description: "Your message has been sent successfully.",
+      });
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-padding bg-background/80">
       <div className="container-custom">
@@ -34,8 +68,7 @@ const Contact = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary/80 mb-4">Send me a Message</h3>
             <form 
-              action="https://formspree.io/f/info@shariqlalani.com"
-              method="POST"
+              onSubmit={handleSubmit}
               className="space-y-4"
               autoComplete="on"
             >
@@ -49,6 +82,7 @@ const Contact = () => {
                     className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
                     placeholder="Your Name"
                     autoComplete="name"
+                    required
                   />
                 </div>
                 <div>
@@ -60,6 +94,7 @@ const Contact = () => {
                     className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
                     placeholder="Your Email"
                     autoComplete="email"
+                    required
                   />
                 </div>
               </div>
@@ -72,6 +107,7 @@ const Contact = () => {
                   className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
                   placeholder="Message Subject"
                   autoComplete="off"
+                  required
                 />
               </div>
               <div>
@@ -82,13 +118,15 @@ const Contact = () => {
                   rows={4} 
                   className="w-full px-3 py-2 border border-border/30 rounded-md bg-background/50 text-primary focus:outline-none focus:ring-2 focus:ring-accent/50"
                   placeholder="Your Message"
+                  required
                 ></textarea>
               </div>
               <button 
                 type="submit" 
-                className="w-full bg-[#F97316] text-black font-medium py-2 rounded-md hover:bg-orange-600 transition-colors"
+                className="w-full bg-[#F97316] text-black font-medium py-2 rounded-md hover:bg-orange-600 transition-colors disabled:opacity-50"
+                disabled={isSubmitting}
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
