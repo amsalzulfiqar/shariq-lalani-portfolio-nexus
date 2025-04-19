@@ -16,22 +16,7 @@ import FeaturedWorksPage from "./pages/FeaturedWorksPage";
 // Add version for cache busting
 const APP_VERSION = "1.0.2";
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter();
 
-  useEffect(() => {
-    const handleRouteChange = () => {
-      window.scrollTo(0, 0);
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
-
-  return <Component {...pageProps} />;
-}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
