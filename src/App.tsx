@@ -21,14 +21,11 @@ function ScrollToTop() {
   const { pathname } = useLocation();
   
   useEffect(() => {
-    //window.scrollTo(0, 0);
-    document.querySelector("#scroll-container")?.scrollTo(0, 0);
-  }, [pathname]);
+  const timeout = setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 50); // short delay can fix it
 
-
-  useEffect(() => {
-  console.log("ScrollToTop triggered for", pathname);
-  window.scrollTo(0, 0);
+  return () => clearTimeout(timeout);
 }, [pathname]);
   
   
