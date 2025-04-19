@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import Index from "./pages/Index";
 import ServicesPage from "./pages/ServicesPage";
 import NotFound from "./pages/NotFound";
@@ -17,19 +18,30 @@ const APP_VERSION = "1.0.2";
 
 
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+//function ScrollToTop() {
+ // const { pathname } = useLocation();
 
-  useEffect(() => {
-    console.log("🌀 ScrollToTop firing for", pathname);
+  //useEffect(() => {
+    //console.log("🌀 ScrollToTop firing for", pathname);
 
     // Brute-force scroll to top twice: now, and shortly after layout settles
-    window.scrollTo(0, 0);
-    const timeout = setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 100); // Try increasing to 200 if needed
+    //window.scrollTo(0, 0);
+    //const timeout = setTimeout(() => {
+      //window.scrollTo(0, 0);
+    //}, 100); // Try increasing to 200 if needed
 
-    return () => clearTimeout(timeout);
+    //return () => clearTimeout(timeout);
+  //}, [pathname]);
+
+  //return null;
+//}
+
+export default function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    console.log("🧷 Forcing scroll to top for", pathname);
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
