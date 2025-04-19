@@ -21,20 +21,15 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-  console.log("🚀 ScrollToTop triggered for", pathname);
+    // Let the DOM/layout settle before scrolling
+    const timeout = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 0);
 
-  const scrollEl = document.getElementById("scroll-container");
-
-  if (scrollEl) {
-    scrollEl.scrollTo({ top: 0, behavior: "instant" });
-  } else {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }
-}, [pathname]);
+    return () => clearTimeout(timeout);
+  }, [pathname]);
 
   return null;
-
-  
 }
 
 // Configure query client with cache settings
