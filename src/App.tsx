@@ -21,10 +21,20 @@ function ScrollToTop() {
   const { pathname } = useLocation();
   
   useEffect(() => {
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
+    document.querySelector("#scroll-container")?.scrollTo(0, 0);
   }, [pathname]);
+
+
+  useEffect(() => {
+  console.log("ScrollToTop triggered for", pathname);
+  window.scrollTo(0, 0);
+}, [pathname]);
+  
   
   return null;
+
+  
 }
 
 // Configure query client with cache settings
