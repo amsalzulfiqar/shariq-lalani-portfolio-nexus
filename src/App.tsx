@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { useRouter } from 'next/router';
 import Index from "./pages/Index";
 import ServicesPage from "./pages/ServicesPage";
 import NotFound from "./pages/NotFound";
@@ -14,6 +15,23 @@ import FeaturedWorksPage from "./pages/FeaturedWorksPage";
 
 // Add version for cache busting
 const APP_VERSION = "1.0.2";
+
+function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      window.scrollTo(0, 0);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
+  return <Component {...pageProps} />;
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
