@@ -21,9 +21,10 @@ function ScrollToTop() {
   const { pathname } = useLocation();
   
   useEffect(() => {
+  console.log("ScrollToTop triggered for", pathname);
   const timeout = setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 50); // short delay can fix it
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, 50); // or even 100
 
   return () => clearTimeout(timeout);
 }, [pathname]);
