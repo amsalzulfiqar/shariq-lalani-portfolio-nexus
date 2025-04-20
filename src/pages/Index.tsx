@@ -25,8 +25,10 @@ const Index = () => {
         Object.entries(sections).map(([key, el]) => `${key}: ${!!el}`).join(', ')
       );
       
-      // Direct approach to ensure contact section has ID
-      const contactHeading = document.querySelector('h2:contains("Get in Touch")');
+      // Find section with Contact component by looking for the heading text
+      const headings = Array.from(document.querySelectorAll('h2'));
+      const contactHeading = headings.find(h => h.textContent?.includes('Get in Touch'));
+      
       if (contactHeading) {
         const parentSection = contactHeading.closest('section');
         if (parentSection && parentSection.id !== 'contact') {
@@ -35,7 +37,7 @@ const Index = () => {
         }
       }
       
-      // Try by class and position
+      // Try by class and position as fallback
       const possibleContactSections = document.querySelectorAll('section.section-padding');
       const lastSection = possibleContactSections[possibleContactSections.length - 1];
       if (lastSection && lastSection.id !== 'contact') {

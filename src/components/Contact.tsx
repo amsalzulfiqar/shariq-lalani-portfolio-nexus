@@ -14,10 +14,13 @@ const Contact = () => {
     console.log("Contact component mounted, ID present:", !!document.getElementById('contact'));
     
     // Ensure the section has the correct ID
-    const section = document.querySelector('.section-padding') || document.querySelector('section');
-    if (section && section.id !== 'contact') {
+    const section = document.querySelector('section:has(h2:contains("Get in Touch"))') || 
+                   document.querySelector('.section-padding') || 
+                   document.querySelector('section');
+                   
+    if (section) {
       section.id = 'contact';
-      console.log("Ensured contact section has ID 'contact'");
+      console.log("Set contact section ID to 'contact'");
     }
   }, []);
 

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
@@ -22,7 +21,7 @@ const Hero = () => {
       // Get the element's position relative to the viewport
       const elementPosition = contactSection.getBoundingClientRect().top;
       // Add current scroll position to get absolute position
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; // Added extra 20px padding
       
       console.log("Scrolling to absolute position:", offsetPosition);
       
@@ -35,7 +34,7 @@ const Hero = () => {
       console.error("Contact section not found in the DOM");
       // Ultimate fallback - just go to bottom of page
       window.scrollTo({
-        top: document.body.scrollHeight,
+        top: document.body.scrollHeight - 300, // Scroll to near bottom but not completely
         behavior: 'smooth'
       });
     }
