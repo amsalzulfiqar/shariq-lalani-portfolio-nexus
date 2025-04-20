@@ -8,33 +8,17 @@ const Hero = () => {
   const isMobile = useIsMobile();
 
   const scrollToContact = () => {
-    console.log("Work with Me button clicked");
-    
-    // Find the contact section
     const contactSection = document.getElementById('contact');
-    console.log("Contact section found:", contactSection);
     
     if (contactSection) {
-      // Improved scrolling implementation with better header adjustment
       const headerHeight = 80; // Height of the fixed header
+      const offsetPosition = contactSection.getBoundingClientRect().top + 
+                             window.pageYOffset - 
+                             headerHeight - 
+                             20; // Extra padding
       
-      // Get the element's position relative to the viewport
-      const elementPosition = contactSection.getBoundingClientRect().top;
-      // Add current scroll position to get absolute position
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; // Added extra 20px padding
-      
-      console.log("Scrolling to absolute position:", offsetPosition);
-      
-      // Use scrollTo for consistent behavior
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
-      });
-    } else {
-      console.error("Contact section not found in the DOM");
-      // Ultimate fallback - just go to bottom of page
-      window.scrollTo({
-        top: document.body.scrollHeight - 300, // Scroll to near bottom but not completely
         behavior: 'smooth'
       });
     }

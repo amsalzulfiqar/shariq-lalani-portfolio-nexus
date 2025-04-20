@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -38,8 +37,18 @@ const Navbar = () => {
     if (isHomePage) {
       e.preventDefault();
       const contactSection = document.getElementById('contact');
+      
       if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+        const headerHeight = 80; // Height of the fixed header
+        const offsetPosition = contactSection.getBoundingClientRect().top + 
+                               window.pageYOffset - 
+                               headerHeight - 
+                               20; // Extra padding
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
       setIsOpen(false);
     }
@@ -101,7 +110,7 @@ const Navbar = () => {
 
           <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
             <a 
-              href={isHomePage ? '#contact' : '/#contact'}
+              href="#contact"
               onClick={handleContactClick}
             >
               Contact
@@ -147,7 +156,7 @@ const Navbar = () => {
             </Link>
             <Button asChild variant="outline" className="w-full">
               <a 
-                href={isHomePage ? '#contact' : '/#contact'}
+                href="#contact"
                 onClick={handleContactClick}
               >
                 Contact
