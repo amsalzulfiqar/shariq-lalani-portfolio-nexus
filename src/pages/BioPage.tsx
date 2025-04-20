@@ -1,31 +1,9 @@
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Music, Mic, Headphones, Piano, Guitar } from 'lucide-react';
 
 const BioPage = () => {
-  // Force scroll to top on mount as a backup to the global ScrollToTop component
-  useEffect(() => {
-    // Extra aggressive scroll reset
-    const resetScroll = () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTo(0, 0);
-      document.body.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      
-      const mainContent = document.querySelector('main');
-      if (mainContent) mainContent.scrollTop = 0;
-    };
-    
-    // Immediate reset
-    resetScroll();
-    
-    // And with a small delay to ensure it happens after any initial rendering
-    setTimeout(resetScroll, 10);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Reduced-height hero with background image */}
