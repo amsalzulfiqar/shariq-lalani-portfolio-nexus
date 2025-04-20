@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
 import { sendEmail } from '@/lib/email-service';
 import { toast } from "@/hooks/use-toast";
@@ -8,33 +8,6 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  
-  // Add effect to log when component mounts to verify it's in the DOM
-  useEffect(() => {
-    console.log("Contact component mounted, ID present:", !!document.getElementById('contact'));
-    
-    // Ensure the section has the correct ID using standard DOM methods
-    const currentSection = document.querySelector('section:last-of-type') || document.querySelector('.section-padding');
-    
-    // Look for the section containing "Get in Touch" heading
-    let contactSection = null;
-    const headings = Array.from(document.querySelectorAll('h2'));
-    for (const heading of headings) {
-      if (heading.textContent && heading.textContent.includes('Get in Touch')) {
-        contactSection = heading.closest('section');
-        break;
-      }
-    }
-    
-    // Apply ID to the found section or fallback to the last section with section-padding class
-    if (contactSection) {
-      contactSection.id = 'contact';
-      console.log("Set contact section ID via heading match");
-    } else if (currentSection) {
-      currentSection.id = 'contact';
-      console.log("Set contact ID to fallback section");
-    }
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
