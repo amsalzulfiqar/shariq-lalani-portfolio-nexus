@@ -9,16 +9,23 @@ const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const isMobile = useIsMobile();
 
-  const scrollToContact = (e) => {
+  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      const offset = 80; // Account for header height
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
   return (
-    <section className="relative w-screen h-screen overflow-hidden">
+    <section className="relative w-screen h-[100svh] overflow-hidden">
       {/* Background Image with loading state */}
       <div className="absolute inset-0 z-0">
         {!imageLoaded && (
@@ -39,24 +46,16 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className={`text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in ${isMobile ? 'flex flex-row flex-wrap justify-center gap-x-3 gap-y-2' : 'flex items-center space-x-4'}`}
+        <h1 className={`text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in ${isMobile ? 'text-2xl' : ''}`}
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
-          {isMobile ? (
-            <>
-              <span>Artist</span>
-              <span>Producer</span>
-              <span>Engineer</span>
-            </>
-          ) : (
-            <>
-              <span>Artist</span>
-              <Square size={8} className="text-white/60 fill-white/60" />
-              <span>Producer</span>
-              <Square size={8} className="text-white/60 fill-white/60" />
-              <span>Engineer</span>
-            </>
-          )}
+          <div className="flex items-center justify-center space-x-4 flex-nowrap">
+            <span>Artist</span>
+            <Square size={8} className="text-white/60 fill-white/60" />
+            <span>Producer</span>
+            <Square size={8} className="text-white/60 fill-white/60" />
+            <span>Engineer</span>
+          </div>
         </h1>
 
         <div 
