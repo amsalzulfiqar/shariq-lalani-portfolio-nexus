@@ -13,39 +13,57 @@ const Index = () => {
     // Force scroll to top on component mount
     window.scrollTo(0, 0);
     
-    // Verify Contact section is in DOM
-    setTimeout(() => {
+    // Check if contact section exists with ID
+    const checkContactSection = () => {
       const contactSection = document.getElementById('contact');
       console.log('Contact section found in Index useEffect:', contactSection);
-    }, 500);
+      
+      // If not found, try again after a short delay (component might still be mounting)
+      if (!contactSection) {
+        console.log('Contact section not found, trying again...');
+        setTimeout(checkContactSection, 500);
+      }
+    };
     
-    // Smooth scroll implementation for anchor links
+    // Run the check
+    checkContactSection();
+    
+    // Simple implementation of smooth scrolling for all anchor links
+    const handleAnchorClick = (e: Event) => {
+      const anchor = e.currentTarget as HTMLAnchorElement;
+      if (!anchor) return;
+      
+      const href = anchor.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      
+      e.preventDefault();
+      
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      console.log(`Anchor clicked, target ID: ${targetId}, element found:`, targetElement);
+      
+      if (targetElement) {
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    };
+    
+    // Add event listeners to all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const href = this.getAttribute('href');
-        if (!href) return;
-        
-        const targetId = href.includes('#') ? href.split('#')[1] : href.substring(1);
-        const target = document.getElementById(targetId);
-        console.log(`Anchor clicked, target ID: ${targetId}, element found:`, target);
-        
-        if (target) {
-          window.scrollTo({
-            top: target.getBoundingClientRect().top + window.scrollY - 80, // Offset for navbar
-            behavior: 'smooth'
-          });
-        }
-      });
+      anchor.addEventListener('click', handleAnchorClick);
     });
 
     return () => {
       // Clean up event listeners
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', function (e) {
-          // Event cleanup
-        });
+        anchor.removeEventListener('click', handleAnchorClick);
       });
     };
   }, []);

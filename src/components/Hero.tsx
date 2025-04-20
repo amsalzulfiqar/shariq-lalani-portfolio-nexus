@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
@@ -10,28 +11,32 @@ const Hero = () => {
   const scrollToContact = () => {
     console.log("Work with Me button clicked");
     
-    // Find the contact section element
+    // Simple and direct approach
     const contactSection = document.getElementById('contact');
     console.log("Contact section found:", contactSection);
     
     if (contactSection) {
-      // Account for header height
+      // Calculate offset position - simplifying the calculation
       const headerOffset = 80;
       const elementPosition = contactSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       
       console.log("Scrolling to position:", offsetPosition);
       
-      // Scroll to the contact section
+      // Using window.scrollTo for consistent behavior across browsers
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       });
     } else {
       console.error("Contact section not found in the DOM");
-      // Fallback - try to scroll to an approximate position
+      // Fallback - try to scroll to the contact section based on page height
+      const pageHeight = document.body.scrollHeight;
+      const contactApproxPosition = Math.max(0, pageHeight - 1000);
+      
+      console.log("Fallback: Scrolling to approximate position:", contactApproxPosition);
       window.scrollTo({
-        top: document.body.scrollHeight,
+        top: contactApproxPosition,
         behavior: 'smooth'
       });
     }
