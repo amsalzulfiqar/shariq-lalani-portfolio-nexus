@@ -15,12 +15,26 @@ import FeaturedWorksPage from "./pages/FeaturedWorksPage";
 // Add version for cache busting
 const APP_VERSION = "1.0.2";
 
+// Use this to force React Router to always scroll to top on route changes
 function ScrollToTop() {
   const { pathname } = useLocation();
 
+  // Using both useLayoutEffect and useEffect for maximum compatibility
   useLayoutEffect(() => {
     console.log("🧷 Forcing scroll to top for", pathname);
     window.scrollTo(0, 0);
+  }, [pathname]);
+
+  // Backup with useEffect and a slight delay to ensure DOM is ready
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto'
+      });
+    }, 10);
+    
+    return () => clearTimeout(timeoutId);
   }, [pathname]);
 
   return null;

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -9,7 +8,8 @@ import SpotifyPlayer from '@/components/SpotifyPlayer';
 import Logo from '@/components/Logo';
 
 const Index = () => {
-  // Force scroll to top on component mount
+  // We're keeping this but it won't conflict with the global ScrollToTop
+  // since it only runs once when mounting the Index component
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
