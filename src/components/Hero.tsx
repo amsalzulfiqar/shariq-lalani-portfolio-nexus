@@ -31,7 +31,7 @@ const Hero = () => {
           alt="Musician playing piano in recording studio"
           className={`w-full h-full object-cover object-center ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
           loading="eager"
-          fetchpriority="high"
+          fetchPriority="high"
           onLoad={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-black/50"></div>
