@@ -37,18 +37,8 @@ const Navbar = () => {
     if (isHomePage) {
       e.preventDefault();
       const contactSection = document.getElementById('contact');
-      
       if (contactSection) {
-        const headerHeight = 80; // Height of the fixed header
-        const offsetPosition = contactSection.getBoundingClientRect().top + 
-                               window.pageYOffset - 
-                               headerHeight - 
-                               20; // Extra padding
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        contactSection.scrollIntoView();
       }
       setIsOpen(false);
     }
