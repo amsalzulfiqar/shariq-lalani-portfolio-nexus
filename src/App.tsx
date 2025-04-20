@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,53 +18,45 @@ const APP_VERSION = "1.0.2";
 function ScrollToTop() {
   const { pathname } = useLocation();
   const navigationType = useNavigationType();
-  const prevPathRef = useRef(pathname);
-
-  // The most aggressive scroll reset approach combining multiple techniques
+  
+  // Super aggressive scroll reset - we want to ensure it happens no matter what
   useLayoutEffect(() => {
-    if (prevPathRef.current !== pathname) {
-      console.log("🧷 Forcing scroll to top for", pathname);
-      
-      // Immediate scroll reset (highest priority)
+    console.log("🧷 Aggressive scroll reset for route:", pathname);
+    
+    const forceScrollTop = () => {
+      // Reset scroll in all possible ways
       window.scrollTo(0, 0);
-      
-      // Reset all potential scroll containers
+      document.documentElement.scrollTo(0, 0);
+      document.body.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
       
-      // Store the new pathname
-      prevPathRef.current = pathname;
-    }
-  }, [pathname, navigationType]);
-
-  // Backup scrolling with slight delays to handle any race conditions
-  useEffect(() => {
-    // Immediate reset
-    window.scrollTo(0, 0);
-    
-    // Short timeout (for after initial render)
-    const timeoutId1 = setTimeout(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 10);
-    
-    // Longer timeout (for after any animations or transitions complete)
-    const timeoutId2 = setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'auto'
+      // If there's a main container, also reset its scroll
+      const mainContent = document.querySelector('main');
+      if (mainContent) mainContent.scrollTop = 0;
+      
+      // Reset any .scroll-container elements
+      document.querySelectorAll('.scroll-container').forEach(el => {
+        if (el instanceof HTMLElement) el.scrollTop = 0;
       });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 100);
+    };
+    
+    // Attempt multiple scroll resets with increasing delays
+    forceScrollTop();
+    
+    // Schedule several attempts to account for any async rendering
+    const timers = [];
+    [0, 10, 50, 100, 250, 500].forEach(delay => {
+      const timer = setTimeout(forceScrollTop, delay);
+      timers.push(timer);
+    });
     
     return () => {
-      clearTimeout(timeoutId1);
-      clearTimeout(timeoutId2);
+      // Clear all timers on cleanup
+      timers.forEach(timer => clearTimeout(timer));
     };
-  }, [pathname]);
-
+  }, [pathname, navigationType]);
+  
   return null;
 }
 
