@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail } from 'lucide-react';
 import { sendEmail } from '@/lib/email-service';
 import { toast } from "@/hooks/use-toast";
@@ -8,6 +8,11 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  
+  // Add effect to log when component mounts to verify it's in the DOM
+  useEffect(() => {
+    console.log("Contact component mounted, ID present:", !!document.getElementById('contact'));
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

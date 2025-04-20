@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
@@ -19,7 +20,7 @@ const Hero = () => {
       if (contactSection) {
         const headerOffset = 80; // Account for header height
         const elementPosition = contactSection.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
         
         console.log("Scrolling to position:", offsetPosition);
         
@@ -29,6 +30,11 @@ const Hero = () => {
         });
       } else {
         console.error("Contact section not found in the DOM");
+        // Fallback - try to scroll to an approximate position
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
       }
     }, 100);
   };
@@ -83,14 +89,11 @@ const Hero = () => {
             </a>
           </Button>
           <Button 
-            asChild 
-            variant="outline" 
             size="lg" 
             className="border-white text-white hover:bg-white/10 px-8"
+            onClick={scrollToContact}
           >
-            <button onClick={scrollToContact}>
-              Work with Me
-            </button>
+            Work with Me
           </Button>
         </div>
       </div>
