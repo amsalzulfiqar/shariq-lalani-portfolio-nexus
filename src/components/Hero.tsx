@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
@@ -10,22 +11,26 @@ const Hero = () => {
   const scrollToContact = () => {
     console.log("Work with Me button clicked");
     
-    // Most direct approach to find the contact section
+    // Find the contact section
     const contactSection = document.getElementById('contact');
     console.log("Contact section found:", contactSection);
     
     if (contactSection) {
-      // Scroll the contact section into view
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Improved scrolling implementation with better header adjustment
+      const headerHeight = 80; // Height of the fixed header
       
-      // Additional adjustment for header
-      setTimeout(() => {
-        const scrollPosition = window.scrollY;
-        window.scrollTo({
-          top: scrollPosition - 80, // Adjust for header
-          behavior: 'smooth'
-        });
-      }, 100);
+      // Get the element's position relative to the viewport
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      // Add current scroll position to get absolute position
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+      
+      console.log("Scrolling to absolute position:", offsetPosition);
+      
+      // Use scrollTo for consistent behavior
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     } else {
       console.error("Contact section not found in the DOM");
       // Ultimate fallback - just go to bottom of page

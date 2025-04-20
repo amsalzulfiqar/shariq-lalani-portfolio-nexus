@@ -13,23 +13,36 @@ const Index = () => {
     // Force scroll to top on component mount
     window.scrollTo(0, 0);
     
-    // Make sure all sections have their IDs properly set
-    const sections = {
-      contact: document.getElementById('contact'),
-      spotify: document.getElementById('spotify'),
-      about: document.querySelector('section:nth-child(3)') // About is usually the 3rd section
-    };
-    
-    console.log('Available sections on mount:', 
-      Object.entries(sections).map(([key, el]) => `${key}: ${!!el}`).join(', ')
-    );
-    
-    // Ensure contact section has ID if it exists but ID is missing
-    const possibleContactSection = document.querySelector('.section-padding:last-of-type:not(#contact)');
-    if (possibleContactSection && !sections.contact) {
-      console.log('Found contact section without ID, adding ID');
-      possibleContactSection.id = 'contact';
-    }
+    // Ensure all important sections have IDs
+    setTimeout(() => {
+      // Make sure all sections have their IDs properly set
+      const sections = {
+        contact: document.getElementById('contact'),
+        spotify: document.getElementById('spotify')
+      };
+      
+      console.log('Available sections after delay:', 
+        Object.entries(sections).map(([key, el]) => `${key}: ${!!el}`).join(', ')
+      );
+      
+      // Direct approach to ensure contact section has ID
+      const contactHeading = document.querySelector('h2:contains("Get in Touch")');
+      if (contactHeading) {
+        const parentSection = contactHeading.closest('section');
+        if (parentSection && parentSection.id !== 'contact') {
+          parentSection.id = 'contact';
+          console.log('Added ID to contact section via heading match');
+        }
+      }
+      
+      // Try by class and position
+      const possibleContactSections = document.querySelectorAll('section.section-padding');
+      const lastSection = possibleContactSections[possibleContactSections.length - 1];
+      if (lastSection && lastSection.id !== 'contact') {
+        lastSection.id = 'contact';
+        console.log('Added ID to last section with section-padding class');
+      }
+    }, 300);
   }, []);
 
   return (

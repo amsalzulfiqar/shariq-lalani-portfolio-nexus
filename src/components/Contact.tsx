@@ -12,6 +12,13 @@ const Contact = () => {
   // Add effect to log when component mounts to verify it's in the DOM
   useEffect(() => {
     console.log("Contact component mounted, ID present:", !!document.getElementById('contact'));
+    
+    // Ensure the section has the correct ID
+    const section = document.querySelector('.section-padding') || document.querySelector('section');
+    if (section && section.id !== 'contact') {
+      section.id = 'contact';
+      console.log("Ensured contact section has ID 'contact'");
+    }
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,7 +55,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-background/80">
+    <section id="contact" className="section-padding bg-background/80" data-section-name="contact">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary opacity-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
