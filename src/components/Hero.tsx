@@ -9,6 +9,14 @@ const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const isMobile = useIsMobile();
 
+  const scrollToContact = (e) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative w-screen h-screen overflow-hidden">
       {/* Background Image with loading state */}
@@ -21,8 +29,9 @@ const Hero = () => {
         <img 
           src="/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png" 
           alt="Musician playing piano in recording studio"
-          className={`w-full h-full object-cover ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+          className={`w-full h-full object-cover object-center ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
           loading="eager"
+          fetchpriority="high"
           onLoad={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-black/50"></div>
@@ -30,7 +39,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className={`text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in ${isMobile ? 'flex flex-col space-y-2' : 'flex items-center space-x-4'}`}
+        <h1 className={`text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in ${isMobile ? 'flex flex-row flex-wrap justify-center gap-x-3 gap-y-2' : 'flex items-center space-x-4'}`}
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
           {isMobile ? (
@@ -73,7 +82,7 @@ const Hero = () => {
             size="lg" 
             className="border-white text-white hover:bg-white/10 px-8"
           >
-            <a href="#contact">Contact</a>
+            <a href="#contact" onClick={scrollToContact}>Contact</a>
           </Button>
         </div>
       </div>

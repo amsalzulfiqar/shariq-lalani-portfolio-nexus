@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -9,6 +10,9 @@ import Logo from '@/components/Logo';
 
 const Index = () => {
   useEffect(() => {
+    // Force scroll to top on component mount
+    window.scrollTo(0, 0);
+    
     // Smooth scroll implementation for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -28,6 +32,15 @@ const Index = () => {
         }
       });
     });
+
+    return () => {
+      // Clean up event listeners
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.removeEventListener('click', function (e) {
+          // Event cleanup
+        });
+      });
+    };
   }, []);
 
   return (

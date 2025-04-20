@@ -4,8 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import Index from "./pages/Index";
 import ServicesPage from "./pages/ServicesPage";
 import NotFound from "./pages/NotFound";
@@ -15,8 +14,6 @@ import FeaturedWorksPage from "./pages/FeaturedWorksPage";
 
 // Add version for cache busting
 const APP_VERSION = "1.0.2";
-
-
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,13 +26,14 @@ function ScrollToTop() {
   return null;
 }
 
-
 // Configure query client with cache settings
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
-      gcTime: 0,
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      gcTime: 1000 * 60 * 10,   // 10 minutes
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
     },
   },
 });
@@ -43,13 +41,29 @@ const queryClient = new QueryClient({
 const App = () => {
   // Clear browser cache for static assets
   useEffect(() => {
-    if ('caches' in window) {
-      caches.keys().then((names) => {
-        names.forEach(name => {
-          caches.delete(name);
+    // Setup a global cache strategy
+    const handleLoaded = () => {
+      // Create image loading and caching strategy
+      const preloadImages = () => {
+        const imagesToPreload = [
+          "/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png",
+          "/lovable-uploads/688646cc-2ad2-4d62-a487-e64b409ec429.png",
+          "/lovable-uploads/8c8728bf-ab7a-4c4c-b4f8-dcb8665ede8c.png"
+        ];
+
+        imagesToPreload.forEach(src => {
+          const img = new Image();
+          img.src = src;
+          img.fetchPriority = "high";
         });
-      });
-    }
+      };
+
+      // Preload critical images
+      preloadImages();
+    };
+
+    window.addEventListener('load', handleLoaded);
+    return () => window.removeEventListener('load', handleLoaded);
   }, []);
 
   return (
