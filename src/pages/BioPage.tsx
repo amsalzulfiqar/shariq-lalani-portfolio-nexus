@@ -1,10 +1,18 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Music, Mic, Headphones, Piano, Guitar } from 'lucide-react';
 
 const BioPage = () => {
+  // Force scroll to top on mount as a backup to the global ScrollToTop component
+  useEffect(() => {
+    // Reset all scrollable elements to be safe
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Reduced-height hero with background image */}

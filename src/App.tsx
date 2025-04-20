@@ -3,8 +3,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, useLayoutEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from "react-router-dom";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import Index from "./pages/Index";
 import ServicesPage from "./pages/ServicesPage";
 import NotFound from "./pages/NotFound";
@@ -18,23 +18,52 @@ const APP_VERSION = "1.0.2";
 // Use this to force React Router to always scroll to top on route changes
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const navigationType = useNavigationType();
+  const prevPathRef = useRef(pathname);
 
-  // Using both useLayoutEffect and useEffect for maximum compatibility
+  // The most aggressive scroll reset approach combining multiple techniques
   useLayoutEffect(() => {
-    console.log("🧷 Forcing scroll to top for", pathname);
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (prevPathRef.current !== pathname) {
+      console.log("🧷 Forcing scroll to top for", pathname);
+      
+      // Immediate scroll reset (highest priority)
+      window.scrollTo(0, 0);
+      
+      // Reset all potential scroll containers
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      
+      // Store the new pathname
+      prevPathRef.current = pathname;
+    }
+  }, [pathname, navigationType]);
 
-  // Backup with useEffect and a slight delay to ensure DOM is ready
+  // Backup scrolling with slight delays to handle any race conditions
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    // Immediate reset
+    window.scrollTo(0, 0);
+    
+    // Short timeout (for after initial render)
+    const timeoutId1 = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 10);
+    
+    // Longer timeout (for after any animations or transitions complete)
+    const timeoutId2 = setTimeout(() => {
       window.scrollTo({
         top: 0,
         behavior: 'auto'
       });
-    }, 10);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 100);
     
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId1);
+      clearTimeout(timeoutId2);
+    };
   }, [pathname]);
 
   return null;
