@@ -14,8 +14,10 @@ const Index = () => {
     window.scrollTo(0, 0);
     
     // Verify Contact section is in DOM
-    const contactSection = document.getElementById('contact');
-    console.log('Contact section found in Index useEffect:', contactSection);
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      console.log('Contact section found in Index useEffect:', contactSection);
+    }, 500);
     
     // Smooth scroll implementation for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

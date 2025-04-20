@@ -8,35 +8,34 @@ const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const isMobile = useIsMobile();
 
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const scrollToContact = () => {
     console.log("Work with Me button clicked");
     
-    // Add a small delay to ensure DOM is fully loaded
-    setTimeout(() => {
-      const contactSection = document.getElementById('contact');
-      console.log("Contact section found:", contactSection);
+    // Find the contact section element
+    const contactSection = document.getElementById('contact');
+    console.log("Contact section found:", contactSection);
+    
+    if (contactSection) {
+      // Account for header height
+      const headerOffset = 80;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
       
-      if (contactSection) {
-        const headerOffset = 80; // Account for header height
-        const elementPosition = contactSection.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
-        
-        console.log("Scrolling to position:", offsetPosition);
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      } else {
-        console.error("Contact section not found in the DOM");
-        // Fallback - try to scroll to an approximate position
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: 'smooth'
-        });
-      }
-    }, 100);
+      console.log("Scrolling to position:", offsetPosition);
+      
+      // Scroll to the contact section
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    } else {
+      console.error("Contact section not found in the DOM");
+      // Fallback - try to scroll to an approximate position
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -90,7 +89,7 @@ const Hero = () => {
           </Button>
           <Button 
             size="lg" 
-            className="border-white text-white hover:bg-white/10 px-8"
+            className="bg-black text-white hover:bg-black/80 px-8 border-none"
             onClick={scrollToContact}
           >
             Work with Me
