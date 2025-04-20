@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link as RouterLink } from 'react-router-dom';
@@ -10,17 +11,28 @@ const Hero = () => {
 
   const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      const headerOffset = 80; // Account for header height
-      const elementPosition = contactSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    console.log("Contact button clicked");
+    
+    // Add a small delay to ensure DOM is fully loaded
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      console.log("Contact section found:", contactSection);
       
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+      if (contactSection) {
+        const headerOffset = 80; // Account for header height
+        const elementPosition = contactSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        console.log("Scrolling to position:", offsetPosition);
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      } else {
+        console.error("Contact section not found in the DOM");
+      }
+    }, 100);
   };
 
   return (
@@ -78,12 +90,14 @@ const Hero = () => {
             size="lg" 
             className="border-white text-white hover:bg-white/10 px-8"
           >
-            <a 
-              href="#contact" 
-              onClick={scrollToContact}
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToContact(e as unknown as React.MouseEvent<HTMLAnchorElement>);
+              }}
             >
               Contact
-            </a>
+            </button>
           </Button>
         </div>
       </div>

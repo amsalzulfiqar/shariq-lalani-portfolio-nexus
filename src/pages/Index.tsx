@@ -13,6 +13,10 @@ const Index = () => {
     // Force scroll to top on component mount
     window.scrollTo(0, 0);
     
+    // Verify Contact section is in DOM
+    const contactSection = document.getElementById('contact');
+    console.log('Contact section found in Index useEffect:', contactSection);
+    
     // Smooth scroll implementation for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -23,6 +27,7 @@ const Index = () => {
         
         const targetId = href.includes('#') ? href.split('#')[1] : href.substring(1);
         const target = document.getElementById(targetId);
+        console.log(`Anchor clicked, target ID: ${targetId}, element found:`, target);
         
         if (target) {
           window.scrollTo({
