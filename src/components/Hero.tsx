@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link as RouterLink } from 'react-router-dom';
@@ -13,9 +12,9 @@ const Hero = () => {
     e.preventDefault();
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      const offset = 80; // Account for header height
+      const headerOffset = 80; // Account for header height
       const elementPosition = contactSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       
       window.scrollTo({
         top: offsetPosition,
@@ -26,7 +25,6 @@ const Hero = () => {
 
   return (
     <section className="relative w-screen h-[100svh] overflow-hidden">
-      {/* Background Image with loading state */}
       <div className="absolute inset-0 z-0">
         {!imageLoaded && (
           <div className="w-full h-full bg-black flex items-center justify-center">
@@ -44,7 +42,6 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <h1 className={`text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in ${isMobile ? 'text-2xl' : ''}`}
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
@@ -81,7 +78,12 @@ const Hero = () => {
             size="lg" 
             className="border-white text-white hover:bg-white/10 px-8"
           >
-            <a href="#contact" onClick={scrollToContact}>Contact</a>
+            <a 
+              href="#contact" 
+              onClick={scrollToContact}
+            >
+              Contact
+            </a>
           </Button>
         </div>
       </div>
