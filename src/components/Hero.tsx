@@ -1,7 +1,5 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Link as RouterLink } from 'react-router-dom';
 import { Square } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -9,9 +7,9 @@ const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const isMobile = useIsMobile();
 
-  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
-    console.log("Contact button clicked");
+    console.log("Work with Me button clicked");
     
     // Add a small delay to ensure DOM is fully loaded
     setTimeout(() => {
@@ -90,13 +88,8 @@ const Hero = () => {
             size="lg" 
             className="border-white text-white hover:bg-white/10 px-8"
           >
-            <button 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToContact(e as unknown as React.MouseEvent<HTMLAnchorElement>);
-              }}
-            >
-              Contact
+            <button onClick={scrollToContact}>
+              Work with Me
             </button>
           </Button>
         </div>
