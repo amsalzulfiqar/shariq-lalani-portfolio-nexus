@@ -15,7 +15,9 @@ serve(async (req) => {
   }
 
   try {
-    const { to, subject, name, email, message } = await req.json()
+    const { subject, name, email, message } = await req.json()
+    const to = "info@shariqlalani.com"
+    //const { to, subject, name, email, message } = await req.json()
 
     if (!to || !subject || !name || !email || !message) {
       return new Response(
