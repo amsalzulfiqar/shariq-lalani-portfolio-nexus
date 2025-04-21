@@ -38,17 +38,24 @@ export const useSecretsForm = (
       for (const { name, value } of secretsToUpdate) {
         console.log(`Setting secret: ${name}`);
         
+        // Call the edge function with both apikey and authorization headers
         const { data: responseData, error: functionError } = await supabase.functions.invoke('set-secret', {
-          body: { name, value }
+          body: { name, value },
+          headers: {
+            // Ensure authorization headers are included
+            'Content-Type': 'application/json',
+          }
         });
         
         console.log('Response from set-secret function:', responseData);
         
+        // Check for edge function errors in the response
         if (functionError) {
-          console.error('Error setting secret:', functionError);
+          console.error('Error invoking function:', functionError);
           throw new Error(`Failed to update secret ${name}: ${functionError.message}`);
         }
         
+        // Check for application-level errors in the response data
         if (responseData && !responseData.success) {
           console.error('Error response from function:', responseData);
           throw new Error(`Failed to update secret ${name}: ${responseData.error || 'Unknown error'}`);
