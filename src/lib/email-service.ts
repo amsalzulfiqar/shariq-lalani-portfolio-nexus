@@ -17,7 +17,7 @@ export const sendEmail = async (data: EmailData) => {
       },
       mode: 'cors',
       body: JSON.stringify({
-        to: "info@shariqlalani.com",
+        to: "info@shariqlalani.com", // Hardcoded recipient
         ...data
       }),
     });

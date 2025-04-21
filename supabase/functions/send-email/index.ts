@@ -15,11 +15,12 @@ serve(async (req) => {
   }
 
   try {
-    const { subject, name, email, message } = await req.json()
-    const to = "info@shariqlalani.com"
-    //const { to, subject, name, email, message } = await req.json()
+    const { to, subject, name, email, message } = await req.json()
+    
+    // Always use info@shariqlalani.com as the recipient
+    const recipientEmail = "info@shariqlalani.com"
 
-    if (!to || !subject || !name || !email || !message) {
+    if (!recipientEmail || !subject || !name || !email || !message) {
       return new Response(
         JSON.stringify({ 
           success: false,
@@ -72,7 +73,7 @@ serve(async (req) => {
 
       await client.send({
         from: EMAIL_FROM,
-        to: to,
+        to: recipientEmail,
         subject: `[Website Contact] ${subject}`,
         content: emailBody,
         html: `
