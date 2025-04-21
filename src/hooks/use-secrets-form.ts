@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { toast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 export interface SecretField {
   key: string;
@@ -8,37 +8,57 @@ export interface SecretField {
   type: 'text' | 'password' | 'number';
   placeholder?: string;
   required?: boolean;
-  validation?: (value: string) => string | null;
 }
 
-export interface SecretsFormData {
-  [key: string]: string;
-}
+export type SecretsFormData = Record<string, string>;
 
 export const useSecretsForm = (
-  fields: SecretField[], 
-  onSubmit: (data: SecretsFormData) => Promise<void>
+  fields: SecretField[],
+  onSubmitCallback: (data: SecretsFormData) => Promise<void>
 ) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (data: SecretsFormData) => {
     setIsSubmitting(true);
+    setError(null);
+    setSuccess(false);
+
     try {
-      await onSubmit(data);
-      toast({
-        title: 'Secrets Updated',
-        description: 'Your secrets have been successfully saved.'
-      });
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: error instanceof Error ? error.message : 'Failed to save secrets',
-        variant: 'destructive'
-      });
+      // Update secrets in Supabase
+      const secretsToUpdate = Object.entries(data).map(([key, value]) => ({
+        name: key,
+        value,
+      }));
+      
+      // Update each secret individually
+      for (const { name, value } of secretsToUpdate) {
+        const { error } = await supabase.functions.setSecret(name, value);
+        
+        if (error) {
+          throw new Error(`Failed to update secret ${name}: ${error.message}`);
+        }
+      }
+      
+      // Call the callback if provided
+      if (onSubmitCallback) {
+        await onSubmitCallback(data);
+      }
+      
+      setSuccess(true);
+    } catch (err) {
+      console.error('Error updating secrets:', err);
+      setError(err instanceof Error ? err.message : 'Failed to update secrets');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  return { handleSubmit, isSubmitting };
+  return {
+    handleSubmit,
+    isSubmitting,
+    error,
+    success,
+  };
 };

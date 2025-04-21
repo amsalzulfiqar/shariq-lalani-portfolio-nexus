@@ -27,6 +27,7 @@ serve(async (req) => {
     // Always use info@shariqlalani.com as the recipient
     const recipientEmail = "info@shariqlalani.com"
 
+    // Validate that required fields are present
     if (!subject || !name || !email || !message) {
       console.error('Missing required fields');
       return new Response(
@@ -50,13 +51,16 @@ serve(async (req) => {
         from: !!EMAIL_FROM 
       })
       
+      // Return a more specific error with status 400 instead of 500
+      // This helps differentiate configuration issues from server errors
       return new Response(
         JSON.stringify({ 
           success: false,
+          error: "smtp_config_missing",
           message: "Email service configuration is incomplete. Please configure SMTP settings."
         }),
         {
-          status: 500,
+          status: 400, // Changed from 500 to 400 to indicate it's a configuration issue
           headers: responseHeaders,
         }
       )
@@ -119,11 +123,12 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ 
           success: false,
+          error: "smtp_connection_error",
           message: "Failed to send email. Please check your SMTP configuration.",
-          error: emailError.toString()
+          details: emailError.toString()
         }),
         {
-          status: 500,
+          status: 400, // Changed from 500 to 400 for configuration issues
           headers: responseHeaders,
         }
       )
@@ -133,6 +138,7 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({ 
         success: false,
+        error: "request_error",
         message: 'An unexpected error occurred'
       }),
       {

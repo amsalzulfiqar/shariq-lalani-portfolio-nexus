@@ -9,10 +9,12 @@ import { SmtpConfigButton } from '@/components/SmtpConfigButton';
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [configError, setConfigError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setConfigError(false);
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -29,10 +31,21 @@ const Contact = () => {
         (e.target as HTMLFormElement).reset();
         setFormSubmitted(true);
       } else {
-        throw new Error(result.error || "Failed to send message");
+        // Check for configuration error
+        if (result.error?.includes('SMTP configuration')) {
+          setConfigError(true);
+          throw new Error(result.error);
+        } else {
+          throw new Error(result.error || "Failed to send message");
+        }
       }
     } catch (error) {
       console.error("Contact form submission error:", error);
+      // Check if it's a configuration error
+      if (error instanceof Error && error.message.includes('SMTP configuration')) {
+        setConfigError(true);
+      }
+      
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
@@ -78,10 +91,22 @@ const Contact = () => {
                 </AlertDescription>
               </Alert>
             )}
+
+            {configError && (
+              <Alert className="bg-amber-50 text-amber-800 border-amber-200 mb-4">
+                <AlertTitle>Email Configuration Required</AlertTitle>
+                <AlertDescription>
+                  Email sending is not configured yet. Please set up SMTP settings below.
+                </AlertDescription>
+              </Alert>
+            )}
             
             <div className="mt-4">
               <p className="text-sm text-muted-foreground mb-2">
-                If you're hosting this website and need to configure email settings:
+                {configError 
+                  ? "Please configure email settings to enable the contact form:"
+                  : "If you're hosting this website and need to configure email settings:"
+                }
               </p>
               <SmtpConfigButton />
             </div>

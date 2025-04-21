@@ -21,6 +21,12 @@ export const sendEmail = async (data: EmailData) => {
     
     if (response.error) {
       console.error("Supabase function error:", response.error);
+      
+      // Check for SMTP configuration error
+      if (response.error.message?.includes('Email service configuration is incomplete')) {
+        throw new Error("SMTP configuration missing. Please set up email configuration first.");
+      }
+      
       throw new Error(response.error.message || "Failed to send email");
     }
 
