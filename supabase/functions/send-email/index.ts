@@ -22,12 +22,13 @@ serve(async (req) => {
   }
 
   try {
-    const { to, subject, name, email, message } = await req.json()
+    const { name, email, subject, message } = await req.json()
     
     // Always use info@shariqlalani.com as the recipient
-    const recipientEmail = "arsalanzulfiqar1993@gmail.com"
+    const recipientEmail = "info@shariqlalani.com"
 
     if (!subject || !name || !email || !message) {
+      console.error('Missing required fields');
       return new Response(
         JSON.stringify({ 
           success: false,
@@ -52,7 +53,7 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ 
           success: false,
-          message: "Email service configuration is incomplete. Please check SMTP settings."
+          message: "Email service configuration is incomplete. Please configure SMTP settings."
         }),
         {
           status: 500,
@@ -62,6 +63,7 @@ serve(async (req) => {
     }
 
     try {
+      console.log('Connecting to SMTP server:', SMTP_HOST);
       const client = new SmtpClient()
       
       await client.connectTLS({
@@ -71,6 +73,8 @@ serve(async (req) => {
         password: SMTP_PASSWORD,
       })
 
+      console.log('Connected to SMTP server, sending email');
+      
       const emailBody = `
         Name: ${name}
         Email: ${email}
@@ -97,6 +101,7 @@ serve(async (req) => {
         `,
       })
 
+      console.log('Email sent successfully');
       await client.close()
 
       return new Response(
