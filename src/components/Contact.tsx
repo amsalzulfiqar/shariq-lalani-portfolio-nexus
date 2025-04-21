@@ -4,6 +4,7 @@ import { Mail } from 'lucide-react';
 import { sendEmail } from '@/lib/email-service';
 import { toast } from "@/hooks/use-toast";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { SmtpConfigButton } from '@/components/SmtpConfigButton';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,10 +26,6 @@ const Contact = () => {
       const result = await sendEmail(data);
       
       if (result.success) {
-        toast({
-          title: "Success!",
-          description: result.message || "Your message has been sent successfully.",
-        });
         (e.target as HTMLFormElement).reset();
         setFormSubmitted(true);
       } else {
@@ -36,7 +33,11 @@ const Contact = () => {
       }
     } catch (error) {
       console.error("Contact form submission error:", error);
-      // Error toast is already shown in sendEmail function
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -77,6 +78,13 @@ const Contact = () => {
                 </AlertDescription>
               </Alert>
             )}
+            
+            <div className="mt-4">
+              <p className="text-sm text-muted-foreground mb-2">
+                If you're hosting this website and need to configure email settings:
+              </p>
+              <SmtpConfigButton />
+            </div>
           </div>
 
           <div>

@@ -10,8 +10,15 @@ const SMTP_PASSWORD = Deno.env.get('SMTP_PASSWORD')
 const EMAIL_FROM = Deno.env.get('EMAIL_FROM')
 
 serve(async (req) => {
+  // Always add CORS headers to all responses
+  const responseHeaders = {
+    ...corsHeaders,
+    'Content-Type': 'application/json'
+  };
+
+  // Handle OPTIONS request for CORS preflight
   if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
+    return new Response('ok', { headers: responseHeaders })
   }
 
   try {
@@ -20,7 +27,7 @@ serve(async (req) => {
     // Always use info@shariqlalani.com as the recipient
     const recipientEmail = "info@shariqlalani.com"
 
-    if (!recipientEmail || !subject || !name || !email || !message) {
+    if (!subject || !name || !email || !message) {
       return new Response(
         JSON.stringify({ 
           success: false,
@@ -28,7 +35,7 @@ serve(async (req) => {
         }),
         {
           status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: responseHeaders,
         }
       )
     }
@@ -41,6 +48,7 @@ serve(async (req) => {
         password: !!SMTP_PASSWORD,
         from: !!EMAIL_FROM 
       })
+      
       return new Response(
         JSON.stringify({ 
           success: false,
@@ -48,7 +56,7 @@ serve(async (req) => {
         }),
         {
           status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: responseHeaders,
         }
       )
     }
@@ -98,7 +106,7 @@ serve(async (req) => {
         }),
         {
           status: 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: responseHeaders,
         }
       )
     } catch (emailError) {
@@ -111,7 +119,7 @@ serve(async (req) => {
         }),
         {
           status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: responseHeaders,
         }
       )
     }
@@ -124,7 +132,7 @@ serve(async (req) => {
       }),
       {
         status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: responseHeaders,
       }
     )
   }
