@@ -32,12 +32,14 @@ export const useSecretsForm = (
         value,
       }));
       
-      // Update each secret individually
+      // Update each secret individually by invoking the set-secret function
       for (const { name, value } of secretsToUpdate) {
-        const { error } = await supabase.functions.setSecret(name, value);
+        const { error: functionError } = await supabase.functions.invoke('set-secret', {
+          body: { name, value }
+        });
         
-        if (error) {
-          throw new Error(`Failed to update secret ${name}: ${error.message}`);
+        if (functionError) {
+          throw new Error(`Failed to update secret ${name}: ${functionError.message}`);
         }
       }
       
