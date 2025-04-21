@@ -10,41 +10,32 @@ interface EmailData {
 
 export const sendEmail = async (data: EmailData) => {
   try {
-    const response = await fetch("https://iomjsslnpznzipgqnhkx.supabase.co/functions/v1/send-email?_=" + Date.now(), {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: 'cors',
-      body: JSON.stringify({
-        to: "info@shariqlalani.com",
-        ...data
-      }),
-    });
-
-    const result = await response.json();
+    // Generate the mailto link with form data
+    const mailtoLink = `mailto:info@shariqlalani.com?subject=${encodeURIComponent(`[Website Contact] ${data.subject}`)}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`)}`;
     
-    if (!response.ok) {
-      throw new Error(result.message || "Failed to send email");
-    }
+    // Open the default email client
+    window.location.href = mailtoLink;
 
     toast({
       title: "Success",
-      description: result.message || "Your message has been sent successfully!",
+      description: "Email client opened. Please send the email to complete your message.",
     });
 
-    return result;
+    return {
+      success: true,
+      message: "Email client opened successfully"
+    };
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("Error opening email client:", error);
     toast({
       title: "Error",
-      description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
+      description: "Could not open email client. Please try again or send email directly.",
       variant: "destructive",
     });
     
     return {
       success: false,
-      error: error instanceof Error ? error.message : "Failed to send message"
+      error: error instanceof Error ? error.message : "Failed to open email client"
     };
   }
 }

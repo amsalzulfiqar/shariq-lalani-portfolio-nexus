@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
 import { sendEmail } from '@/lib/email-service';
@@ -22,21 +21,16 @@ const Contact = () => {
     };
 
     try {
-      const result = await sendEmail(data);
-      
-      if (result.success) {
-        toast({
-          title: "Success!",
-          description: result.message || "Your message has been sent successfully.",
-        });
-        (e.target as HTMLFormElement).reset();
-        setFormSubmitted(true);
-      } else {
-        throw new Error(result.error || "Failed to send message");
-      }
+      await sendEmail(data);
+      (e.target as HTMLFormElement).reset();
+      setFormSubmitted(true);
     } catch (error) {
       console.error("Contact form submission error:", error);
-      // Error toast is already shown in sendEmail function
+      toast({
+        title: "Error",
+        description: "Could not open email client. Please try sending email directly.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
