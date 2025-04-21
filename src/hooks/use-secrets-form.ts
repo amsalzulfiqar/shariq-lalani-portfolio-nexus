@@ -39,17 +39,16 @@ export const useSecretsForm = (
         console.log(`Setting secret: ${name}`);
         
         try {
-          // Simplified approach with minimal headers
-          const response = await fetch(`${supabase.functions.url}/set-secret`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${supabase.auth.session()?.access_token || ''}`
-            },
-            body: JSON.stringify({ name, value }),
+          // Use Supabase's invoke method instead of direct URL access
+          const { data: responseData, error: functionError } = await supabase.functions.invoke('set-secret', {
+            body: { name, value },
           });
           
-          const responseData = await response.json();
+          if (functionError) {
+            console.error('Error from set-secret function:', functionError);
+            throw new Error(`Failed to update secret ${name}: ${functionError.message || 'Unknown error'}`);
+          }
+          
           console.log('Response from set-secret function:', responseData);
           
           // Check for application-level errors in the response data
