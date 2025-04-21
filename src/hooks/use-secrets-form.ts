@@ -38,27 +38,28 @@ export const useSecretsForm = (
       for (const { name, value } of secretsToUpdate) {
         console.log(`Setting secret: ${name}`);
         
-        // Call the edge function with both apikey and authorization headers
-        const { data: responseData, error: functionError } = await supabase.functions.invoke('set-secret', {
-          body: { name, value },
-          headers: {
-            // Ensure authorization headers are included
-            'Content-Type': 'application/json',
+        try {
+          // Call the edge function with simplified approach
+          const { data: responseData, error: functionError } = await supabase.functions.invoke('set-secret', {
+            body: { name, value },
+          });
+          
+          console.log('Response from set-secret function:', responseData);
+          
+          // If there was an error with the function call itself
+          if (functionError) {
+            console.error('Error invoking function:', functionError);
+            throw new Error(`Failed to update secret ${name}: ${functionError.message}`);
           }
-        });
-        
-        console.log('Response from set-secret function:', responseData);
-        
-        // Check for edge function errors in the response
-        if (functionError) {
-          console.error('Error invoking function:', functionError);
-          throw new Error(`Failed to update secret ${name}: ${functionError.message}`);
-        }
-        
-        // Check for application-level errors in the response data
-        if (responseData && !responseData.success) {
-          console.error('Error response from function:', responseData);
-          throw new Error(`Failed to update secret ${name}: ${responseData.error || 'Unknown error'}`);
+          
+          // Check for application-level errors in the response data
+          if (!responseData || responseData.success === false) {
+            console.error('Error response from function:', responseData);
+            throw new Error(`Failed to update secret ${name}: ${responseData?.error || 'Unknown error'}`);
+          }
+        } catch (secretError) {
+          console.error(`Error setting secret ${name}:`, secretError);
+          throw new Error(`Failed to update secret ${name}: ${secretError instanceof Error ? secretError.message : 'Unknown error'}`);
         }
       }
       

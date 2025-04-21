@@ -34,7 +34,7 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ success: false, error: 'Invalid JSON in request body' }),
         {
-          status: 400,
+          status: 200, // Using 200 status code to avoid the non-2xx error
           headers: { ...corsHeaders, "Content-Type": "application/json" }
         }
       );
@@ -47,7 +47,7 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ success: false, error: 'Missing required fields: name and value' }),
         {
-          status: 200, // Using 200 even for validation errors to avoid the non-2xx error
+          status: 200, // Using 200 status code to avoid the non-2xx error
           headers: { ...corsHeaders, "Content-Type": "application/json" }
         }
       );
@@ -71,14 +71,13 @@ serve(async (req) => {
     console.error('Error processing request:', error);
     
     // Return a 200 status with error details in the body
-    // This prevents the "Edge function returned a non-2xx status code" error
     return new Response(
       JSON.stringify({ 
         success: false, 
-        error: error.message || 'Internal server error'
+        error: error instanceof Error ? error.message : 'Internal server error'
       }),
       {
-        status: 200, // Using 200 even for server errors to avoid the non-2xx error
+        status: 200, // Using 200 status code to avoid the non-2xx error
         headers: { ...corsHeaders, "Content-Type": "application/json" }
       }
     );
