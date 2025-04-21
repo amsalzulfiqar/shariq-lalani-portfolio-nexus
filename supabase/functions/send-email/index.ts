@@ -22,7 +22,27 @@ serve(async (req) => {
   }
 
   try {
-    const { name, email, subject, message } = await req.json()
+    // Parse request body
+    let requestBody;
+    try {
+      requestBody = await req.json();
+      console.log('Request body parsed successfully:', Object.keys(requestBody));
+    } catch (parseError) {
+      console.error('Failed to parse request body:', parseError);
+      return new Response(
+        JSON.stringify({ 
+          success: false,
+          error: 'invalid_request',
+          message: 'Invalid JSON in request body' 
+        }),
+        {
+          status: 200, // Always use 200 to avoid Cloudflare errors
+          headers: responseHeaders,
+        }
+      );
+    }
+    
+    const { name, email, subject, message } = requestBody;
     
     // Always use info@shariqlalani.com as the recipient
     const recipientEmail = "info@shariqlalani.com"
@@ -33,10 +53,11 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ 
           success: false,
+          error: 'missing_fields',
           message: 'Missing required fields' 
         }),
         {
-          status: 200, // Always use 200
+          status: 200, // Always use 200 
           headers: responseHeaders,
         }
       )
@@ -137,7 +158,8 @@ serve(async (req) => {
       JSON.stringify({ 
         success: false,
         error: "request_error",
-        message: 'An unexpected error occurred'
+        message: 'An unexpected error occurred',
+        details: error instanceof Error ? error.message : 'Unknown error'
       }),
       {
         status: 200, // Always use 200

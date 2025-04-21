@@ -11,13 +11,17 @@ interface EmailData {
 
 export const sendEmail = async (data: EmailData) => {
   try {
-    // Always use the Supabase client from integrations
+    console.log('Sending email with data:', Object.keys(data));
+    
+    // Always use the Supabase client from integrations with better error handling
     const { data: responseData, error } = await supabase.functions.invoke('send-email', {
       body: {
         to: "info@shariqlalani.com", // Hardcoded recipient
         ...data
       }
     });
+    
+    console.log('Response from send-email function:', { data: responseData, error });
     
     if (error) {
       console.error("Supabase function error:", error);
@@ -31,14 +35,14 @@ export const sendEmail = async (data: EmailData) => {
     }
 
     // Check for application-level errors in the response
-    if (responseData && !responseData.success) {
+    if (!responseData || responseData.success === false) {
       console.error("Error in function response:", responseData);
       
-      if (responseData.error === "smtp_config_missing") {
+      if (responseData?.error === "smtp_config_missing") {
         throw new Error("SMTP configuration missing. Please set up email configuration first.");
       }
       
-      throw new Error(responseData.message || "Failed to send email");
+      throw new Error(responseData?.message || "Failed to send email");
     }
 
     toast({

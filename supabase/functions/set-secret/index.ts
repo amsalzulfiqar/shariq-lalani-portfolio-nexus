@@ -34,7 +34,7 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ success: false, error: 'Invalid JSON in request body' }),
         { 
-          status: 200, // Always use 200 
+          status: 200, // Always use 200 to avoid Cloudflare error
           headers: { ...corsHeaders, "Content-Type": "application/json" }
         }
       );
@@ -47,7 +47,7 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ success: false, error: 'Missing required fields: name and value' }),
         { 
-          status: 200, // Always use 200
+          status: 200, // Always use 200 to avoid Cloudflare error
           headers: { ...corsHeaders, "Content-Type": "application/json" }
         }
       );
@@ -70,7 +70,7 @@ serve(async (req) => {
   } catch (error) {
     console.error('Error processing request:', error);
     
-    // Always return 200 even for errors
+    // Always return 200 even for errors to avoid Cloudflare errors
     return new Response(
       JSON.stringify({ 
         success: false, 

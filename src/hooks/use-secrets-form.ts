@@ -39,7 +39,7 @@ export const useSecretsForm = (
         console.log(`Setting secret: ${name}`);
         
         try {
-          // Use Supabase's invoke method instead of direct URL access
+          // Use Supabase's invoke method with proper error handling
           const { data: responseData, error: functionError } = await supabase.functions.invoke('set-secret', {
             body: { name, value },
           });
@@ -49,13 +49,12 @@ export const useSecretsForm = (
             throw new Error(`Failed to update secret ${name}: ${functionError.message || 'Unknown error'}`);
           }
           
-          console.log('Response from set-secret function:', responseData);
-          
-          // Check for application-level errors in the response data
           if (!responseData || responseData.success === false) {
             console.error('Error response from function:', responseData);
             throw new Error(`Failed to update secret ${name}: ${responseData?.error || 'Unknown error'}`);
           }
+          
+          console.log('Response from set-secret function:', responseData);
         } catch (secretError) {
           console.error(`Error setting secret ${name}:`, secretError);
           throw new Error(`Failed to update secret ${name}: ${secretError instanceof Error ? secretError.message : 'Unknown error'}`);
