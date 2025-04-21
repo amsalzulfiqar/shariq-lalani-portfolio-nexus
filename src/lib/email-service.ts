@@ -12,22 +12,33 @@ interface EmailData {
 export const sendEmail = async (data: EmailData) => {
   try {
     // Always use the Supabase client from integrations
-    const response = await supabase.functions.invoke('send-email', {
-      body: JSON.stringify({
+    const { data: responseData, error } = await supabase.functions.invoke('send-email', {
+      body: {
         to: "info@shariqlalani.com", // Hardcoded recipient
         ...data
-      })
+      }
     });
     
-    if (response.error) {
-      console.error("Supabase function error:", response.error);
+    if (error) {
+      console.error("Supabase function error:", error);
       
       // Check for SMTP configuration error
-      if (response.error.message?.includes('Email service configuration is incomplete')) {
+      if (error.message?.includes('Email service configuration is incomplete')) {
         throw new Error("SMTP configuration missing. Please set up email configuration first.");
       }
       
-      throw new Error(response.error.message || "Failed to send email");
+      throw new Error(error.message || "Failed to send email");
+    }
+
+    // Check for application-level errors in the response
+    if (responseData && !responseData.success) {
+      console.error("Error in function response:", responseData);
+      
+      if (responseData.error === "smtp_config_missing") {
+        throw new Error("SMTP configuration missing. Please set up email configuration first.");
+      }
+      
+      throw new Error(responseData.message || "Failed to send email");
     }
 
     toast({

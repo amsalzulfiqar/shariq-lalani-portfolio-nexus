@@ -39,18 +39,18 @@ export const useSecretsForm = (
         console.log(`Setting secret: ${name}`);
         
         try {
-          // Call the edge function with simplified approach
-          const { data: responseData, error: functionError } = await supabase.functions.invoke('set-secret', {
-            body: { name, value },
+          // Simplified approach with minimal headers
+          const response = await fetch(`${supabase.functions.url}/set-secret`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${supabase.auth.session()?.access_token || ''}`
+            },
+            body: JSON.stringify({ name, value }),
           });
           
+          const responseData = await response.json();
           console.log('Response from set-secret function:', responseData);
-          
-          // If there was an error with the function call itself
-          if (functionError) {
-            console.error('Error invoking function:', functionError);
-            throw new Error(`Failed to update secret ${name}: ${functionError.message}`);
-          }
           
           // Check for application-level errors in the response data
           if (!responseData || responseData.success === false) {

@@ -18,7 +18,7 @@ serve(async (req) => {
 
   // Handle OPTIONS request for CORS preflight
   if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: responseHeaders })
+    return new Response('ok', { headers: responseHeaders, status: 200 })
   }
 
   try {
@@ -36,7 +36,7 @@ serve(async (req) => {
           message: 'Missing required fields' 
         }),
         {
-          status: 400,
+          status: 200, // Always use 200
           headers: responseHeaders,
         }
       )
@@ -51,8 +51,6 @@ serve(async (req) => {
         from: !!EMAIL_FROM 
       })
       
-      // Return a more specific error with status 400 instead of 500
-      // This helps differentiate configuration issues from server errors
       return new Response(
         JSON.stringify({ 
           success: false,
@@ -60,7 +58,7 @@ serve(async (req) => {
           message: "Email service configuration is incomplete. Please configure SMTP settings."
         }),
         {
-          status: 400, // Changed from 500 to 400 to indicate it's a configuration issue
+          status: 200, // Always use 200
           headers: responseHeaders,
         }
       )
@@ -128,7 +126,7 @@ serve(async (req) => {
           details: emailError.toString()
         }),
         {
-          status: 400, // Changed from 500 to 400 for configuration issues
+          status: 200, // Always use 200
           headers: responseHeaders,
         }
       )
@@ -142,7 +140,7 @@ serve(async (req) => {
         message: 'An unexpected error occurred'
       }),
       {
-        status: 500,
+        status: 200, // Always use 200
         headers: responseHeaders,
       }
     )
