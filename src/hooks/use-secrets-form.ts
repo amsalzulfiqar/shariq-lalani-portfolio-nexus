@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { toast } from '@/hooks/use-toast';
 
 export interface SecretField {
   key: string;
@@ -8,78 +8,37 @@ export interface SecretField {
   type: 'text' | 'password' | 'number';
   placeholder?: string;
   required?: boolean;
+  validation?: (value: string) => string | null;
 }
 
-export type SecretsFormData = Record<string, string>;
+export interface SecretsFormData {
+  [key: string]: string;
+}
 
 export const useSecretsForm = (
-  fields: SecretField[],
-  onSubmitCallback?: (data: SecretsFormData) => Promise<void>
+  fields: SecretField[], 
+  onSubmit: (data: SecretsFormData) => Promise<void>
 ) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (data: SecretsFormData) => {
     setIsSubmitting(true);
-    setError(null);
-    setSuccess(false);
-
     try {
-      console.log('Submitting secrets form data...');
-      
-      // Update secrets in Supabase
-      const secretsToUpdate = Object.entries(data).map(([key, value]) => ({
-        name: key,
-        value,
-      }));
-      
-      // Update each secret individually by invoking the set-secret function
-      for (const { name, value } of secretsToUpdate) {
-        console.log(`Setting secret: ${name}`);
-        
-        try {
-          // Use Supabase's invoke method with proper error handling
-          const { data: responseData, error: functionError } = await supabase.functions.invoke('set-secret', {
-            body: { name, value },
-          });
-          
-          if (functionError) {
-            console.error('Error from set-secret function:', functionError);
-            throw new Error(`Failed to update secret ${name}: ${functionError.message || 'Unknown error'}`);
-          }
-          
-          if (!responseData || responseData.success === false) {
-            console.error('Error response from function:', responseData);
-            throw new Error(`Failed to update secret ${name}: ${responseData?.error || 'Unknown error'}`);
-          }
-          
-          console.log('Response from set-secret function:', responseData);
-        } catch (secretError) {
-          console.error(`Error setting secret ${name}:`, secretError);
-          throw new Error(`Failed to update secret ${name}: ${secretError instanceof Error ? secretError.message : 'Unknown error'}`);
-        }
-      }
-      
-      // Call the callback if provided
-      if (onSubmitCallback) {
-        await onSubmitCallback(data);
-      }
-      
-      console.log('All secrets updated successfully');
-      setSuccess(true);
-    } catch (err) {
-      console.error('Error updating secrets:', err);
-      setError(err instanceof Error ? err.message : 'Failed to update secrets');
+      await onSubmit(data);
+      toast({
+        title: 'Secrets Updated',
+        description: 'Your secrets have been successfully saved.'
+      });
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error instanceof Error ? error.message : 'Failed to save secrets',
+        variant: 'destructive'
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  return {
-    handleSubmit,
-    isSubmitting,
-    error,
-    success,
-  };
+  return { handleSubmit, isSubmitting };
 };

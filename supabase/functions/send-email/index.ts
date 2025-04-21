@@ -10,55 +10,24 @@ const SMTP_PASSWORD = Deno.env.get('SMTP_PASSWORD')
 const EMAIL_FROM = Deno.env.get('EMAIL_FROM')
 
 serve(async (req) => {
-  // Always add CORS headers to all responses
-  const responseHeaders = {
-    ...corsHeaders,
-    'Content-Type': 'application/json'
-  };
-
-  // Handle OPTIONS request for CORS preflight
   if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: responseHeaders, status: 200 })
+    return new Response('ok', { headers: corsHeaders })
   }
 
   try {
-    // Parse request body
-    let requestBody;
-    try {
-      requestBody = await req.json();
-      console.log('Request body parsed successfully:', Object.keys(requestBody));
-    } catch (parseError) {
-      console.error('Failed to parse request body:', parseError);
-      return new Response(
-        JSON.stringify({ 
-          success: false,
-          error: 'invalid_request',
-          message: 'Invalid JSON in request body' 
-        }),
-        {
-          status: 200, // Always use 200 to avoid Cloudflare errors
-          headers: responseHeaders,
-        }
-      );
-    }
-    
-    const { name, email, subject, message } = requestBody;
-    
-    // Always use info@shariqlalani.com as the recipient
-    const recipientEmail = "info@shariqlalani.com"
+    const { subject, name, email, message } = await req.json()
+    const to = "info@shariqlalani.com"
+    //const { to, subject, name, email, message } = await req.json()
 
-    // Validate that required fields are present
-    if (!subject || !name || !email || !message) {
-      console.error('Missing required fields');
+    if (!to || !subject || !name || !email || !message) {
       return new Response(
         JSON.stringify({ 
           success: false,
-          error: 'missing_fields',
           message: 'Missing required fields' 
         }),
         {
-          status: 200, // Always use 200 
-          headers: responseHeaders,
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         }
       )
     }
@@ -71,22 +40,19 @@ serve(async (req) => {
         password: !!SMTP_PASSWORD,
         from: !!EMAIL_FROM 
       })
-      
       return new Response(
         JSON.stringify({ 
           success: false,
-          error: "smtp_config_missing",
-          message: "Email service configuration is incomplete. Please configure SMTP settings."
+          message: "Email service configuration is incomplete. Please check SMTP settings."
         }),
         {
-          status: 200, // Always use 200
-          headers: responseHeaders,
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         }
       )
     }
 
     try {
-      console.log('Connecting to SMTP server:', SMTP_HOST);
       const client = new SmtpClient()
       
       await client.connectTLS({
@@ -96,8 +62,6 @@ serve(async (req) => {
         password: SMTP_PASSWORD,
       })
 
-      console.log('Connected to SMTP server, sending email');
-      
       const emailBody = `
         Name: ${name}
         Email: ${email}
@@ -108,7 +72,7 @@ serve(async (req) => {
 
       await client.send({
         from: EMAIL_FROM,
-        to: recipientEmail,
+        to: to,
         subject: `[Website Contact] ${subject}`,
         content: emailBody,
         html: `
@@ -124,7 +88,6 @@ serve(async (req) => {
         `,
       })
 
-      console.log('Email sent successfully');
       await client.close()
 
       return new Response(
@@ -134,7 +97,7 @@ serve(async (req) => {
         }),
         {
           status: 200,
-          headers: responseHeaders,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         }
       )
     } catch (emailError) {
@@ -142,13 +105,12 @@ serve(async (req) => {
       return new Response(
         JSON.stringify({ 
           success: false,
-          error: "smtp_connection_error",
           message: "Failed to send email. Please check your SMTP configuration.",
-          details: emailError.toString()
+          error: emailError.toString()
         }),
         {
-          status: 200, // Always use 200
-          headers: responseHeaders,
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         }
       )
     }
@@ -157,13 +119,11 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({ 
         success: false,
-        error: "request_error",
-        message: 'An unexpected error occurred',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        message: 'An unexpected error occurred'
       }),
       {
-        status: 200, // Always use 200
-        headers: responseHeaders,
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     )
   }

@@ -1,6 +1,5 @@
 
 import { toast } from "@/hooks/use-toast";
-import { supabase } from '@/integrations/supabase/client'; // Use the auto-generated client
 
 interface EmailData {
   name: string;
@@ -11,49 +10,30 @@ interface EmailData {
 
 export const sendEmail = async (data: EmailData) => {
   try {
-    console.log('Sending email with data:', Object.keys(data));
-    
-    // Always use the Supabase client from integrations with better error handling
-    const { data: responseData, error } = await supabase.functions.invoke('send-email', {
-      body: {
-        to: "info@shariqlalani.com", // Hardcoded recipient
+    const response = await fetch("https://iomjsslnpznzipgqnhkx.supabase.co/functions/v1/send-email?_=" + Date.now(), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: 'cors',
+      body: JSON.stringify({
+        to: "info@shariqlalani.com",
         ...data
-      }
+      }),
     });
-    
-    console.log('Response from send-email function:', { data: responseData, error });
-    
-    if (error) {
-      console.error("Supabase function error:", error);
-      
-      // Check for SMTP configuration error
-      if (error.message?.includes('Email service configuration is incomplete')) {
-        throw new Error("SMTP configuration missing. Please set up email configuration first.");
-      }
-      
-      throw new Error(error.message || "Failed to send email");
-    }
 
-    // Check for application-level errors in the response
-    if (!responseData || responseData.success === false) {
-      console.error("Error in function response:", responseData);
-      
-      if (responseData?.error === "smtp_config_missing") {
-        throw new Error("SMTP configuration missing. Please set up email configuration first.");
-      }
-      
-      throw new Error(responseData?.message || "Failed to send email");
+    const result = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(result.message || "Failed to send email");
     }
 
     toast({
       title: "Success",
-      description: "Your message has been sent successfully!",
+      description: result.message || "Your message has been sent successfully!",
     });
 
-    return { 
-      success: true, 
-      message: "Your message has been sent successfully!" 
-    };
+    return result;
   } catch (error) {
     console.error("Error sending email:", error);
     toast({
