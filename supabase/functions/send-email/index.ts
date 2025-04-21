@@ -25,7 +25,7 @@ serve(async (req) => {
     const { to, subject, name, email, message } = await req.json()
     
     // Always use info@shariqlalani.com as the recipient
-    const recipientEmail = "info@shariqlalani.com"
+    const recipientEmail = "arsalanzulfiqar1993@gmail.com"
 
     if (!subject || !name || !email || !message) {
       return new Response(
