@@ -15,30 +15,22 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [prevScrollY, setPrevScrollY] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const scrollingUp = prevScrollY > currentScrollY;
+      const isAtTop = currentScrollY < 20;
       
-      // Show navbar when scrolling up or at the top
-      if (currentScrollY < lastScrollY || currentScrollY < 20) {
-        setIsVisible(true);
-      } 
-      // Hide navbar when scrolling down and not at the top
-      else if (currentScrollY > 20) {
-        setIsVisible(false);
-      }
-      
-      setLastScrollY(currentScrollY);
+      setIsVisible(scrollingUp || isAtTop);
+      setPrevScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [lastScrollY]);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollY]);
 
   const isHomePage = location.pathname === '/';
 
@@ -62,7 +54,7 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        lastScrollY > 20 ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
+        prevScrollY > 20 ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
       } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <Logo 
