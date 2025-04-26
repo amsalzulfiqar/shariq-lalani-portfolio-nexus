@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -187,10 +188,10 @@ const ServicesPage = () => {
         <div className="relative z-10">
           <Navbar />
           
-          {/* Hero content */}
+          {/* Hero content - removed the "Services" text */}
           <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/90 to-transparent">
             <div className="container-custom">
-              <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">Services</h1>
+              {/* Removed large "Services" heading */}
             </div>
           </div>
         </div>

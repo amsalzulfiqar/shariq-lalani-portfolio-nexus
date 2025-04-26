@@ -20,9 +20,10 @@ const FeaturedWorksPage = () => {
         <div className="relative z-10">
           <Navbar />
           
+          {/* Removed the large "Featured Works" heading */}
           <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/90 to-transparent">
             <div className="container-custom">
-              <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">Featured Works</h1>
+              {/* Removed h1 with "Featured Works" */}
             </div>
           </div>
         </div>
