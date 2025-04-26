@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <header 
-      className="w-full z-50 fixed top-0 left-0 bg-transparent"
+      className="w-full z-50 bg-transparent"
     >
       <Logo 
         fixed={false} 
