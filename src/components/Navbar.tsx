@@ -29,7 +29,7 @@ const Navbar = () => {
       e.preventDefault();
       const contactSection = document.getElementById('contact');
       if (contactSection) {
-        contactSection.scrollIntoView();
+        contactSection.scrollIntoView({ behavior: 'smooth' });
       }
       setIsOpen(false);
     }
@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <header 
-      className={`w-full z-50 bg-background/80 backdrop-blur-md`}
+      className="w-full z-50 fixed top-0 left-0 bg-transparent"
     >
       <Logo 
         fixed={false} 
@@ -69,6 +69,7 @@ const Navbar = () => {
                       <Link
                         to="/services"
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => setIsOpen(false)}
                       >
                         All Services
                       </Link>
@@ -77,6 +78,7 @@ const Navbar = () => {
                       <Link
                         to="/services/featured-works"
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => setIsOpen(false)}
                       >
                         Featured Works
                       </Link>
