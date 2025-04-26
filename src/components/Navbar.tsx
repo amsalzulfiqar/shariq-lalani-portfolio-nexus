@@ -31,14 +31,12 @@ const Navbar = () => {
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
       }
-      setIsOpen(false);
     }
+    setIsOpen(false);
   };
 
   return (
-    <header 
-      className="w-full z-50 bg-transparent"
-    >
+    <header className="w-full bg-transparent">
       <Logo 
         fixed={false} 
         size="medium" 
