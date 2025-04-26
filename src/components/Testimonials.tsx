@@ -28,13 +28,13 @@ const Testimonial = ({ content, author, role }: TestimonialProps) => (
 const Testimonials = () => {
   const testimonials = [
     {
-      content: "Working with Shariq was an incredible experience. His attention to detail and ability to bring my musical vision to life exceeded all my expectations.",
-      author: "Sarah Hanks",
-      role: "Recording Artist"
+      content: "Working with a professional like Shariq Lalani, 'The Ear,' has been an incredible journey over the years. His expertise in engineering, producing, and providing creative suggestions for my multi-genre music is exceptional. No matter the project, Shariq brings remarkable artistic input to everything we work on.",
+      author: "Christine Winburn",
+      role: "Singer-Songwriter"
     },
     {
-      content: "Shariq's production skills are top-notch. He has a unique ability to enhance a track while maintaining its authentic feel. I couldn't be happier with the results.",
-      author: "Prisha Mehta",
+      content: "Shariq helped me create my first music album with incredible energy and passion. He poured his dedication into making something truly special, and it's clear from the final product. If you have a vision, Shariq will go above and beyond to bring it to life! Thank you, Shariq!",
+      author: "Austin McAllister",
       role: "Singer-Songwriter"
     },
     {

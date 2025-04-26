@@ -15,22 +15,24 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [prevScrollY, setPrevScrollY] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    const scrollThreshold = 20;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const scrollingUp = prevScrollY > currentScrollY;
-      const isAtTop = currentScrollY < 20;
-      
-      setIsVisible(scrollingUp || isAtTop);
-      setPrevScrollY(currentScrollY);
+      const isScrollingUp = currentScrollY < lastScrollY;
+      const isAtTop = currentScrollY < scrollThreshold;
+
+      setIsVisible(isScrollingUp || isAtTop);
+      lastScrollY = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollY]);
+  }, []);
 
   const isHomePage = location.pathname === '/';
 
@@ -54,7 +56,7 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        prevScrollY > 20 ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
+        window.scrollY > 20 ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
       } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <Logo 
