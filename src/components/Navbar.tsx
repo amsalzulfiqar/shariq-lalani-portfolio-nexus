@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from 'react-router-dom';
@@ -14,26 +14,7 @@ import {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const location = useLocation();
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    const scrollThreshold = 20;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const isScrollingUp = currentScrollY < lastScrollY;
-      const isAtTop = currentScrollY < scrollThreshold;
-
-      setIsVisible(isScrollingUp || isAtTop);
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const isHomePage = location.pathname === '/';
 
   const navLinks = [
@@ -55,12 +36,10 @@ const Navbar = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        window.scrollY > 20 ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
-      } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      className={`w-full z-50 bg-background/80 backdrop-blur-md`}
     >
       <Logo 
-        fixed={true} 
+        fixed={false} 
         size="medium" 
         position={{ top: '2', left: '2' }} 
         zIndex={60} 
