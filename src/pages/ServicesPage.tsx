@@ -9,8 +9,8 @@ import { useLayoutEffect } from "react";
 
 const ServicesPage = () => {
   useLayoutEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+    window.scrollTo(0, 0);
+  }, []);
 
   const services = [
     {
@@ -186,17 +186,11 @@ const ServicesPage = () => {
         {/* Navigation */}
         <div className="relative z-10">
           <Navbar />
-          
-          {/* Hero content */}
-          <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/90 to-transparent">
-            <div className="container-custom">
-              <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">Services</h1>
-            </div>
-          </div>
         </div>
       </div>
       
       <div className="pt-10">
+        {/* Removed "Services" heading */}
         <section className="py-12 bg-gradient-to-b from-background to-secondary/10">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto mb-16">
@@ -219,6 +213,7 @@ const ServicesPage = () => {
           </div>
         </section>
 
+        {/* Removed "Bring Your Music to Life" large text */}
         <section className="py-16 bg-background relative" id="services">
           {/* Background Image with Overlay - fixing the visibility issue */}
           <div 
