@@ -69,7 +69,6 @@ const Navbar = () => {
                       <Link
                         to="/services"
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        onClick={() => setIsOpen(false)}
                       >
                         All Services
                       </Link>
@@ -78,7 +77,6 @@ const Navbar = () => {
                       <Link
                         to="/services/featured-works"
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        onClick={() => setIsOpen(false)}
                       >
                         Featured Works
                       </Link>
