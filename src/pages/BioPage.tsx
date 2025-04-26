@@ -21,13 +21,6 @@ const BioPage = () => {
         {/* Navigation is placed inside the hero section with higher z-index */}
         <div className="relative z-10">
           <Navbar />
-          
-          {/* Hero content positioned at the bottom of the hero */}
-          <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/90 to-transparent">
-            <div className="container-custom">
-              <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">About Shariq</h1>
-            </div>
-          </div>
         </div>
       </div>
       
@@ -75,11 +68,9 @@ const BioPage = () => {
               </div>
             </div>
             
-            {/* Bio text - moved the About Shariq heading to be part of the main content */}
+            {/* Bio text - removed the About Shariq heading */}
             <div className="lg:col-span-2">
               <div className="prose prose-invert max-w-none">
-                <h2 className="text-3xl font-bold mb-6">About Shariq</h2>
-                
                 <p className="text-lg leading-relaxed mb-6">
                   Shariq Lalani is a versatile music composer, producer, audio engineer, and multi-instrumentalist based in Dallas, Texas. His musical journey began early and has led him to collaborate with top-tier artists and professionals worldwide.
                 </p>
@@ -96,7 +87,6 @@ const BioPage = () => {
                   Shariq further honed his technical skills by studying audio engineering under veteran engineers through the Recording Connection program, an LA-based externship program. His dedication earned him a place at Audio Dallas, one of the region's top studios, where he worked his way up to become a staff engineer under the mentorship of multi-platinum producer Paul Osborn. This experience allowed him to combine his technical mastery with his deep musical intuition, producing highly polished and sonically compelling work.
                 </p>
                 
-                <h3 className="text-2xl font-bold mt-8 mb-4">Collaborations & Projects</h3>
                 <p className="mb-6">
                   Shariq's body of work spans across multiple genres, including Pop, Jazz, Hip-Hop, Electronic, Orchestral, and World Music. His credits include collaborations with Bobby Sparks II (Prince, Kirk Franklin, Snarky Puppy), Javed Bashir, Salim-Sulaiman, Olivia Holt, Nibal Malshi, Xavier Omär, The War and Treaty, Ulices Chaidez, and Fareed Ayaz & Abu Muhammad Qawwals, among others.
                 </p>
