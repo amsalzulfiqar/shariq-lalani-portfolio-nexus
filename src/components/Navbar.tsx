@@ -35,7 +35,9 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [lastScrollY]);
 
   const isHomePage = location.pathname === '/';
@@ -61,7 +63,7 @@ const Navbar = () => {
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         lastScrollY > 20 ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
-      } transform ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <Logo 
         fixed={true} 
