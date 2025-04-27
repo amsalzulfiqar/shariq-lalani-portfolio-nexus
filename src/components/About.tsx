@@ -65,7 +65,7 @@ const About = () => {
                   ref={imageRef}
                   src="/lovable-uploads/cf679340-41be-421e-a167-6db583bdf43b.png"
                   alt="Shariq Lalani"
-                  className={`w-full h-full object-cover ${imageLoaded ? 'opacity-100 hover:scale-105' : 'opacity-0'} transition-all duration-700`}
+                  className={`w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}
                   loading="lazy"
                   onLoad={() => setImageLoaded(true)}
                 />
