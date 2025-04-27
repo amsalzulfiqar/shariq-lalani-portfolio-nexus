@@ -6,7 +6,6 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import SpotifyPlayer from '@/components/SpotifyPlayer';
-import Logo from '@/components/Logo';
 
 const Index = () => {
   return (

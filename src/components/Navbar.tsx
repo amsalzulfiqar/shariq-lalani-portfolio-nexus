@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -23,8 +24,8 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       
-      // Show navbar when scrolling up or at the top
-      setVisible(currentScrollPos < 100 || prevScrollPos > currentScrollPos);
+      // Only show navbar when at the very top of the page
+      setVisible(currentScrollPos <= 10);
       
       setPrevScrollPos(currentScrollPos);
     };
