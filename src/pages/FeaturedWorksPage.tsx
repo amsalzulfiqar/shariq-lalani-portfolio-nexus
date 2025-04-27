@@ -22,7 +22,7 @@ const FeaturedWorksPage = () => {
         </div>
       </div>
       
-      <div className="pt-10">
+      <div className="pt-10" id="featured-work">
         <div className="bg-background">
           <FeaturedWork />
         </div>

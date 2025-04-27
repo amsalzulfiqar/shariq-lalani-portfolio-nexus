@@ -19,8 +19,19 @@ const PaginationControls = ({
   if (totalPages <= 1) return null;
   
   const handlePageChange = (action: 'prev' | 'next') => {
-    // Scroll to top smoothly
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Find the featured works section or scroll to top if not found
+    const featuredWorkSection = document.getElementById('featured-work');
+    
+    if (featuredWorkSection) {
+      // Scroll to the featured work section with offset for header
+      featuredWorkSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Fallback to window scroll if section not found
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     
     // Call the appropriate navigation function
     if (action === 'prev') {
