@@ -20,7 +20,30 @@ const Index = () => {
       setTimeout(() => {
         const section = document.getElementById(scrollToSection);
         if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
+          // Calculate position with offset
+          const rect = section.getBoundingClientRect();
+          const scrollPosition = window.pageYOffset + rect.top - 120;
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 500); // Give time for the page to fully render
+    }
+    
+    // Check for hash in URL (e.g., /#contact)
+    if (location.hash) {
+      setTimeout(() => {
+        const sectionId = location.hash.replace('#', '');
+        const section = document.getElementById(sectionId);
+        if (section) {
+          // Calculate position with offset
+          const rect = section.getBoundingClientRect();
+          const scrollPosition = window.pageYOffset + rect.top - 120;
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+          });
         }
       }, 500); // Give time for the page to fully render
     }

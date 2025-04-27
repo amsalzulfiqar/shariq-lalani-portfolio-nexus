@@ -31,7 +31,14 @@ const Navbar = () => {
       setTimeout(() => {
         const contactSection = document.getElementById('contact');
         if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
+          // Get the position of the element relative to the viewport
+          const rect = contactSection.getBoundingClientRect();
+          // Calculate position to scroll to (with offset)
+          const scrollPosition = window.pageYOffset + rect.top - 120;
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+          });
         }
       }, 100); // Small delay to ensure DOM is ready
     }
@@ -44,12 +51,19 @@ const Navbar = () => {
       // If on home page, just scroll to contact section
       const contactSection = document.getElementById('contact');
       if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+        // Get the position of the element relative to the viewport
+        const rect = contactSection.getBoundingClientRect();
+        // Calculate position to scroll to (with offset)
+        const scrollPosition = window.pageYOffset + rect.top - 120;
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        });
         setIsOpen(false);
       }
     } else {
       // If not on home page, navigate to home page with contact anchor
-      navigate('/?scrollTo=contact');
+      navigate('/#contact');
       setIsOpen(false);
     }
   };
