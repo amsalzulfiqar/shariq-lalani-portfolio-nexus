@@ -25,9 +25,9 @@ const ServicesOverview = () => {
   ];
 
   return (
-    <section className="py-12 bg-gradient-to-b from-background to-secondary/10">
+    <section className="py-6 bg-gradient-to-b from-background to-secondary/10">
       <div className="container-custom">
-        <div className="max-w-3xl mx-auto mb-16">
+        <div className="max-w-3xl mx-auto mb-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary text-center">
             Bring Your Music to Life
           </h2>

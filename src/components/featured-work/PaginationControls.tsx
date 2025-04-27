@@ -18,13 +18,25 @@ const PaginationControls = ({
 }: PaginationControlsProps) => {
   if (totalPages <= 1) return null;
   
+  const handlePageChange = (action: 'prev' | 'next') => {
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Call the appropriate navigation function
+    if (action === 'prev') {
+      onPrevPage();
+    } else {
+      onNextPage();
+    }
+  };
+  
   return (
     <div className="flex justify-center mt-8">
       <div className="flex space-x-4">
         <Button 
           variant="outline" 
           size="icon" 
-          onClick={onPrevPage} 
+          onClick={() => handlePageChange('prev')} 
           disabled={currentPage === 0}
           className="rounded-full"
         >
@@ -34,7 +46,7 @@ const PaginationControls = ({
         <Button 
           variant="outline" 
           size="icon" 
-          onClick={onNextPage} 
+          onClick={() => handlePageChange('next')} 
           disabled={currentPage === totalPages - 1}
           className="rounded-full"
         >
