@@ -12,7 +12,7 @@ const FeaturedWorksPage = () => {
           <img 
             src="/lovable-uploads/688646cc-2ad2-4d62-a487-e64b409ec429.png" 
             alt="Studio equipment" 
-            className="w-full h-full object-cover object-[center_30%]"
+            className="w-full h-full object-cover object-[center_50%]"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
