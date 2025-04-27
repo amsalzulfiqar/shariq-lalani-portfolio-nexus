@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import Navbar from '@/components/Navbar';
 
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -16,8 +17,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-screen h-screen overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <div className="h-screen relative">
+      {/* Background Image */}
+      <div className="absolute inset-0 overflow-hidden">
         {!imageLoaded && (
           <div className="w-full h-full bg-black flex items-center justify-center">
             <div className="animate-pulse h-16 w-16 rounded-full bg-gray-700"></div>
@@ -34,7 +36,13 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+      {/* Navigation */}
+      <div className="relative z-10">
+        <Navbar />
+      </div>
+
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
         <h1 className={`text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in ${isMobile ? 'text-2xl' : ''}`}
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
@@ -73,7 +81,7 @@ const Hero = () => {
           </Button>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

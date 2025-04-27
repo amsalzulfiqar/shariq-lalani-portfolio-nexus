@@ -11,14 +11,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="fixed inset-0 z-0 bg-noise"></div>
-      <div className="relative z-10">
-        <Navbar />
-        <Hero />
-        <About />
-        <SpotifyPlayer id="spotify" />
-        <Contact />
-        <Footer />
-      </div>
+      <Hero />
+      <About />
+      <SpotifyPlayer id="spotify" />
+      <Contact />
+      <Footer />
     </div>
   );
 };
