@@ -21,24 +21,18 @@ const Index = () => {
         const contactSection = document.getElementById('contact');
         if (contactSection) {
           // Find the form section within contact
-          const formSection = contactSection.querySelector('h3')?.parentElement;
+          const formSection = contactSection.querySelector('#contact-form');
           
           if (formSection) {
             // Scroll to the form section specifically
-            const rect = formSection.getBoundingClientRect();
-            const scrollPosition = window.pageYOffset + rect.top - 80;
-            window.scrollTo({
-              top: scrollPosition,
-              behavior: 'smooth'
-            });
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Add offset for header
+            window.scrollBy(0, -100);
           } else {
             // Fallback to the whole contact section
-            const rect = contactSection.getBoundingClientRect();
-            const scrollPosition = window.pageYOffset + rect.top - 80;
-            window.scrollTo({
-              top: scrollPosition,
-              behavior: 'smooth'
-            });
+            contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Add offset for header
+            window.scrollBy(0, -100);
           }
         }
       }, 500); // Give time for the page to fully render
@@ -46,13 +40,10 @@ const Index = () => {
       setTimeout(() => {
         const section = document.getElementById(scrollToSection);
         if (section) {
-          // Calculate position with offset
-          const rect = section.getBoundingClientRect();
-          const scrollPosition = window.pageYOffset + rect.top - 80;
-          window.scrollTo({
-            top: scrollPosition,
-            behavior: 'smooth'
-          });
+          // Scroll to section with offset
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Add offset for header
+          window.scrollBy(0, -100);
         }
       }, 500); // Give time for the page to fully render
     }
@@ -65,27 +56,21 @@ const Index = () => {
         if (section) {
           // If it's the contact section, try to scroll to the form
           if (sectionId === 'contact') {
-            const formSection = section.querySelector('h3')?.parentElement;
+            const formSection = section.querySelector('#contact-form');
             
             if (formSection) {
               // Scroll to the form section specifically
-              const rect = formSection.getBoundingClientRect();
-              const scrollPosition = window.pageYOffset + rect.top - 80;
-              window.scrollTo({
-                top: scrollPosition,
-                behavior: 'smooth'
-              });
+              formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              // Add offset for header
+              window.scrollBy(0, -100);
               return;
             }
           }
           
           // Default scrolling for other sections
-          const rect = section.getBoundingClientRect();
-          const scrollPosition = window.pageYOffset + rect.top - 80;
-          window.scrollTo({
-            top: scrollPosition,
-            behavior: 'smooth'
-          });
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Add offset for header
+          window.scrollBy(0, -100);
         }
       }, 500); // Give time for the page to fully render
     }

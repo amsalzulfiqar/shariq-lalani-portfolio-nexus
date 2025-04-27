@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -31,28 +30,24 @@ const Navbar = () => {
       setTimeout(() => {
         const contactSection = document.getElementById('contact');
         if (contactSection) {
-          // Find the form section within contact
-          const formSection = contactSection.querySelector('h3')?.parentElement;
-          
+          const formSection = contactSection.querySelector('#contact-form');
           if (formSection) {
-            // Scroll to the form section specifically
             const rect = formSection.getBoundingClientRect();
-            const scrollPosition = window.pageYOffset + rect.top - 80;
+            const scrollPosition = window.pageYOffset + rect.top - 100;
             window.scrollTo({
               top: scrollPosition,
               behavior: 'smooth'
             });
           } else {
-            // Fallback to the contact section if form not found
             const rect = contactSection.getBoundingClientRect();
-            const scrollPosition = window.pageYOffset + rect.top - 80;
+            const scrollPosition = window.pageYOffset + rect.top - 100;
             window.scrollTo({
               top: scrollPosition,
               behavior: 'smooth'
             });
           }
         }
-      }, 100); // Small delay to ensure DOM is ready
+      }, 300); // Increase delay to ensure DOM is ready
     }
   }, [location]);
 
@@ -63,13 +58,12 @@ const Navbar = () => {
       // If on home page, scroll to the form section directly
       const contactSection = document.getElementById('contact');
       if (contactSection) {
-        // Find the form section within contact
-        const formSection = contactSection.querySelector('h3')?.parentElement;
+        const formSection = contactSection.querySelector('#contact-form');
         
         if (formSection) {
           // Scroll to the form section specifically
           const rect = formSection.getBoundingClientRect();
-          const scrollPosition = window.pageYOffset + rect.top - 80;
+          const scrollPosition = window.pageYOffset + rect.top - 100;
           window.scrollTo({
             top: scrollPosition,
             behavior: 'smooth'
@@ -77,19 +71,19 @@ const Navbar = () => {
         } else {
           // Fallback to the contact section if form not found
           const rect = contactSection.getBoundingClientRect();
-          const scrollPosition = window.pageYOffset + rect.top - 80;
+          const scrollPosition = window.pageYOffset + rect.top - 100;
           window.scrollTo({
             top: scrollPosition,
             behavior: 'smooth'
           });
         }
-        setIsOpen(false);
       }
     } else {
-      // If not on home page, navigate to home page with contact anchor
+      // If not on home page, navigate to home and add contact param
       navigate('/?scrollTo=contact-form');
-      setIsOpen(false);
     }
+    
+    setIsOpen(false);
   };
 
   return (
