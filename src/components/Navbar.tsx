@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -30,14 +31,26 @@ const Navbar = () => {
       setTimeout(() => {
         const contactSection = document.getElementById('contact');
         if (contactSection) {
-          // Get the position of the element relative to the viewport
-          const rect = contactSection.getBoundingClientRect();
-          // Calculate position to scroll to (with offset to show the section header)
-          const scrollPosition = window.pageYOffset + rect.top - 200;
-          window.scrollTo({
-            top: scrollPosition,
-            behavior: 'smooth'
-          });
+          // Find the form section within contact
+          const formSection = contactSection.querySelector('h3')?.parentElement;
+          
+          if (formSection) {
+            // Scroll to the form section specifically
+            const rect = formSection.getBoundingClientRect();
+            const scrollPosition = window.pageYOffset + rect.top - 80;
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'smooth'
+            });
+          } else {
+            // Fallback to the contact section if form not found
+            const rect = contactSection.getBoundingClientRect();
+            const scrollPosition = window.pageYOffset + rect.top - 80;
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       }, 100); // Small delay to ensure DOM is ready
     }
@@ -47,22 +60,34 @@ const Navbar = () => {
     e.preventDefault();
     
     if (isHomePage) {
-      // If on home page, just scroll to contact section
+      // If on home page, scroll to the form section directly
       const contactSection = document.getElementById('contact');
       if (contactSection) {
-        // Get the position of the element relative to the viewport
-        const rect = contactSection.getBoundingClientRect();
-        // Calculate position to scroll to (with offset to show the section header)
-        const scrollPosition = window.pageYOffset + rect.top - 200;
-        window.scrollTo({
-          top: scrollPosition,
-          behavior: 'smooth'
-        });
+        // Find the form section within contact
+        const formSection = contactSection.querySelector('h3')?.parentElement;
+        
+        if (formSection) {
+          // Scroll to the form section specifically
+          const rect = formSection.getBoundingClientRect();
+          const scrollPosition = window.pageYOffset + rect.top - 80;
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+          });
+        } else {
+          // Fallback to the contact section if form not found
+          const rect = contactSection.getBoundingClientRect();
+          const scrollPosition = window.pageYOffset + rect.top - 80;
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+          });
+        }
         setIsOpen(false);
       }
     } else {
       // If not on home page, navigate to home page with contact anchor
-      navigate('/#contact');
+      navigate('/?scrollTo=contact-form');
       setIsOpen(false);
     }
   };

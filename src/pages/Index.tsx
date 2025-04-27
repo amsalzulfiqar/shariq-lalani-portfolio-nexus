@@ -16,13 +16,39 @@ const Index = () => {
     const params = new URLSearchParams(location.search);
     const scrollToSection = params.get('scrollTo');
     
-    if (scrollToSection) {
+    if (scrollToSection === 'contact-form') {
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          // Find the form section within contact
+          const formSection = contactSection.querySelector('h3')?.parentElement;
+          
+          if (formSection) {
+            // Scroll to the form section specifically
+            const rect = formSection.getBoundingClientRect();
+            const scrollPosition = window.pageYOffset + rect.top - 80;
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'smooth'
+            });
+          } else {
+            // Fallback to the whole contact section
+            const rect = contactSection.getBoundingClientRect();
+            const scrollPosition = window.pageYOffset + rect.top - 80;
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }, 500); // Give time for the page to fully render
+    } else if (scrollToSection) {
       setTimeout(() => {
         const section = document.getElementById(scrollToSection);
         if (section) {
           // Calculate position with offset
           const rect = section.getBoundingClientRect();
-          const scrollPosition = window.pageYOffset + rect.top - 200;
+          const scrollPosition = window.pageYOffset + rect.top - 80;
           window.scrollTo({
             top: scrollPosition,
             behavior: 'smooth'
@@ -37,9 +63,25 @@ const Index = () => {
         const sectionId = location.hash.replace('#', '');
         const section = document.getElementById(sectionId);
         if (section) {
-          // Calculate position with offset
+          // If it's the contact section, try to scroll to the form
+          if (sectionId === 'contact') {
+            const formSection = section.querySelector('h3')?.parentElement;
+            
+            if (formSection) {
+              // Scroll to the form section specifically
+              const rect = formSection.getBoundingClientRect();
+              const scrollPosition = window.pageYOffset + rect.top - 80;
+              window.scrollTo({
+                top: scrollPosition,
+                behavior: 'smooth'
+              });
+              return;
+            }
+          }
+          
+          // Default scrolling for other sections
           const rect = section.getBoundingClientRect();
-          const scrollPosition = window.pageYOffset + rect.top - 200;
+          const scrollPosition = window.pageYOffset + rect.top - 80;
           window.scrollTo({
             top: scrollPosition,
             behavior: 'smooth'
