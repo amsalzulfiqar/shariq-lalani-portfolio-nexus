@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,29 +6,24 @@ import { Music, Mic, Headphones, Piano, Guitar } from 'lucide-react';
 const BioPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Reduced-height hero with background image */}
       <div className="h-[40vh] relative">
-        {/* Using a regular img element instead of a background image for better control */}
         <div className="absolute inset-0 overflow-hidden">
           <img 
             src="/lovable-uploads/fd2cd847-dde0-4532-a1d7-b4c1514881e0.png" 
             alt="Shariq in studio" 
-            className="w-full h-full object-cover object-[center_30%]"
+            className="w-full h-full object-cover object-[center_20%]"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
         
-        {/* Navigation is placed inside the hero section with higher z-index */}
         <div className="relative z-10">
           <Navbar />
         </div>
       </div>
       
-      {/* Content area - moved up with less padding */}
       <div className="bg-background">
         <div className="container-custom py-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {/* Profile section */}
             <div className="lg:col-span-1">
               <div className="space-y-6">
                 <div className="relative group">
@@ -69,7 +63,6 @@ const BioPage = () => {
               </div>
             </div>
             
-            {/* Bio text - removed the About Shariq heading */}
             <div className="lg:col-span-2">
               <div className="prose prose-invert max-w-none">
                 <p className="text-lg leading-relaxed mb-6">
@@ -104,7 +97,7 @@ const BioPage = () => {
           </div>
         </div>
       </div>
-        
+      
       <Footer />
     </div>
   );
