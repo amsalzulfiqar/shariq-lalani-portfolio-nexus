@@ -1,18 +1,22 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Music, Mic, Headphones, Piano, Guitar } from 'lucide-react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const BioPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="h-[40vh] relative">
         <div className="absolute inset-0 overflow-hidden">
-          <img 
-            src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" 
-            alt="Shariq playing keyboard" 
-            className="w-full h-full object-cover object-[center_35%]"
-          />
+          <AspectRatio ratio={16 / 9} className="h-full">
+            <img 
+              src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" 
+              alt="Shariq playing keyboard" 
+              className="w-full h-full object-cover"
+            />
+          </AspectRatio>
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
         
@@ -27,11 +31,13 @@ const BioPage = () => {
             <div className="lg:col-span-1">
               <div className="space-y-6">
                 <div className="relative group">
-                  <img 
-                    src="/lovable-uploads/f81daf2a-d575-4ce4-a183-78f9d4f94a0a.png" 
-                    alt="Shariq Lalani portrait" 
-                    className="w-full rounded-lg object-cover shadow-lg transition-transform duration-300 group-hover:scale-[1.02]"
-                  />
+                  <AspectRatio ratio={4 / 5}>
+                    <img 
+                      src="/lovable-uploads/f81daf2a-d575-4ce4-a183-78f9d4f94a0a.png" 
+                      alt="Shariq Lalani portrait" 
+                      className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                  </AspectRatio>
                   <div className="absolute inset-0 bg-black/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 

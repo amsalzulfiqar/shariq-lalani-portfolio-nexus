@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const About = () => {
   const imageRef = useRef<HTMLImageElement>(null);
@@ -53,20 +54,22 @@ const About = () => {
           </div>
           
           <div className="order-1 md:order-2 relative">
-            <div className="rounded-xl overflow-hidden shadow-lg bg-gray-800 relative" style={{ minHeight: "300px" }}>
+            <div className="rounded-xl overflow-hidden shadow-lg bg-gray-800 relative">
               {!imageLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="animate-pulse h-16 w-16 rounded-full bg-gray-700"></div>
                 </div>
               )}
-              <img
-                ref={imageRef}
-                src="/lovable-uploads/cf679340-41be-421e-a167-6db583bdf43b.png"
-                alt="Shariq Lalani"
-                className={`w-full h-auto opacity-0 transition-all duration-700 ${imageLoaded ? 'opacity-100 hover:scale-105' : ''}`}
-                loading="lazy"
-                onLoad={() => setImageLoaded(true)}
-              />
+              <AspectRatio ratio={4 / 3}>
+                <img
+                  ref={imageRef}
+                  src="/lovable-uploads/cf679340-41be-421e-a167-6db583bdf43b.png"
+                  alt="Shariq Lalani"
+                  className={`w-full h-full object-cover transition-all duration-700 ${imageLoaded ? 'opacity-100 hover:scale-105' : 'opacity-0'}`}
+                  loading="lazy"
+                  onLoad={() => setImageLoaded(true)}
+                />
+              </AspectRatio>
             </div>
           </div>
         </div>
