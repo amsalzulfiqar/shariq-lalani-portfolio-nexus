@@ -9,7 +9,7 @@ import SpotifyPlayer from '@/components/SpotifyPlayer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <div className="fixed inset-0 z-0 bg-noise"></div>
       <Hero />
       <About />
