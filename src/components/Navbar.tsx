@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,6 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
@@ -24,14 +24,17 @@ const Navbar = () => {
   ];
   
   const handleContactClick = (e) => {
+    e.preventDefault();
     if (isHomePage) {
-      e.preventDefault();
       const contactSection = document.getElementById('contact');
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
+        setIsOpen(false);
       }
+    } else {
+      // If not on home page, navigate to home page with contact anchor
+      window.location.href = '/#contact';
     }
-    setIsOpen(false);
   };
 
   return (
