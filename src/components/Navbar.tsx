@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -24,16 +25,32 @@ const Navbar = () => {
     { href: '/artist', label: 'Artist' },
   ];
   
+  // Effect to handle scroll to contact when navigated with hash
+  useEffect(() => {
+    if (location.hash === '#contact') {
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // Small delay to ensure DOM is ready
+    }
+  }, [location]);
+
   const handleContactClick = (e) => {
     e.preventDefault();
+    
     if (isHomePage) {
+      // If on home page, just scroll to contact section
       const contactSection = document.getElementById('contact');
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
         setIsOpen(false);
       }
     } else {
-      navigate('/#contact');
+      // If not on home page, navigate to home page with contact anchor
+      navigate('/?scrollTo=contact');
+      setIsOpen(false);
     }
   };
 
