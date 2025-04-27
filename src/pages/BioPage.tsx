@@ -9,9 +9,9 @@ const BioPage = () => {
       <div className="h-[40vh] relative">
         <div className="absolute inset-0 overflow-hidden">
           <img 
-            src="/lovable-uploads/fd2cd847-dde0-4532-a1d7-b4c1514881e0.png" 
-            alt="Shariq in studio" 
-            className="w-full h-full object-cover object-[center_65%]"
+            src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" 
+            alt="Shariq playing keyboard" 
+            className="w-full h-full object-cover object-[center_35%]"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
