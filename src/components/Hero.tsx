@@ -1,13 +1,18 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Navbar from '@/components/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+
+  const navigateToServices = () => {
+    navigate('/services');
+  };
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -76,7 +81,7 @@ const Hero = () => {
           <Button 
             size="lg" 
             className="bg-black text-white hover:bg-black/80 px-8 border-none"
-            onClick={scrollToContact}
+            onClick={navigateToServices}
           >
             Work with Me
           </Button>

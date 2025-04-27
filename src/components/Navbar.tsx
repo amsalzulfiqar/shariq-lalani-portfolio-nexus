@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 import {
   NavigationMenu,
@@ -15,6 +15,7 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
   const navLinks = [
@@ -32,8 +33,7 @@ const Navbar = () => {
         setIsOpen(false);
       }
     } else {
-      // If not on home page, navigate to home page with contact anchor
-      window.location.href = '/#contact';
+      navigate('/#contact');
     }
   };
 
