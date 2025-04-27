@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="w-full bg-transparent">
+    <header className="w-full bg-transparent fixed top-0 left-0 z-50">
       <Logo 
         fixed={false} 
         size="medium" 
@@ -62,7 +62,7 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="text-sm font-medium text-white/90 hover:text-white bg-transparent border border-white">Services</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-[200px] gap-2 p-4 bg-background">
+                  <div className="grid w-[200px] gap-2 p-4 bg-popover">
                     <NavigationMenuLink asChild>
                       <Link
                         to="/services"
