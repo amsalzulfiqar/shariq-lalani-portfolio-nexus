@@ -32,10 +32,10 @@ const Hero = () => {
           </div>
         )}
         <img 
-          src={isMobile ? "/lovable-uploads/8f2b43cd-bd73-41c5-abed-8bcfdacbd787.png" : "/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png"}
+          src={isMobile ? "/lovable-uploads/6f6bc79b-11f3-4bb4-a730-61666af2c750.png" : "/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png"}
           alt="Musician playing piano in recording studio"
           className={`w-full h-full object-cover ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
-          style={{ objectPosition: isMobile ? 'center center' : 'center center' }}
+          style={{ objectPosition: 'center center' }}
           loading="eager"
           fetchPriority="high"
           onLoad={() => setImageLoaded(true)}

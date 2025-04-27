@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Hero from '@/components/Hero';
@@ -6,7 +5,6 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import SpotifyPlayer from '@/components/SpotifyPlayer';
-import Services from '@/components/Services';
 
 const Index = () => {
   const location = useLocation();
@@ -33,7 +31,6 @@ const Index = () => {
       <Hero />
       <div className="relative z-10">
         <About />
-        <Services />
         <SpotifyPlayer id="spotify" />
         <Contact />
         <Footer />
