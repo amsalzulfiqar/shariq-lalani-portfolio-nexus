@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,8 +9,8 @@ import { useLayoutEffect } from "react";
 
 const ServicesPage = () => {
   useLayoutEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+    window.scrollTo(0, 0);
+  }, []);
 
   const services = [
     {
@@ -172,9 +171,7 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero section with reduced height like in Bio page */}
-      <div className="h-[50vh] relative">
-        {/* Background image */}
+      <div className="h-screen relative">
         <div className="absolute inset-0 overflow-hidden">
           <img 
             src="/lovable-uploads/688646cc-2ad2-4d62-a487-e64b409ec429.png" 
@@ -184,16 +181,8 @@ const ServicesPage = () => {
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
         
-        {/* Navigation */}
         <div className="relative z-10">
           <Navbar />
-          
-          {/* Hero content - removed the "Services" text */}
-          <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/90 to-transparent">
-            <div className="container-custom">
-              {/* Removed large "Services" heading */}
-            </div>
-          </div>
         </div>
       </div>
       
@@ -221,7 +210,6 @@ const ServicesPage = () => {
         </section>
 
         <section className="py-16 bg-background relative" id="services">
-          {/* Background Image with Overlay - fixing the visibility issue */}
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-20 z-0" 
             style={{ backgroundImage: 'url("/lovable-uploads/8c8728bf-ab7a-4c4c-b4f8-dcb8665ede8c.png")' }}
