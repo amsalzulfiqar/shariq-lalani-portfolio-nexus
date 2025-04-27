@@ -14,11 +14,11 @@ const ArtistPage = () => {
           {/* Background image */}
           <div className="absolute inset-0 overflow-hidden">
             <img 
-              src="/lovable-uploads/4ded3494-a7a7-48dc-b3e6-efbbaf0d51e1.png" 
-              alt="Shariq playing piano" 
+              src="/lovable-uploads/116d68b0-2138-4bdf-959c-d4a37c50be2f.png" 
+              alt="Shariq performing on piano in atmospheric lighting" 
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-black/50"></div>
+            <div className="absolute inset-0 bg-black/40"></div>
           </div>
           
           {/* Navigation */}
