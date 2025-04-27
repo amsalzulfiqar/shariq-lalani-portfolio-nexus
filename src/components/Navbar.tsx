@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import {
   NavigationMenu,
@@ -16,43 +16,12 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === '/';
 
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/bio', label: 'Bio' },
     { href: '/artist', label: 'Artist' },
   ];
-  
-  // Effect to handle scroll to contact when navigated with hash
-  useEffect(() => {
-    if (location.hash === '#contact') {
-      setTimeout(() => {
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100); // Small delay to ensure DOM is ready
-    }
-  }, [location]);
-
-  const handleContactClick = (e) => {
-    e.preventDefault();
-    
-    if (isHomePage) {
-      // If on home page, just scroll to contact section
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-        setIsOpen(false);
-      }
-    } else {
-      // If not on home page, navigate to home page with contact anchor
-      navigate('/?scrollTo=contact');
-      setIsOpen(false);
-    }
-  };
 
   return (
     <header className="w-full bg-transparent relative z-50">
@@ -105,10 +74,7 @@ const Navbar = () => {
           </NavigationMenu>
 
           <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
-            <a 
-              href="#contact"
-              onClick={handleContactClick}
-            >
+            <a href="mailto:info@shariqlalani.com">
               Contact
             </a>
           </Button>
@@ -151,10 +117,7 @@ const Navbar = () => {
               Featured Works
             </Link>
             <Button asChild variant="outline" className="w-full">
-              <a 
-                href="#contact"
-                onClick={handleContactClick}
-              >
+              <a href="mailto:info@shariqlalani.com">
                 Contact
               </a>
             </Button>
@@ -166,3 +129,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
