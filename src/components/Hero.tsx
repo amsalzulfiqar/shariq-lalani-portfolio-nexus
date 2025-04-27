@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
@@ -33,7 +34,8 @@ const Hero = () => {
         <img 
           src="/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png" 
           alt="Musician playing piano in recording studio"
-          className={`w-full h-full object-cover object-center ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+          className={`w-full h-full object-cover object-center md:object-center ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+          style={{ objectPosition: isMobile ? 'center 20%' : 'center center' }}
           loading="eager"
           fetchPriority="high"
           onLoad={() => setImageLoaded(true)}
@@ -54,9 +56,9 @@ const Hero = () => {
         >
           <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-4">
             <span>Artist</span>
-            <Square size={8} className="hidden md:block text-white/60 fill-white/60" />
+            <Square size={8} className="inline-block text-white/60 fill-white/60" />
             <span>Producer</span>
-            <Square size={8} className="hidden md:block text-white/60 fill-white/60" />
+            <Square size={8} className="inline-block text-white/60 fill-white/60" />
             <span>Engineer</span>
           </div>
         </h1>
