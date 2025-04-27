@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { Instagram, Youtube } from 'lucide-react';
 import SpotifyIcon from '@/components/icons/SpotifyIcon';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -52,11 +50,6 @@ const Footer = () => {
         <div className="border-t border-border/30 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm mb-4 md:mb-0 text-primary/60">
             © {currentYear} Shariq Lalani. All rights reserved.
-          </div>
-          
-          <div className="flex space-x-6">
-            <Link to="/" className="text-sm text-primary/60 hover:text-accent transition-colors">Home</Link>
-            <Link to="/services" className="text-sm text-primary/60 hover:text-accent transition-colors">Services</Link>
           </div>
         </div>
       </div>
