@@ -20,13 +20,7 @@ const Index = () => {
       setTimeout(() => {
         const section = document.getElementById(scrollToSection);
         if (section) {
-          // Scroll to the section with an offset to bring it up from the bottom
-          const offset = 100; // Adjust this value to control how far from the top the section appears
-          const elementPosition = section.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({
-            top: elementPosition - offset,
-            behavior: 'smooth'
-          });
+          section.scrollIntoView({ behavior: 'smooth' });
         }
       }, 500); // Give time for the page to fully render
     }
