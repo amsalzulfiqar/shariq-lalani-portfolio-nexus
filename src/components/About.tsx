@@ -1,10 +1,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const About = () => {
   const imageRef = useRef<HTMLImageElement>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,7 +67,7 @@ const About = () => {
                   ref={imageRef}
                   src="/lovable-uploads/cf679340-41be-421e-a167-6db583bdf43b.png"
                   alt="Shariq Lalani"
-                  className={`w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}
+                  className={`w-full h-full object-cover object-top ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}
                   loading="lazy"
                   onLoad={() => setImageLoaded(true)}
                 />
