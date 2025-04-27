@@ -13,11 +13,13 @@ const Index = () => {
       <div className="fixed inset-0 z-0 bg-noise"></div>
       <div className="relative z-10">
         <Navbar />
-        <Hero />
-        <About />
-        <SpotifyPlayer id="spotify" />
-        <Contact />
-        <Footer />
+        <div className="mt-0"> {/* Removed extra spacing since navbar is not fixed */}
+          <Hero />
+          <About />
+          <SpotifyPlayer id="spotify" />
+          <Contact />
+          <Footer />
+        </div>
       </div>
     </div>
   );

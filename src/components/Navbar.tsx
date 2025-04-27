@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from 'react-router-dom';
@@ -15,24 +14,8 @@ import {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      
-      // Only show navbar when at the very top of the page
-      setVisible(currentScrollPos <= 10);
-      
-      setPrevScrollPos(currentScrollPos);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos]);
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -52,11 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <header 
-      className={`w-full bg-transparent fixed top-0 left-0 z-50 transition-transform duration-300 ${
-        visible ? 'translate-y-0' : '-translate-y-full'
-      }`}
-    >
+    <header className="w-full bg-transparent relative z-50">
       <Logo 
         fixed={false} 
         size="medium" 
