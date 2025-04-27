@@ -18,7 +18,7 @@ interface LogoProps {
 const Logo = ({
   className = '',
   fixed = false,
-  position = { top: '4', left: '4' },
+  position = { top: '6', left: '4' },  // Changed from top: '4' to top: '6'
   size = 'medium',
   zIndex = 50
 }: LogoProps) => {
