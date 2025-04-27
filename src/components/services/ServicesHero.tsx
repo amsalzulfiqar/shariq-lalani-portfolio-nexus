@@ -9,7 +9,7 @@ const ServicesHero = () => {
         <img 
           src="/lovable-uploads/688646cc-2ad2-4d62-a487-e64b409ec429.png" 
           alt="Shariq in studio" 
-          className="w-full h-full object-cover object-[center_50%]"
+          className="w-full h-full object-cover object-[center_40%]"
         />
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
