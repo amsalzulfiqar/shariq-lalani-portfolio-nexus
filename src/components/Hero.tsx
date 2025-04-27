@@ -16,7 +16,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-screen h-[100svh] overflow-hidden">
+    <section className="relative w-screen h-screen overflow-hidden">
       <div className="absolute inset-0 z-0">
         {!imageLoaded && (
           <div className="w-full h-full bg-black flex items-center justify-center">
