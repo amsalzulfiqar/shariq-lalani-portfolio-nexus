@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -33,8 +32,8 @@ const Navbar = () => {
         if (contactSection) {
           // Get the position of the element relative to the viewport
           const rect = contactSection.getBoundingClientRect();
-          // Calculate position to scroll to (with offset)
-          const scrollPosition = window.pageYOffset + rect.top - 120;
+          // Calculate position to scroll to (with offset to show the section header)
+          const scrollPosition = window.pageYOffset + rect.top - 200;
           window.scrollTo({
             top: scrollPosition,
             behavior: 'smooth'
@@ -53,8 +52,8 @@ const Navbar = () => {
       if (contactSection) {
         // Get the position of the element relative to the viewport
         const rect = contactSection.getBoundingClientRect();
-        // Calculate position to scroll to (with offset)
-        const scrollPosition = window.pageYOffset + rect.top - 120;
+        // Calculate position to scroll to (with offset to show the section header)
+        const scrollPosition = window.pageYOffset + rect.top - 200;
         window.scrollTo({
           top: scrollPosition,
           behavior: 'smooth'

@@ -22,7 +22,7 @@ const Index = () => {
         if (section) {
           // Calculate position with offset
           const rect = section.getBoundingClientRect();
-          const scrollPosition = window.pageYOffset + rect.top - 120;
+          const scrollPosition = window.pageYOffset + rect.top - 200;
           window.scrollTo({
             top: scrollPosition,
             behavior: 'smooth'
@@ -39,7 +39,7 @@ const Index = () => {
         if (section) {
           // Calculate position with offset
           const rect = section.getBoundingClientRect();
-          const scrollPosition = window.pageYOffset + rect.top - 120;
+          const scrollPosition = window.pageYOffset + rect.top - 200;
           window.scrollTo({
             top: scrollPosition,
             behavior: 'smooth'
