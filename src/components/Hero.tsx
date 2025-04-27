@@ -12,7 +12,7 @@ const Hero = () => {
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      contactSection.scrollIntoView();
     }
   };
 
@@ -46,12 +46,12 @@ const Hero = () => {
         <h1 className={`text-4xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in ${isMobile ? 'text-2xl' : ''}`}
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
-          <div className="flex items-center justify-center gap-2 md:gap-4 flex-wrap">
-            <span className="inline-block">Artist</span>
-            <Square size={8} className="hidden md:inline-block text-white/60 fill-white/60" />
-            <span className="inline-block">Producer</span>
-            <Square size={8} className="hidden md:inline-block text-white/60 fill-white/60" />
-            <span className="inline-block">Engineer</span>
+          <div className="flex items-center justify-center md:space-x-4 flex-wrap md:flex-nowrap">
+            <span>Artist</span>
+            <Square size={8} className="hidden md:block text-white/60 fill-white/60" />
+            <span>Producer</span>
+            <Square size={8} className="hidden md:block text-white/60 fill-white/60" />
+            <span>Engineer</span>
           </div>
         </h1>
 

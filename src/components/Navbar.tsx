@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from 'react-router-dom';
@@ -25,31 +24,15 @@ const Navbar = () => {
   ];
   
   const handleContactClick = (e) => {
-    e.preventDefault();
-    
     if (isHomePage) {
+      e.preventDefault();
       const contactSection = document.getElementById('contact');
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
-        setIsOpen(false);
       }
-    } else {
-      // If not on homepage, navigate to home and then scroll to contact
-      window.location.href = '/#contact';
     }
+    setIsOpen(false);
   };
-
-  // Handle hash navigation when component mounts
-  useEffect(() => {
-    if (isHomePage && window.location.hash === '#contact') {
-      setTimeout(() => {
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  }, [isHomePage]);
 
   return (
     <header className="w-full bg-transparent relative z-50">
