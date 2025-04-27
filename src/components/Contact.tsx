@@ -74,7 +74,7 @@ const Contact = () => {
             )}
           </div>
 
-          <div id="contact-form">
+          <div>
             <h3 className="text-xl font-semibold text-primary/80 mb-4">Send me a Message</h3>
             <form 
               onSubmit={handleSubmit}
