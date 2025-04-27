@@ -34,8 +34,8 @@ const Hero = () => {
         <img 
           src="/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png" 
           alt="Musician playing piano in recording studio"
-          className={`w-full h-full object-cover object-center md:object-center ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
-          style={{ objectPosition: isMobile ? 'center 20%' : 'center center' }}
+          className={`w-full h-full object-cover ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
+          style={{ objectPosition: isMobile ? 'center 30%' : 'center center' }}
           loading="eager"
           fetchPriority="high"
           onLoad={() => setImageLoaded(true)}
