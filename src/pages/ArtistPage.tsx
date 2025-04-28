@@ -16,7 +16,7 @@ const ArtistPage = () => {
             <img 
               src="/lovable-uploads/116d68b0-2138-4bdf-959c-d4a37c50be2f.png" 
               alt="Shariq performing on piano in atmospheric lighting" 
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-center md:object-top"
             />
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
@@ -30,7 +30,7 @@ const ArtistPage = () => {
         {/* Content section */}
         <div className="py-12">
           <div className="container-custom">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Feel. Groove. Repeat.</h2>
               <p className="text-lg md:text-xl text-center mx-auto max-w-3xl">
                 Explore Shariq's musical journey through his original compositions, collaborations, and performances. This showcase highlights his versatility as an artist across various genres and contexts.
