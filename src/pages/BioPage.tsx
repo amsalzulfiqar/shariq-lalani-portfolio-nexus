@@ -21,7 +21,7 @@ const BioPage = () => {
             <img 
               src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" 
               alt="Shariq playing keyboard" 
-              className="w-full h-full object-cover object-[center_35%]"
+              className="w-full h-full object-cover object-[center_50%]"
             />
           </picture>
           <div className="absolute inset-0 bg-black/40"></div>
