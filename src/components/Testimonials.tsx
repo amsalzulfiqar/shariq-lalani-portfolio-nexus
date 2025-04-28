@@ -51,6 +51,41 @@ const Testimonials = () => {
 
   const [api, setApi] = React.useState<any>(null);
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  
+  // Calculate how many slides there will be
+  const itemsPerView = {
+    mobile: 1,
+    tablet: 2,
+    desktop: 3
+  };
+  
+  // Get current items per view based on screen size
+  const [itemsInView, setItemsInView] = React.useState(itemsPerView.desktop);
+  
+  // Calculate total number of possible positions/pages
+  const totalSlides = Math.max(1, testimonials.length - itemsInView + 1);
+  
+  React.useEffect(() => {
+    // Function to update items in view based on screen width
+    const updateItemsInView = () => {
+      if (window.innerWidth < 768) {
+        setItemsInView(itemsPerView.mobile);
+      } else if (window.innerWidth < 1024) {
+        setItemsInView(itemsPerView.tablet);
+      } else {
+        setItemsInView(itemsPerView.desktop);
+      }
+    };
+    
+    // Set initial value
+    updateItemsInView();
+    
+    // Add listener for window resize
+    window.addEventListener('resize', updateItemsInView);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', updateItemsInView);
+  }, []);
 
   const handlePrevious = React.useCallback(() => {
     api?.scrollPrev();
@@ -112,16 +147,16 @@ const Testimonials = () => {
             </CarouselContent>
             
             <div className="flex flex-col items-center gap-2 mt-6">
-              {/* Pagination dots */}
+              {/* Pagination dots - only showing dots for possible carousel positions */}
               <div className="flex space-x-2 mb-4">
-                {testimonials.map((_, index) => (
+                {Array.from({ length: totalSlides }).map((_, index) => (
                   <button
                     key={index}
                     className={`w-2 h-2 rounded-full transition-colors ${
                       currentSlide === index ? 'bg-accent' : 'bg-accent/30'
                     }`}
                     onClick={() => api?.scrollTo(index)}
-                    aria-label={`Go to testimonial ${index + 1}`}
+                    aria-label={`Go to testimonial page ${index + 1}`}
                   />
                 ))}
               </div>
@@ -142,8 +177,8 @@ const Testimonials = () => {
                   variant="outline" 
                   size="icon" 
                   onClick={handleNext}
-                  disabled={currentSlide === testimonials.length - 1}
-                  className={`rounded-full ${currentSlide === testimonials.length - 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={currentSlide === totalSlides - 1}
+                  className={`rounded-full ${currentSlide === totalSlides - 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   <ChevronRight className="h-4 w-4" />
                   <span className="sr-only">Next</span>
