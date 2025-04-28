@@ -4,12 +4,12 @@ import Navbar from '@/components/Navbar';
 
 const ServicesHero = () => {
   return (
-    <div className="h-[40vh] relative">
+    <div className="h-[40vh] md:h-[60vh] relative">
       <div className="absolute inset-0 overflow-hidden">
         <img 
           src="/lovable-uploads/688646cc-2ad2-4d62-a487-e64b409ec429.png" 
           alt="Shariq in studio" 
-          className="w-full h-full object-cover object-[center_50%]"
+          className="w-full h-full object-cover object-[center_30%]"
         />
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
