@@ -16,9 +16,9 @@ const ServicesHero = () => {
         <img 
           src="/lovable-uploads/2c4cef90-79d6-44c2-82ed-4722562df6d7.png" 
           alt="Shariq working in studio" 
-          className="hidden md:block w-full h-full object-cover object-[center_30%]"
+          className="hidden md:block w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
       
       <div className="relative z-10">
