@@ -12,7 +12,7 @@ const BioPage = () => {
           <picture>
             <source
               media="(max-width: 768px)"
-              srcSet="/lovable-uploads/2b4e0aa2-674a-492b-b764-ada7f8b54f08.png"
+              srcSet="/lovable-uploads/06d1ae3e-6951-4a55-ab36-e8d997ff734f.png"
             />
             <source
               media="(min-width: 769px)"
