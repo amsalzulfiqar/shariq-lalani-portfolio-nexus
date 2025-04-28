@@ -50,6 +50,7 @@ const Testimonials = () => {
   ];
 
   const [api, setApi] = React.useState<any>(null);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
 
   const handlePrevious = React.useCallback(() => {
     api?.scrollPrev();
@@ -57,6 +58,24 @@ const Testimonials = () => {
 
   const handleNext = React.useCallback(() => {
     api?.scrollNext();
+  }, [api]);
+
+  // Update current slide when the carousel changes
+  React.useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setCurrentSlide(api.selectedScrollSnap());
+    };
+
+    api.on('select', onSelect);
+    
+    // Initial slide position
+    setCurrentSlide(api.selectedScrollSnap());
+
+    return () => {
+      api.off('select', onSelect);
+    };
   }, [api]);
 
   return (
@@ -75,7 +94,7 @@ const Testimonials = () => {
           <Carousel
             opts={{
               align: "start",
-              loop: true
+              loop: false // Disable looping
             }}
             className="w-full"
             setApi={setApi}
@@ -91,13 +110,30 @@ const Testimonials = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-6">
+            
+            <div className="flex flex-col items-center gap-2 mt-6">
+              {/* Pagination dots */}
+              <div className="flex space-x-2 mb-4">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      currentSlide === index ? 'bg-accent' : 'bg-accent/30'
+                    }`}
+                    onClick={() => api?.scrollTo(index)}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+              
+              {/* Navigation buttons */}
               <div className="flex space-x-4">
                 <Button 
                   variant="outline" 
                   size="icon" 
-                  onClick={handlePrevious} 
-                  className="rounded-full"
+                  onClick={handlePrevious}
+                  disabled={currentSlide === 0}
+                  className={`rounded-full ${currentSlide === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   <ChevronLeft className="h-4 w-4" />
                   <span className="sr-only">Previous</span>
@@ -105,8 +141,9 @@ const Testimonials = () => {
                 <Button 
                   variant="outline" 
                   size="icon" 
-                  onClick={handleNext} 
-                  className="rounded-full"
+                  onClick={handleNext}
+                  disabled={currentSlide === testimonials.length - 1}
+                  className={`rounded-full ${currentSlide === testimonials.length - 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   <ChevronRight className="h-4 w-4" />
                   <span className="sr-only">Next</span>
