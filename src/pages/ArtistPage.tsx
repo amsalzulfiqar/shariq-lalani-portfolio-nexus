@@ -9,8 +9,8 @@ const ArtistPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className="fixed inset-0 z-0 bg-noise"></div>
       <div className="relative z-10">
-        {/* Hero section with reduced height like in Bio page */}
-        <div className="h-[50vh] relative">
+        {/* Hero section with responsive height */}
+        <div className="h-[50vh] md:h-[70vh] relative">
           {/* Background image */}
           <div className="absolute inset-0 overflow-hidden">
             <img 
