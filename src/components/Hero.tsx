@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
@@ -44,7 +43,7 @@ const Hero = () => {
           fetchPriority="high"
           onLoad={() => setImageLoaded(true)}
         />
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
       </div>
 
       {/* Navigation */}
