@@ -11,14 +11,24 @@ const ArtistPage = () => {
       <div className="relative z-10">
         {/* Hero section with responsive height */}
         <div className="h-[50vh] md:h-[70vh] relative">
-          {/* Background image */}
-          <div className="absolute inset-0 overflow-hidden">
+          {/* Background image - mobile */}
+          <div className="absolute inset-0 overflow-hidden md:hidden">
             <img 
               src="/lovable-uploads/116d68b0-2138-4bdf-959c-d4a37c50be2f.png" 
               alt="Shariq performing on piano in atmospheric lighting" 
-              className="w-full h-full object-cover object-center md:object-top"
+              className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-black/40"></div>
+          </div>
+
+          {/* Background image - desktop */}
+          <div className="absolute inset-0 overflow-hidden hidden md:block">
+            <img 
+              src="/lovable-uploads/e20a4900-ffe4-48ac-a3d8-5b99ef1f1633.png" 
+              alt="Shariq performing on Yamaha piano with atmospheric lighting" 
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/30"></div>
           </div>
           
           {/* Navigation */}
