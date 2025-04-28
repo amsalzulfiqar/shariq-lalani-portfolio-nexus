@@ -13,6 +13,19 @@ const IMAGE_ASSETS = [
   '/lovable-uploads/0415268e-2d64-4a2b-8311-46ca2a298471.png'
 ];
 
+// TypeScript declaration for service worker scope
+declare var self: ServiceWorkerGlobalScope;
+
+// Allow TypeScript to recognize these service worker events
+interface ExtendableEvent extends Event {
+  waitUntil(fn: Promise<any>): void;
+}
+
+interface FetchEvent extends Event {
+  request: Request;
+  respondWith(response: Promise<Response> | Response): void;
+}
+
 // Install service worker and cache assets
 self.addEventListener('install', (event: ExtendableEvent) => {
   event.waitUntil(
@@ -81,16 +94,3 @@ self.addEventListener('fetch', (event: FetchEvent) => {
       })
   );
 });
-
-// Allow TypeScript to recognize these service worker events
-interface ExtendableEvent extends Event {
-  waitUntil(fn: Promise<any>): void;
-}
-
-interface FetchEvent extends Event {
-  request: Request;
-  respondWith(response: Promise<Response> | Response): void;
-}
-
-// Declare service worker scope
-declare const self: ServiceWorkerGlobalScope;
