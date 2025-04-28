@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -20,7 +21,7 @@ const BioPage = () => {
             <img 
               src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" 
               alt="Shariq playing keyboard" 
-              className="w-full h-full object-cover md:object-[center_35%] object-center"
+              className="w-full h-full object-cover md:object-[center_35%] object-[center_35%]"
             />
           </picture>
           <div className="absolute inset-0 bg-black/40"></div>
