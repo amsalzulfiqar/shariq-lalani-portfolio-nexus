@@ -8,11 +8,21 @@ const BioPage = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className="h-[40vh] relative">
         <div className="absolute inset-0 overflow-hidden">
-          <img 
-            src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" 
-            alt="Shariq playing keyboard" 
-            className="w-full h-full object-cover md:object-[center_35%] object-[center_5%]"
-          />
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcSet="/lovable-uploads/3b2877c8-59a6-4d30-811b-77a38ea61fc5.png"
+            />
+            <source
+              media="(min-width: 769px)"
+              srcSet="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png"
+            />
+            <img 
+              src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" 
+              alt="Shariq playing keyboard" 
+              className="w-full h-full object-cover md:object-[center_35%] object-center"
+            />
+          </picture>
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
         
