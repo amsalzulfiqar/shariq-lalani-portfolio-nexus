@@ -17,7 +17,7 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-background">
       <ServicesHero />
       
-      <div className="pt-10">
+      <div className="pt-0">
         <ServicesOverview />
         <ServicesList />
         <FeaturedWork />
