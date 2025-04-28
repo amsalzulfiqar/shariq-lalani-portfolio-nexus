@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 
 const ServicesHero = () => {
   return (
-    <div className="h-[40vh] md:h-[60vh] relative">
+    <div className="h-[50vh] md:h-[70vh] relative">
       <div className="absolute inset-0 overflow-hidden">
         {/* Mobile image */}
         <img 
