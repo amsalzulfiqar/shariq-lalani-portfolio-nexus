@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Square } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -9,6 +10,26 @@ const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+
+  const desktopImageUrl = "/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png";
+  const mobileImageUrl = "/lovable-uploads/6f6bc79b-11f3-4bb4-a730-61666af2c750.png";
+
+  // Preload hero image on component mount
+  useEffect(() => {
+    const heroImage = new Image();
+    heroImage.src = isMobile ? mobileImageUrl : desktopImageUrl;
+    heroImage.onload = () => setImageLoaded(true);
+    
+    // Attempt to load from cache first
+    if (caches) {
+      caches.match(heroImage.src).then(response => {
+        if (response) {
+          console.log('Hero image loaded from cache');
+          setImageLoaded(true);
+        }
+      });
+    }
+  }, [isMobile]);
 
   const navigateToServices = () => {
     navigate('/services');
@@ -31,7 +52,7 @@ const Hero = () => {
           </div>
         )}
         <img 
-          src={isMobile ? "/lovable-uploads/6f6bc79b-11f3-4bb4-a730-61666af2c750.png" : "/lovable-uploads/21005048-580b-49bd-9bbb-5e9f1335a17c.png"}
+          src={isMobile ? mobileImageUrl : desktopImageUrl}
           alt="Musician playing piano in recording studio"
           className={`w-full h-full object-cover ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
           style={{ 
