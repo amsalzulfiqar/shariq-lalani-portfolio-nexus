@@ -75,7 +75,7 @@ const Hero = () => {
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
         <h1 
-          className="text-3xl sm:text-4xl md:text-6xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in"
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
           <div className="flex items-center justify-center gap-2 sm:gap-4 whitespace-nowrap">

@@ -31,12 +31,12 @@ const Artist = () => {
       embedId: "stIvrC8QNxY"
     },
     {
-      title: "Hum Dekhen Ge",
+      title: "In The Studio: Shariq Lalani | After Hours",
       description: "Shariq Lalani - Hum Dekhen Ge | Live Performance",
       embedId: "mUicfrkdpKI"
     },
     {
-      title: "New Video",
+      title: "After Hours - Shariq Lalani | Shehroze Hussain | Bobby Sparks",
       description: "Shariq Lalani - Latest Performance",
       embedId: "vSMGsEbZGgQ"
     }
