@@ -1,28 +1,15 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Music, Mic, Headphones, Piano, Guitar } from 'lucide-react';
-
 const BioPage = () => {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
+  return <div className="min-h-screen bg-background text-foreground">
       <div className="h-[40vh] relative">
         <div className="absolute inset-0 overflow-hidden">
           <picture>
-            <source
-              media="(max-width: 768px)"
-              srcSet="/lovable-uploads/06d1ae3e-6951-4a55-ab36-e8d997ff734f.png"
-            />
-            <source
-              media="(min-width: 769px)"
-              srcSet="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png"
-            />
-            <img 
-              src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" 
-              alt="Shariq playing keyboard" 
-              className="w-full h-full object-cover object-[center_50%]"
-            />
+            <source media="(max-width: 768px)" srcSet="/lovable-uploads/06d1ae3e-6951-4a55-ab36-e8d997ff734f.png" />
+            <source media="(min-width: 769px)" srcSet="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" />
+            <img src="/lovable-uploads/cc71e7db-44ae-4717-a89b-3603286e8eec.png" alt="Shariq playing keyboard" className="w-full h-full object-cover object-[center_50%]" />
           </picture>
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
@@ -38,11 +25,7 @@ const BioPage = () => {
             <div className="lg:col-span-1">
               <div className="space-y-6">
                 <div className="relative group">
-                  <img 
-                    src="/lovable-uploads/f81daf2a-d575-4ce4-a183-78f9d4f94a0a.png" 
-                    alt="Shariq Lalani portrait" 
-                    className="w-full rounded-lg object-cover shadow-lg transition-transform duration-300 group-hover:scale-[1.02]"
-                  />
+                  <img src="/lovable-uploads/f81daf2a-d575-4ce4-a183-78f9d4f94a0a.png" alt="Shariq Lalani portrait" className="w-full rounded-lg object-cover shadow-lg transition-transform duration-300 group-hover:scale-[1.02]" />
                   <div className="absolute inset-0 bg-black/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
@@ -76,7 +59,7 @@ const BioPage = () => {
             
             <div className="lg:col-span-2">
               <div className="prose prose-invert max-w-none">
-                <p className="text-lg leading-relaxed mb-6">
+                <p className="leading-relaxed mb-6 text-base">
                   Shariq Lalani is a versatile music composer, producer, audio engineer, and multi-instrumentalist based in Dallas, Texas. His musical journey began early and has led him to collaborate with top-tier artists and professionals worldwide.
                 </p>
                 
@@ -110,8 +93,6 @@ const BioPage = () => {
       </div>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default BioPage;
