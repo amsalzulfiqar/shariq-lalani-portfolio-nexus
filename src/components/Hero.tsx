@@ -75,14 +75,14 @@ const Hero = () => {
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
         <h1 
-          className="text-2xl sm:text-3xl md:text-5xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in"
+          className="text-3xl sm:text-4xl md:text-6xl font-bold text-white/60 mb-8 opacity-0 animate-fade-in"
           style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
         >
-          <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-4">
+          <div className="flex items-center justify-center gap-2 sm:gap-4 whitespace-nowrap">
             <span>Artist</span>
-            <Square size={8} className="inline-block text-white/60 fill-white/60" />
+            <Square size={8} className="inline-block text-white/60 fill-white/60 flex-shrink-0" />
             <span>Producer</span>
-            <Square size={8} className="inline-block text-white/60 fill-white/60" />
+            <Square size={8} className="inline-block text-white/60 fill-white/60 flex-shrink-0" />
             <span>Engineer</span>
           </div>
         </h1>

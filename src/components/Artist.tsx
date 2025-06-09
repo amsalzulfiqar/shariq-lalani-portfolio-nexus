@@ -31,6 +31,11 @@ const Artist = () => {
       embedId: "stIvrC8QNxY"
     },
     {
+      title: "Hum Dekhen Ge",
+      description: "Shariq Lalani - Hum Dekhen Ge | Live Performance",
+      embedId: "mUicfrkdpKI"
+    },
+    {
       title: "New Video",
       description: "Shariq Lalani - Latest Performance",
       embedId: "vSMGsEbZGgQ"
