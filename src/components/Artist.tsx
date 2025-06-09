@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Youtube } from 'lucide-react';
 
@@ -29,16 +28,6 @@ const Artist = () => {
       title: "Rang De Reprise",
       description: "Rang De (Reprise) | Shariq Lalani | Merchant Records",
       embedId: "stIvrC8QNxY"
-    },
-    {
-      title: "In The Studio: Shariq Lalani | After Hours",
-      description: "Shariq Lalani - Hum Dekhen Ge | Live Performance",
-      embedId: "mUicfrkdpKI"
-    },
-    {
-      title: "After Hours - Shariq Lalani | Shehroze Hussain | Bobby Sparks",
-      description: "Shariq Lalani - Latest Performance",
-      embedId: "vSMGsEbZGgQ"
     }
   ];
 
