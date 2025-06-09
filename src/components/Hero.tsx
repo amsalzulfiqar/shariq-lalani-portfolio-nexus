@@ -64,11 +64,11 @@ const Hero = () => {
         animationFillMode: 'forwards'
       }}>
           <div className="flex items-center justify-center gap-2 sm:gap-4 whitespace-nowrap">
-            <span className="text-2xl">Artist</span>
+            <span className="text-lg">Artist</span>
             <Square size={8} className="inline-block text-white/60 fill-white/60 flex-shrink-0" />
-            <span className="text-2xl">Producer</span>
+            <span className="text-lg">Producer</span>
             <Square size={8} className="inline-block text-white/60 fill-white/60 flex-shrink-0" />
-            <span className="text-2xl">Engineer</span>
+            <span className="text-lg">Engineer</span>
           </div>
         </h1>
 
