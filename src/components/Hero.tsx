@@ -106,7 +106,7 @@ const Hero = () => {
           </Button>
           <Button 
             size="lg" 
-            className="bg-black text-white hover:bg-black/80 px-8 border-none"
+            className="bg-black/90 text-white hover:bg-black/80 px-8 border border-white/90"
             onClick={navigateToServices}
           >
             Work with Me
