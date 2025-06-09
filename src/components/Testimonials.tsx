@@ -38,6 +38,11 @@ const Testimonials = () => {
       role: "Singer-Songwriter"
     },
     {
+      content: "I have worked with countless producers and Shariq is the cream of the crop. He is a master musician and a technical expert in his field. His ability to arrange and produce grammy-worthy songs from thin air is second to none. It has been the biggest blessing of my career to work with him as my producer.",
+      author: "Zak Azoury",
+      role: "Singer-Songwriter"
+    },
+    {
       content: "The level of professionalism and creativity that Shariq brings to the studio is unmatched. He made the recording process smooth and enjoyable.",
       author: "Bobby Sparks II",
       role: "Grammy-winning Musician"

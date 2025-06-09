@@ -91,12 +91,16 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-medium tracking-tight;
+  }
+
+  p, span, div, a, button, input, textarea, label {
+    @apply font-sans;
   }
 
   /* Add content-visibility for better rendering performance */

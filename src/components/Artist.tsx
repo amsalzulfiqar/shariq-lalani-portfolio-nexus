@@ -29,6 +29,11 @@ const Artist = () => {
       title: "Rang De Reprise",
       description: "Rang De (Reprise) | Shariq Lalani | Merchant Records",
       embedId: "stIvrC8QNxY"
+    },
+    {
+      title: "New Video",
+      description: "Shariq Lalani - Latest Performance",
+      embedId: "vSMGsEbZGgQ"
     }
   ];
 
